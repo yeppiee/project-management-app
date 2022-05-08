@@ -1,3 +1,29 @@
 .container {
-  @apply flex items-center p-3 bg-header text-white
+  @apply flex justify-center p-3 bg-main text-white;
+}
+.container a {
+  @apply hover:text-mainHover transition-colors;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1152px;
+}
+
+.developers {
+  @apply flex items-center justify-center;
+}
+.developers li {
+  @apply ml-12 mr-12;
+}
+
+.img {
+  background-image: url(../../assets/logoRS.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100px;
+  height: 50px;
 }

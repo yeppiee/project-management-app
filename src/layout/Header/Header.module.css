@@ -1,13 +1,13 @@
 .container {
-  @apply flex justify-between items-center p-3 bg-header text-white;
+  @apply flex justify-between items-center p-3 bg-main text-white;
 }
 
 .link {
-  @apply text-white hover:text-headerHover transition-colors;
+  @apply text-white hover:text-mainHover transition-colors;
 }
 
 .burger {
-  @apply flex items-center justify-center mr-6 hover:text-headerHover transition-colors;
+  @apply flex items-center justify-center mr-6 hover:text-mainHover transition-colors;
 }
 
 .authorization > .link {

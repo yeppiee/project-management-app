@@ -9,7 +9,7 @@ const SignIn = lazy(() => import('../pages/SignIn'));
 const UserProfile = lazy(() => import('../pages/UserProfile'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
-const routes = [
+export const routes = [
   {
     id: 1,
     path: '/',
@@ -52,4 +52,20 @@ const routes = [
   },
 ];
 
-export default routes;
+export const welcomeRoutes = [
+  {
+    id: 1,
+    path: '/welcome',
+    component: <div>Welcome Page</div>,
+  },
+  {
+    id: 2,
+    path: '/signUp',
+    component: <SignUp />,
+  },
+  {
+    id: 3,
+    path: '/signIn',
+    component: <SignIn />,
+  },
+];

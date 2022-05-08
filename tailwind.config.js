@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        header: '#232F48',
-        headerHover: '#6A99FB',
+        main: '#232F48',
+        mainHover: '#6A99FB',
       },
       transitionTimingFunction: {
         DEFAULT: 'ease-in-out',

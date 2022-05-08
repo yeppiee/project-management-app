@@ -7,7 +7,7 @@ type HeaderProps = {
 
 function Header({ handleChange }: HeaderProps) {
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <div className="flex items-center leading-4">
         <button className={styles.burger} type="button" onClick={handleChange}>
           <i className="fa-solid fa-bars" />
@@ -25,7 +25,7 @@ function Header({ handleChange }: HeaderProps) {
           SignIn
         </Link>
       </div>
-    </div>
+    </header>
   );
 }
 

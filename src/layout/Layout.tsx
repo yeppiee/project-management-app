@@ -12,7 +12,7 @@ function Layout() {
 
   return (
     <div className="h-screen flex flex-col">
-      <Header handleChange={handleChange} />
+      {false && <Header handleChange={handleChange} />}
       <main className="flex-auto">
         <Outlet />
       </main>
