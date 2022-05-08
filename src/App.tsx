@@ -11,6 +11,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         {routes.map((route) => (
           <Route
+            key={route.id}
             path={route.path}
             element={<Suspense fallback={<Loader />}>{route.component}</Suspense>}
           />

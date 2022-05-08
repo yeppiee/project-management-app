@@ -1,0 +1,15 @@
+.container {
+  @apply flex justify-between items-center p-3 bg-header text-white;
+}
+
+.link {
+  @apply text-white hover:text-headerHover transition-colors;
+}
+
+.burger {
+  @apply flex items-center justify-center mr-6 hover:text-headerHover transition-colors;
+}
+
+.authorization > .link {
+  @apply m-2;
+}

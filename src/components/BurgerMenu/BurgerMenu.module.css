@@ -1,0 +1,36 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: translateX(-120%);
+  transition: 0.4s;
+}
+
+.container.active {
+  transform: translateX(0);
+  transition: 0.4s;
+}
+
+.content {
+  @apply absolute top-0 left-0 px-2 h-screen bg-white;
+}
+
+.button {
+  @apply flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-300 transition-colors;
+}
+
+.list {
+  @apply flex flex-col;
+}
+
+.listItem {
+  @apply cursor-pointer hover:bg-gray-300 transition-colors rounded-md;
+}
+
+.listItem > a {
+  @apply block p-2;
+}

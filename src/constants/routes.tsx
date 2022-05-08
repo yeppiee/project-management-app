@@ -11,34 +11,42 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 
 const routes = [
   {
+    id: 1,
     path: '/',
     component: <Home />,
   },
   {
+    id: 2,
     path: '/aboutUs',
     component: <AboutUs />,
   },
   {
+    id: 3,
     path: '/boards',
     component: <Boards />,
   },
   {
+    id: 4,
     path: '/boards/:id',
     component: <Board />,
   },
   {
+    id: 5,
     path: '/signUp',
     component: <SignUp />,
   },
   {
+    id: 6,
     path: '/signIn',
     component: <SignIn />,
   },
   {
+    id: 7,
     path: '/profile',
     component: <UserProfile />,
   },
   {
+    id: 8,
     path: '/404',
     component: <NotFound />,
   },
