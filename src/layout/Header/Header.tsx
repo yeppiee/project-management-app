@@ -17,33 +17,34 @@ function Header({ handleChange }: HeaderProps) {
   return (
     <header className={styles.container}>
       {userLoginStatus ? (
-        <div className="flex items-center leading-4">
-          <button className={styles.burger} type="button" onClick={handleChange}>
-            <i className="fa-solid fa-bars" />
+        <>
+          <div className="flex items-center leading-4">
+            <button className={styles.burger} type="button" onClick={handleChange}>
+              <i className="fa-solid fa-bars" />
+            </button>
+            <Link className={styles.link} to="/">
+              Home
+            </Link>
+          </div>
+          <button type="button" className="border-2 border-white p-1" onClick={handleLogOut}>
+            LogOut
           </button>
-          <Link className={styles.link} to="/">
-            Home
-          </Link>
-        </div>
+        </>
       ) : (
-        <Link className={styles.link} to="/welcome">
-          Welcome
-        </Link>
-      )}
-      {userLoginStatus ? (
-        <button type="button" className="border-2 border-white p-1" onClick={handleLogOut}>
-          LogOut
-        </button>
-      ) : (
-        <div className={styles.authorization}>
-          <Link className={styles.link} to="/SignUp">
-            SignUp
+        <>
+          <Link className={styles.link} to="/welcome">
+            Welcome
           </Link>
-          <span>/</span>
-          <Link className={styles.link} to="/SignIn">
-            SignIn
-          </Link>
-        </div>
+          <div className={styles.authorization}>
+            <Link className={styles.link} to="/signUp">
+              SignUp
+            </Link>
+            <span>/</span>
+            <Link className={styles.link} to="/signIn">
+              SignIn
+            </Link>
+          </div>
+        </>
       )}
     </header>
   );
