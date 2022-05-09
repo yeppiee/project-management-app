@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 
+const Welcome = lazy(() => import('../pages/Welcome'));
 const Home = lazy(() => import('../pages/Home'));
 const AboutUs = lazy(() => import('../pages/AboutUs'));
 const Boards = lazy(() => import('../pages/Boards'));
@@ -32,21 +33,11 @@ export const routes = [
   },
   {
     id: 5,
-    path: '/signUp',
-    component: <SignUp />,
-  },
-  {
-    id: 6,
-    path: '/signIn',
-    component: <SignIn />,
-  },
-  {
-    id: 7,
     path: '/profile',
     component: <UserProfile />,
   },
   {
-    id: 8,
+    id: 6,
     path: '/404',
     component: <NotFound />,
   },
@@ -56,7 +47,7 @@ export const welcomeRoutes = [
   {
     id: 1,
     path: '/welcome',
-    component: <div>Welcome Page</div>,
+    component: <Welcome />,
   },
   {
     id: 2,
