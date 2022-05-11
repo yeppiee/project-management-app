@@ -14,11 +14,15 @@ function BurgerMenu({ isActive, setInactive }: BurgerMenuProps) {
   };
 
   useEffect(() => {
-    document.addEventListener('keydown', eventKeyDown);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setInactive();
+    });
     return () => {
-      document.removeEventListener('keydown', eventKeyDown);
+      document.removeEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setInactive();
+      });
     };
-  }, []);
+  }, [setInactive]);
 
   return (
     <div
