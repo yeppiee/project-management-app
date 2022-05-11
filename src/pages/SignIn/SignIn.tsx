@@ -3,12 +3,13 @@ import { useAppDispatch } from '../../customHooks/redux';
 import { userSlice } from '../../store/reducers/UserSlice';
 
 function SignIn() {
-  const { changeUserLoginStatus } = userSlice.actions;
+  const { changeUserLoginStatus, changeTokenStatus } = userSlice.actions;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleLogIn = () => {
     dispatch(changeUserLoginStatus(true));
+    dispatch(changeTokenStatus(true));
     navigate('/');
   };
 

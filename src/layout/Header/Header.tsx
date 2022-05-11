@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../customHooks/redux';
 import { userSlice } from '../../store/reducers/UserSlice';
 import styles from './Header.module.css';
@@ -8,15 +8,20 @@ type HeaderProps = {
 };
 
 function Header({ handleChange }: HeaderProps) {
-  const { userLoginStatus } = useAppSelector((state) => state.userSlice);
+  const { userLoginStatus, tokenStatus } = useAppSelector((state) => state.userSlice);
   const { changeUserLoginStatus } = userSlice.actions;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const handleLogOut = () => dispatch(changeUserLoginStatus(false));
+  const handleSignOut = () => dispatch(changeUserLoginStatus(false));
+  const handleLogIn = () => {
+    dispatch(changeUserLoginStatus(true));
+    navigate('/');
+  };
 
   return (
     <header className={styles.container}>
-      {userLoginStatus ? (
+      {userLoginStatus && tokenStatus ? (
         <>
           <div className="flex items-center leading-4">
             <button className={styles.burger} type="button" onClick={handleChange}>
@@ -26,8 +31,8 @@ function Header({ handleChange }: HeaderProps) {
               Home
             </Link>
           </div>
-          <button type="button" className="border-2 border-white p-1" onClick={handleLogOut}>
-            LogOut
+          <button type="button" className={styles.link} onClick={handleSignOut}>
+            Sign Out
           </button>
         </>
       ) : (
@@ -35,15 +40,21 @@ function Header({ handleChange }: HeaderProps) {
           <Link className={styles.link} to="/welcome">
             Welcome
           </Link>
-          <div className={styles.authorization}>
-            <Link className={styles.link} to="/signUp">
-              SignUp
-            </Link>
-            <span>/</span>
-            <Link className={styles.link} to="/signIn">
-              SignIn
-            </Link>
-          </div>
+          {tokenStatus ? (
+            <button type="button" onClick={handleLogIn} className={styles.link}>
+              Go to Main Page
+            </button>
+          ) : (
+            <div className={styles.authorization}>
+              <Link className={styles.link} to="/signUp">
+                SignUp
+              </Link>
+              <span>/</span>
+              <Link className={styles.link} to="/signIn">
+                SignIn
+              </Link>
+            </div>
+          )}
         </>
       )}
     </header>
