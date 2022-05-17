@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../customHooks/redux';
 import { userSlice } from '../../store/reducers/UserSlice';
@@ -28,11 +29,11 @@ function Header({ handleChange }: HeaderProps) {
               <i className="fa-solid fa-bars" />
             </button>
             <Link className={styles.link} to="/">
-              Home
+              <FormattedMessage id="header-button-home" />
             </Link>
           </div>
           <button type="button" className={styles.link} onClick={handleSignOut}>
-            Sign Out
+            <FormattedMessage id="header-button-signOut" />
           </button>
         </>
       ) : (
@@ -42,16 +43,16 @@ function Header({ handleChange }: HeaderProps) {
           </Link>
           {tokenStatus ? (
             <button type="button" onClick={handleLogIn} className={styles.link}>
-              Go to Main Page
+              <FormattedMessage id="header-button-toMain" />
             </button>
           ) : (
             <div className={styles.authorization}>
               <Link className={styles.link} to="/signUp">
-                SignUp
+                <FormattedMessage id="header-button-signup" />
               </Link>
               <span>/</span>
               <Link className={styles.link} to="/signIn">
-                SignIn
+                <FormattedMessage id="header-button-signin" />
               </Link>
             </div>
           )}

@@ -1,0 +1,12 @@
+{
+    "header-button-signin": "Войти",
+    "header-button-signup": "Зарегистрироваться",
+    "header-button-home": "Домой",
+    "header-button-signOut": "Выйти",
+    "header-button-toMain": "На главную",
+
+    "burger-links-home": "Домой",
+    "burger-links-aboutUs": "О нас",
+    "burger-links-boards": "Доски",
+    "burger-links-profile": "Профиль"
+}

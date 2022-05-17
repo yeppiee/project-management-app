@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import links from '../../constants/burgerMenuLinks';
+import useBurgerMenuLinks from '../../customHooks/useBurgerMenuLinks';
 import styles from './BurgerMenu.module.css';
 
 type BurgerMenuProps = {
@@ -9,6 +9,7 @@ type BurgerMenuProps = {
 };
 
 function BurgerMenu({ isActive, setInactive }: BurgerMenuProps) {
+  const links = useBurgerMenuLinks();
   const eventKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Escape') setInactive();
   };
