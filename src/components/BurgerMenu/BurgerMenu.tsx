@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import useBurgerMenuLinks from '../../constants/burgerMenuLinks';
+import useBurgerMenuLinks from '../../customHooks/burgerMenuLinks';
 import styles from './BurgerMenu.module.css';
 
 type BurgerMenuProps = {
