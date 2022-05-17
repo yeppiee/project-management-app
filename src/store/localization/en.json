@@ -1,0 +1,12 @@
+{
+    "header-button-signin": "SignIn",
+    "header-button-signup": "SignUp",
+    "header-button-home": "Home",
+    "header-button-signOut": "Sign out",
+    "header-button-toMain": "Go to Main Page",
+
+    "burger-links-home": "Home",
+    "burger-links-aboutUs": "AboutUs",
+    "burger-links-boards": "Boards",
+    "burger-links-profile": "Profile"
+}
