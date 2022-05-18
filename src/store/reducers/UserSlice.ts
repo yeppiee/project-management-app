@@ -6,6 +6,7 @@ const initialState = {
   email: null,
   token: null,
   id: null,
+  localization: 'en',
 };
 
 export const userSlice = createSlice({
@@ -27,7 +28,10 @@ export const userSlice = createSlice({
       state.email = null;
       state.token = null;
       state.id = null;
-    }
+    },
+    changeLocalization(state, action: PayloadAction<string>) {
+      state.localization = action.payload;
+    },
   },
 });
 

@@ -1,4 +1,6 @@
+import { FormattedMessage } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
+import LanguageSwitcher from '../../components/LanguageSwitcher';
 import { useAppDispatch, useAppSelector } from '../../customHooks/redux';
 import { userSlice } from '../../store/reducers/UserSlice';
 import styles from './Header.module.css';
@@ -28,30 +30,35 @@ function Header({ handleChange }: HeaderProps) {
               <i className="fa-solid fa-bars" />
             </button>
             <Link className={styles.link} to="/">
-              Home
+              <FormattedMessage id="header-button-home" />
             </Link>
           </div>
-          <button type="button" className={styles.link} onClick={handleSignOut}>
-            Sign Out
-          </button>
+          <div className="flex items-center">
+            <LanguageSwitcher />
+            <button type="button" className={styles.link} onClick={handleSignOut}>
+              <FormattedMessage id="header-button-signOut" />
+            </button>
+          </div>
         </>
       ) : (
         <>
-          <Link className={styles.link} to="/welcome">
-            Welcome
-          </Link>
+          <div />
           {tokenStatus ? (
-            <button type="button" onClick={handleLogIn} className={styles.link}>
-              Go to Main Page
-            </button>
+            <div className="flex items-center">
+              <LanguageSwitcher />
+              <button type="button" onClick={handleLogIn} className={styles.link}>
+                <FormattedMessage id="header-button-toMain" />
+              </button>
+            </div>
           ) : (
             <div className={styles.authorization}>
+              <LanguageSwitcher />
               <Link className={styles.link} to="/signUp">
-                SignUp
+                <FormattedMessage id="header-button-signup" />
               </Link>
               <span>/</span>
               <Link className={styles.link} to="/signIn">
-                SignIn
+                <FormattedMessage id="header-button-signin" />
               </Link>
             </div>
           )}

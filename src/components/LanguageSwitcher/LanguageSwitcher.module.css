@@ -1,0 +1,18 @@
+.container {
+  @apply flex justify-center items-center mr-2;
+}
+
+.label {
+  @apply flex items-center;
+}
+
+.input {
+  @apply cursor-pointer h-9 w-9 rounded-full appearance-none bg-white relative text-main;
+}
+.input::after {
+  content: 'EN';
+  @apply h-9 w-9 rounded-full bg-mainHover absolute left-0 top-0 flex items-center justify-center text-xl;
+}
+.input:checked::after {
+  content: 'RU';
+}

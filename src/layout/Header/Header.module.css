@@ -10,6 +10,10 @@
   @apply flex items-center justify-center mr-6 hover:text-mainHover transition-colors;
 }
 
-.authorization > .link {
+.authorization {
+  @apply flex items-center;
+}
+
+.link {
   @apply m-2;
 }
