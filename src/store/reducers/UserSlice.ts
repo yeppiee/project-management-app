@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState = {
   userLoginStatus: false,
   tokenStatus: false,
+  localization: 'en',
 };
 
 export const userSlice = createSlice({
@@ -14,6 +15,9 @@ export const userSlice = createSlice({
     },
     changeTokenStatus(state, action: PayloadAction<boolean>) {
       state.tokenStatus = action.payload;
+    },
+    changeLocalization(state, action: PayloadAction<string>) {
+      state.localization = action.payload;
     },
   },
 });

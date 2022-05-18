@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import BackToWelcomePage from '../../components/BackToWelcomePage';
 import { useAppDispatch } from '../../customHooks/redux';
 import { userSlice } from '../../store/reducers/UserSlice';
 
@@ -15,6 +16,7 @@ function SignIn() {
 
   return (
     <div className="flex flex-col p-3">
+      <BackToWelcomePage />
       SignIn
       <button className="border-2 border-black mr-auto p-3" type="button" onClick={handleLogIn}>
         SignIn
