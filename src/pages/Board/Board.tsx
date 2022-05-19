@@ -10,12 +10,14 @@ function Board() {
       <button type="button" onClick={() => setOpen(true)}>
         Open modal
       </button>
-      <Modal isOpen={isOpen} closeModal={() => setOpen(false)}>
-        <p>{id}</p>
-        <button type="button" onClick={() => setOpen(false)}>
-          close
-        </button>
-      </Modal>
+      {isOpen && (
+        <Modal isOpen={isOpen} closeModal={() => setOpen(false)}>
+          <p>{id}</p>
+          <button type="button" onClick={() => setOpen(false)}>
+            close
+          </button>
+        </Modal>
+      )}
     </div>
   );
 }
