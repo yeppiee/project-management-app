@@ -11,7 +11,7 @@ function Board() {
         Open modal
       </button>
       {isOpen && (
-        <Modal isOpen={isOpen} closeModal={() => setOpen(false)}>
+        <Modal closeModal={() => setOpen(false)}>
           <p>{id}</p>
           <button type="button" onClick={() => setOpen(false)}>
             close
