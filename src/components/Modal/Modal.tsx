@@ -18,7 +18,14 @@ function Modal({ isOpen, children, closeModal }: ModalPropsType) {
   if (!isOpen) return null;
   return ReactDOM.createPortal(
     <div role="button" tabIndex={0} className={styles.overlay} onClick={closeModal}>
-      <div className={styles.container}>{children}</div>
+      <div
+        role="button"
+        tabIndex={-1}
+        onClick={(e) => e.stopPropagation()}
+        className={styles.container}
+      >
+        {children}
+      </div>
     </div>,
 
     portalDiv
