@@ -11,5 +11,6 @@
     "burger-links-profile": "Profile",
 
     "board-add-column": "Add column",
-    "board-back": "Back"
+    "board-back": "Back",
+    "board-card-title": "Card title is required"
 }

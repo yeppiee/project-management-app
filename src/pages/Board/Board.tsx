@@ -1,20 +1,16 @@
 /* import { useParams } from 'react-router-dom'; */
 import { FormattedMessage } from 'react-intl';
-import { useNavigate } from 'react-router-dom';
 import styles from './Board.module.css';
+import BoardCard from './BoardCard/BoardCard';
+import BoardHeader from './BoardHeader/BoardHeader';
 
 function Board() {
-  const navigate = useNavigate();
-  const onClickNavigate = () => navigate(-1);
   /*  const { id } = useParams(); */
   return (
     <div className={styles.board}>
-      <div className={styles.header}>
-        <button type="button" className={styles.headerButton} onClick={onClickNavigate}>
-          <FormattedMessage id="board-back" />
-        </button>
-      </div>
+      <BoardHeader />
       <div className={styles.boardsContainer}>
+        <BoardCard />
         <button type="button" className={styles.buttonCreateColumn}>
           <span className={styles.plus} />
           <p>
