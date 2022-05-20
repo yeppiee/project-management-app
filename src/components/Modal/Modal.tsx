@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
 
+const portalDiv = document.getElementById('portal') as HTMLElement;
+
 type ModalPropsType = {
   children: React.ReactNode;
   closeModal: () => void;
 };
 
 function Modal({ children, closeModal }: ModalPropsType) {
-  const portalDiv = document.getElementById('portal') as HTMLElement;
   const keyDownHandler = (e: KeyboardEvent) => {
     if (e.key === 'Escape') closeModal();
   };
