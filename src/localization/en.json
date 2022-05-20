@@ -2,6 +2,8 @@
   "header-button-signin": "SignIn",
   "header-button-signup": "SignUp",
   "header-button-home": "Main",
+  "header-button-editProfile": "Edit profile",
+  "header-button-create-new-board": "Create new board",
   "header-button-signOut": "Sign out",
   "header-button-toMain": "Go to Main Page",
 

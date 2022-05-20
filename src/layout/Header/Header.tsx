@@ -11,7 +11,7 @@ type HeaderProps = {
 
 function Header({ handleChange }: HeaderProps) {
   const { userLoginStatus, tokenStatus } = useAppSelector((state) => state.userSlice);
-  const { changeUserLoginStatus } = userSlice.actions;
+  const { changeUserLoginStatus, changeCreateBoardModalIsOpen } = userSlice.actions;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -21,6 +21,8 @@ function Header({ handleChange }: HeaderProps) {
     navigate('/');
   };
 
+  const handleOpenModal = () => dispatch(changeCreateBoardModalIsOpen(true));
+
   return (
     <header className={styles.container}>
       {userLoginStatus && tokenStatus ? (
@@ -29,9 +31,17 @@ function Header({ handleChange }: HeaderProps) {
             <button className={styles.burger} type="button" onClick={handleChange}>
               <i className="fa-solid fa-bars" />
             </button>
-            <Link className={styles.link} to="/">
-              <FormattedMessage id="header-button-home" />
-            </Link>
+            <div>
+              <Link className={styles.link} to="/">
+                <FormattedMessage id="header-button-home" />
+              </Link>
+              <Link className={styles.link} to="/profile">
+                <FormattedMessage id="header-button-editProfile" />
+              </Link>
+              <button type="button" className={styles.link} onClick={handleOpenModal}>
+                <FormattedMessage id="header-button-create-new-board" />
+              </button>
+            </div>
           </div>
           <div className="flex items-center">
             <LanguageSwitcher />
