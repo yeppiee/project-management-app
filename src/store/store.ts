@@ -10,9 +10,9 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { taskDealerApi } from './reducers/TaskDealerApi';
 import userSlice from './reducers/UserSlice';
 import boardFormSlice from './reducers/BoardFormSlice';
-import { taskDealerApi } from './reducers/TaskDealerApi';
 
 const persistConfig = {
   key: 'root',
@@ -20,9 +20,9 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+  [taskDealerApi.reducerPath]: taskDealerApi.reducer,
   userSlice,
   boardFormSlice,
-  [taskDealerApi.reducerPath]: taskDealerApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
