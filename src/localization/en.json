@@ -8,5 +8,8 @@
     "burger-links-home": "Home",
     "burger-links-aboutUs": "AboutUs",
     "burger-links-boards": "Boards",
-    "burger-links-profile": "Profile"
+    "burger-links-profile": "Profile",
+
+    "board-add-column": "Add column",
+    "board-back": "Back"
 }

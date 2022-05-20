@@ -8,5 +8,8 @@
     "burger-links-home": "Домой",
     "burger-links-aboutUs": "О нас",
     "burger-links-boards": "Доски",
-    "burger-links-profile": "Профиль"
+    "burger-links-profile": "Профиль",
+
+    "board-add-column": "Добавить колонку",
+    "board-back": "Назад"
 }
