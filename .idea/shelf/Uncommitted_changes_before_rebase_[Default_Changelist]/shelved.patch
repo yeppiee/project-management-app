@@ -1,0 +1,3 @@
+diff --git src/Types/BoardTypes.ts src/types/BoardTypes.ts
+rename from src/Types/BoardTypes.ts
+rename to src/types/BoardTypes.ts

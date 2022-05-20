@@ -1,0 +1,33 @@
+
+.taskContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 4px;
+  /* row-gap: 10px; */
+}
+.plus {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url("https://res.cloudinary.com/rss-collection/image/upload/v1652982883/172525_plus_icon_lwegye.svg");
+  background-size: 100% 100%;
+  filter: invert(14%) sepia(10%) saturate(3178%) hue-rotate(183deg) brightness(95%) contrast(88%);
+}
+.buttonAddTask {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 100%;
+  padding: 5px 0;
+  padding-left: 5px;
+  text-align: start;
+  color: rgb(23, 43, 77);
+  column-gap: 5px;
+  border-radius: 4px;
+}
+.buttonAddTask:hover {
+  background-color: rgba(216, 216, 216, 0.7);
+}
+

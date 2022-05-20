@@ -1,0 +1,143 @@
+[33mcommit b93e13861f8777d735b74229f42422e8fa6ff119[m[33m ([m[1;36mHEAD -> [m[1;32mboard-basic[m[33m)[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Fri May 20 12:19:20 2022 +0300
+
+    feat rebaae develop
+
+[33mcommit e13e0130c815dcdc79c3a64c39bc927df8d4a915[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Fri May 20 10:16:35 2022 +0300
+
+    fix: change portalDiv declaration
+
+[33mcommit 855a20b8acfd5f25e64cc99f6cbf096a3700c01a[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Thu May 19 23:10:28 2022 +0300
+
+    fix: change div nesting in modal component
+
+[33mcommit 210b23591b78bb80578924b7192cc45aa405c54d[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Thu May 19 18:50:16 2022 +0300
+
+    fix: clear board
+
+[33mcommit 9eeaf9820dc2257ce2341399cba4eaf1c67da95d[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Thu May 19 18:48:07 2022 +0300
+
+    fix: delete extra type
+
+[33mcommit 05b081fefc11024992516fdb1779139e7244b804[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Thu May 19 18:28:08 2022 +0300
+
+    fix: add keyDownHandler function, remove isOpen property
+
+[33mcommit 8fa612c8dc299f00b01877007aeb0596af327872[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Thu May 19 16:01:18 2022 +0300
+
+    fix: add e.preventDefault to prevent closing popup on click in content div
+
+[33mcommit a22b134295b7396b80f3b5bf4d71f93b81ffee89[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Thu May 19 15:58:18 2022 +0300
+
+    fix: add UseEffect to remove eventListener after closing modal window
+
+[33mcommit 734e1c4bfebf0324bb5b4de654229e23d3e8aa7b[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Thu May 19 15:50:05 2022 +0300
+
+    feat: implement logic and rendering of the modal window
+
+[33mcommit d9afb6e0db5f194b08b5d54fd95737ef7377b830[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Wed May 18 13:17:53 2022 +0300
+
+    feat: add languageSwitcher, remove Welcome link from header, add back-btn in signIn and signUp
+
+[33mcommit db61de460e7e2b564737cb697dff7d3b96540bac[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Tue May 17 21:38:32 2022 +0300
+
+    fix: change BurgerMenuLinks name
+
+[33mcommit 5324c7b5fda4a4cbe76febdaef7f725b04bccb29[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Tue May 17 21:21:48 2022 +0300
+
+    fix: change folders structure
+
+[33mcommit 1fe97245caf82573bf9038b2af3b97a9fb32b9e0[m
+Author: Denis Gusar <degusar.wot@gmail.com>
+Date:   Tue May 17 19:35:12 2022 +0300
+
+    feat: add localization
+
+[33mcommit 3efc08508ccd95ac9382940ea2630dbcdca4a1bd[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Wed May 11 16:21:47 2022 +0300
+
+    feat: complete welcome page
+
+[33mcommit 1b225e5f5e6d835d8094dc70cee6e1c08ad56b8b[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Wed May 11 12:20:43 2022 +0300
+
+    fix: fix burger menu warning
+
+[33mcommit 4b87359d3485635bca6abce075e482d02bae3154[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Wed May 11 12:10:32 2022 +0300
+
+    feat: fix welcome page and add buttons to simulate token loss
+
+[33mcommit f93bd750e234ffb9b79e5b9cd695030e39f0213e[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Mon May 9 14:36:28 2022 +0300
+
+    refactor: change header
+
+[33mcommit 91dfbf4e31f4512e70d48f8a5261897c3a51938e[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Mon May 9 13:24:36 2022 +0300
+
+    feat: add redux, add small login logout UI
+
+[33mcommit a2de4b92daaaad975dc8e6c933aa825bdb75d0f7[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Sun May 8 20:15:10 2022 +0300
+
+    feat: continue work with welcome page and routes
+
+[33mcommit db86b254d719ac82a93488054d0129b472737a75[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Sun May 8 16:08:12 2022 +0300
+
+    feat: add welcome page with auth condition
+
+[33mcommit 0d82a6f28966c3343facb905d7578ef4e27e8fe3[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Sun May 8 12:24:06 2022 +0300
+
+    feat: add layout, header, footer, burgerMenu
+
+[33mcommit 4403a20ae4dcc423a0a58416c52e9ae649c31bee[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Fri May 6 18:42:30 2022 +0300
+
+    feat: add all routes
+
+[33mcommit 9b8edc39fd5c9f9ebbea15777fff7868a4f1b44b[m
+Author: pnv13 <ivanpakhotnykh@mail.ru>
+Date:   Thu May 5 20:04:20 2022 +0300
+
+    init: start project-management-app
+
+[33mcommit f8bda012f0c71581a30f95719f7c738a5cbea032[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Ivan Pakhotnykh <ivanpakhotnykh@mail.ru>
+Date:   Wed Apr 20 17:56:29 2022 +0300
+
+    Initial commit

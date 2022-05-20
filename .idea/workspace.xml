@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:board-basic" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="22ff55cf-e81a-4049-8906-45fdc30be097" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="board-basic" />
+                    <option name="lastUsedInstant" value="1653757511" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1653757499" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="ProjectId" id="29njwuWxN4Jv2AcGt1wzxKd8imO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\user\Documents\GitHub\project-management-app\node_modules\prettier" />
+    <property name="ts.external.directory.path" value="C:\Users\user\Documents\GitHub\project-management-app\node_modules\typescript\lib" />
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="pre-commit:fix" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="pre-commit:fix" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.pre-commit:fix" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22ff55cf-e81a-4049-8906-45fdc30be097" name="Default Changelist" comment="" />
+      <created>1653755985759</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653755985759</updated>
+      <workItem from="1653755987718" duration="1769000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="board-basic" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1428" height="224" key="GridCell.Tab.0.bottom" timestamp="1653756824991">
+      <screen x="87" y="0" width="1449" height="864" />
+    </state>
+    <state width="1428" height="224" key="GridCell.Tab.0.bottom/87.0.1449.864@87.0.1449.864" timestamp="1653756824991" />
+    <state width="1428" height="224" key="GridCell.Tab.0.center" timestamp="1653756824991">
+      <screen x="87" y="0" width="1449" height="864" />
+    </state>
+    <state width="1428" height="224" key="GridCell.Tab.0.center/87.0.1449.864@87.0.1449.864" timestamp="1653756824991" />
+    <state width="1428" height="224" key="GridCell.Tab.0.left" timestamp="1653756824991">
+      <screen x="87" y="0" width="1449" height="864" />
+    </state>
+    <state width="1428" height="224" key="GridCell.Tab.0.left/87.0.1449.864@87.0.1449.864" timestamp="1653756824991" />
+    <state width="1428" height="224" key="GridCell.Tab.0.right" timestamp="1653756824991">
+      <screen x="87" y="0" width="1449" height="864" />
+    </state>
+    <state width="1428" height="224" key="GridCell.Tab.0.right/87.0.1449.864@87.0.1449.864" timestamp="1653756824991" />
+    <state x="575" y="153" key="RollbackChangesDialog" timestamp="1653756275642">
+      <screen x="87" y="0" width="1449" height="864" />
+    </state>
+    <state x="575" y="153" key="RollbackChangesDialog/87.0.1449.864@87.0.1449.864" timestamp="1653756275642" />
+    <state x="578" y="166" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1653756352164">
+      <screen x="87" y="0" width="1449" height="864" />
+    </state>
+    <state x="578" y="166" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/87.0.1449.864@87.0.1449.864" timestamp="1653756352164" />
+    <state x="474" y="181" key="search.everywhere.popup" timestamp="1653756043108">
+      <screen x="87" y="0" width="1449" height="864" />
+    </state>
+    <state x="474" y="181" key="search.everywhere.popup/87.0.1449.864@87.0.1449.864" timestamp="1653756043108" />
+  </component>
+</project>
