@@ -1,10 +1,13 @@
-import locales from '../constants/locales';
 import enMessages from './en.json';
 import ruMessages from './ru.json';
 
-const messages = {
-  [locales.EN]: enMessages,
-  [locales.RU]: ruMessages,
+type Messages = {
+  [key: string]: { [key: string]: string };
+};
+
+const messages: Messages = {
+  en: enMessages,
+  ru: ruMessages,
 };
 
 export default messages;

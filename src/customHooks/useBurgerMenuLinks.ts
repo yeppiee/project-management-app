@@ -15,11 +15,6 @@ const useBurgerMenuLinks = () => {
     },
     {
       id: 3,
-      path: '/boards',
-      name: intl.formatMessage({ id: 'burger-links-boards' }),
-    },
-    {
-      id: 4,
       path: '/profile',
       name: intl.formatMessage({ id: 'burger-links-profile' }),
     },
