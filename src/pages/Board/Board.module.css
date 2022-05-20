@@ -1,0 +1,44 @@
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - 150px);
+  padding: 0 10px;
+
+/*  overflow-x: auto; */
+  font-size: 15px;
+  background-color: rgb(43 60 96);
+}
+.boardsContainer {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  height: calc(100% - 52.5px);
+  margin: 0 10px;
+  overflow-x: auto;
+}
+.plus {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url("https://res.cloudinary.com/rss-collection/image/upload/v1652982883/172525_plus_icon_lwegye.svg");
+  background-size: 100% 100%;
+  filter: invert(14%) sepia(10%) saturate(3178%) hue-rotate(183deg) brightness(95%) contrast(88%);
+}
+.buttonCreateColumn {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 300px;
+  padding: 10px 15px;
+  text-align: start;
+  color: rgb(23, 43, 77);
+  column-gap: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+}
+.buttonCreateColumn:hover {
+  background-color: rgba(255, 251, 251, 1);
+}
+
