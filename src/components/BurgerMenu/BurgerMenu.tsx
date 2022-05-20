@@ -16,9 +16,7 @@ function BurgerMenu({ isActive, setInactive }: BurgerMenuProps) {
       if (e.key === 'Escape') setInactive();
     };
     document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [setInactive]);
 
   return (
