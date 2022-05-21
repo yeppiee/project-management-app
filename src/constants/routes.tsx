@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 
 const Welcome = lazy(() => import('../pages/Welcome'));
-const Home = lazy(() => import('../pages/Home'));
+const Main = lazy(() => import('../pages/Main'));
 const AboutUs = lazy(() => import('../pages/AboutUs'));
 const Board = lazy(() => import('../pages/Board'));
 const SignUp = lazy(() => import('../pages/SignUp'));
@@ -13,7 +13,7 @@ export const routes = [
   {
     id: 1,
     path: '/',
-    component: <Home />,
+    component: <Main />,
   },
   {
     id: 2,
