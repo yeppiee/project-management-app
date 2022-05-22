@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import BurgerMenu from '../components/BurgerMenu';
+import CreateBoard from '../components/CreateBoard';
 import Modal from '../components/Modal';
 import { useAppDispatch, useAppSelector } from '../customHooks/redux';
 import { userSlice } from '../store/reducers/UserSlice';
@@ -27,7 +28,7 @@ function Layout() {
       <BurgerMenu isActive={isActive} setInactive={setInactive} />
       {createBoardModalIsOpen && (
         <Modal closeModal={closeModal}>
-          <div>123</div>
+          <CreateBoard />
         </Modal>
       )}
     </div>
