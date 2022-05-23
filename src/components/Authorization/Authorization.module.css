@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.input {
+  width: 50%;
+  height: 75px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  padding: 0 15px;
+}
+
+.btn__submit {
+  width: 125px;
+  height: 75px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.btn__submit:hover {
+  background-color: #00f625;
+  border: 1px solid #00f625;
+}

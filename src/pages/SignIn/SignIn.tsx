@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import BackToWelcomePage from '../../components/BackToWelcomePage';
 import { useAppDispatch } from '../../customHooks/redux';
 import { userSlice } from '../../store/reducers/UserSlice';
+import Authorization from '../../components/Authorization/index';
 
 function SignIn() {
   const { changeUserLoginStatus, changeTokenStatus } = userSlice.actions;
@@ -17,7 +18,7 @@ function SignIn() {
   return (
     <div className="flex flex-col p-3">
       <BackToWelcomePage />
-      SignIn
+      <Authorization type="SingIn" />
       <button className="border-2 border-black mr-auto p-3" type="button" onClick={handleLogIn}>
         SignIn
       </button>

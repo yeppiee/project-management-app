@@ -3,9 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState = {
   userLoginStatus: false,
   tokenStatus: false,
-  email: null,
-  token: null,
-  id: null,
+  token: '',
   localization: 'en',
 };
 
@@ -19,22 +17,13 @@ export const userSlice = createSlice({
     changeTokenStatus(state, action: PayloadAction<boolean>) {
       state.tokenStatus = action.payload;
     },
-    setUser(state, action) {
-      state.email = action.payload.email;
-      state.token = action.payload.token;
-      state.id = action.payload.id;
-    },
-    removeUser(state) {
-      state.email = null;
-      state.token = null;
-      state.id = null;
-    },
     changeLocalization(state, action: PayloadAction<string>) {
       state.localization = action.payload;
     },
+    changeToken(state, action: PayloadAction<string>) {
+      state.token = action.payload;
+    },
   },
 });
-
-export const { setUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;
