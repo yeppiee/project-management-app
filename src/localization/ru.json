@@ -4,9 +4,15 @@
     "header-button-home": "Домой",
     "header-button-signOut": "Выйти",
     "header-button-toMain": "На главную",
-
     "burger-links-home": "Домой",
     "burger-links-aboutUs": "О нас",
     "burger-links-boards": "Доски",
-    "burger-links-profile": "Профиль"
+    "burger-links-profile": "Профиль",
+    "auth-input-name": "Напишите имя",
+    "auth-input-login": "Напишите логин",
+    "auth-input-password": "Напишите пароль",
+    "auth-input-submit": "Отправить",
+    "auth-input-back": "Назад",
+    "auth-input-length": "Минимальная длина 3 символа",
+    "auth-input-letters": "Используйте латинские буквы"
 }

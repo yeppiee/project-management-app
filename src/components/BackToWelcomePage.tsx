@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 
 function BackToWelcomePage() {
@@ -12,7 +13,7 @@ function BackToWelcomePage() {
         className="cursor-pointer hover:text-mainHover transition-colors"
         onClick={handleClick}
       >
-        Back
+        <FormattedMessage id="auth-input-back" />
       </button>
     </div>
   );

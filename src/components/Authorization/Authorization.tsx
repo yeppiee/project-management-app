@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 import { useAppDispatch } from '../../customHooks/redux';
 import { useSignInMutation, useSignUpMutation } from '../../store/reducers/TaskDealerApi';
 import { userSlice } from '../../store/reducers/UserSlice';
@@ -24,11 +25,15 @@ function Authorization({ type }: AuthPropsType) {
     handleSubmit,
     formState: { errors },
   } = useForm<HookFormType>();
+  const intl = useIntl();
   const singInFunc = async (data: SignInDataType) => {
-    await signIn(data)
+    const sendData = {
+      login: data.login,
+      password: data.password,
+    };
+    await signIn(sendData)
       .unwrap()
       .then((res: ResTokenType) => {
-        console.log('data', data);
         if (!isError) {
           dispatch(changeUserLoginStatus(true));
           dispatch(changeTokenStatus(true));
@@ -52,97 +57,105 @@ function Authorization({ type }: AuthPropsType) {
           <div className={styles.container}>
             <input
               {...register('name', {
-                required: 'Write name',
+                required: `${intl.formatMessage({ id: 'auth-input-name' })}`,
                 minLength: {
                   value: 3,
-                  message: 'Min length 3',
+                  message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
                 },
                 pattern: {
                   value: /^[A-Za-z]+$/i,
-                  message: 'Use latin letters',
+                  message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
                 },
               })}
               type="text"
               className={styles.input}
-              placeholder="Name"
+              placeholder={`${intl.formatMessage({ id: 'auth-input-name' })}`}
             />
             <p>{errors.name?.message}</p>
             <input
               {...register('login', {
-                required: 'Write login',
+                required: `${intl.formatMessage({ id: 'auth-input-login' })}`,
                 minLength: {
                   value: 3,
-                  message: 'Min length 3',
+                  message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
                 },
                 pattern: {
                   value: /^[A-Za-z]+$/i,
-                  message: 'Use latin letters',
+                  message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
                 },
               })}
               type="text"
               className={styles.input}
-              placeholder="Login"
+              placeholder={`${intl.formatMessage({ id: 'auth-input-login' })}`}
             />
             <p>{errors.login?.message}</p>
             <input
               {...register('password', {
-                required: 'Write password',
+                required: `${intl.formatMessage({ id: 'auth-input-password' })}`,
                 minLength: {
                   value: 3,
-                  message: 'Min length 3',
+                  message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
                 },
                 pattern: {
                   value: /^[A-Za-z]+$/i,
-                  message: 'Use latin letters',
+                  message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
                 },
               })}
               type="password"
               className={styles.input}
-              placeholder="Password"
+              placeholder={`${intl.formatMessage({ id: 'auth-input-password' })}`}
             />
             <p>{errors.password?.message}</p>
           </div>
-          <input type="submit" className={styles.btn__submit} placeholder="Submit" />
+          <input
+            type="submit"
+            className={styles.btn__submit}
+            value={`${intl.formatMessage({ id: 'auth-input-submit' })}`}
+          />
         </form>
       ) : (
         <form onSubmit={handleSubmit(onSubmitIn)} className={styles.form}>
           <div className={styles.container}>
             <input
               {...register('login', {
-                required: 'Write login',
+                required: `${intl.formatMessage({ id: 'auth-input-login' })}`,
                 minLength: {
                   value: 3,
-                  message: 'Min length 3',
+                  message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
                 },
                 pattern: {
                   value: /^[A-Za-z]+$/i,
-                  message: 'Use latin letters',
+                  message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
                 },
               })}
               type="text"
               className={styles.input}
-              placeholder="Login"
+              placeholder={`${intl.formatMessage({ id: 'auth-input-login' })}`}
             />
             <p>{errors.login?.message}</p>
             <input
               {...register('password', {
-                required: 'Write password',
+                required: `${intl.formatMessage({ id: 'auth-input-password' })}`,
                 minLength: {
                   value: 3,
-                  message: 'Min length 3',
+                  message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
                 },
                 pattern: {
                   value: /^[A-Za-z]+$/i,
-                  message: 'Use latin letters',
+                  message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
                 },
               })}
               type="password"
               className={styles.input}
-              placeholder="Password"
+              placeholder={`${intl.formatMessage({ id: 'auth-input-password' })}`}
             />
             <p>{errors.password?.message}</p>
           </div>
-          <input type="submit" className={styles.btn__submit} placeholder="Submit" />
+          <input
+            type="submit"
+            className={styles.btn__submit}
+            value={`${intl.formatMessage({ id: 'auth-input-submit' })}`}
+          />
         </form>
       )}
     </div>
