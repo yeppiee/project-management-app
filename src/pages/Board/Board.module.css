@@ -1,9 +1,9 @@
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   height: calc(100vh - 150px);
   padding: 0 10px;
+  overflow-x: auto;
   font-size: 15px;
   background-color: rgb(43 60 96);
 }
@@ -28,6 +28,7 @@
 }
 .buttonCreateColumn {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   width: 300px;
   padding: 10px 15px;

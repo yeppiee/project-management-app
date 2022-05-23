@@ -12,5 +12,11 @@
 
     "board-add-column": "Add column",
     "board-back": "Back",
-    "board-card-title": "Card title is required"
+    "board-card-title": "Card title is required",
+
+    "modal-create-column-title": "Create cloumn",
+    "modal-create-column-cancel": "Cancel",
+    "modal-create-column-create": "Create",
+    "modal-create-title-required": "Column name is required",
+    "modal-create-column-input-placeholder": "Enter column name..."
 }

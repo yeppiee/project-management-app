@@ -11,5 +11,11 @@
     "burger-links-profile": "Профиль",
 
     "board-add-column": "Добавить колонку",
-    "board-back": "Назад"
+    "board-back": "Назад",
+
+    "modal-create-column-title": "Создать колонку",
+    "modal-create-column-cancel": "Отмена",
+    "modal-create-column-create": "Создать",
+    "modal-create-title-required": "Необходимо указать название колонки",
+    "modal-create-column-input-placeholder": "Введите название колонки"
 }
