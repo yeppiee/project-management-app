@@ -28,8 +28,8 @@ function Board() {
         {dataCopy.length > 0 &&
           dataCopy
             .sort((a: CreateColumnResponseType, b: CreateColumnResponseType) => a.order - b.order)
-            .map(({ title, id: columnId }: CreateColumnResponseType) => {
-              return <BoardCard columnName={title} columnId={columnId} key={columnId} />;
+            .map((column: CreateColumnResponseType) => {
+              return <BoardCard column={column} key={column.id} />;
             })}
         <button type="button" onClick={openModal} className={styles.buttonCreateColumn}>
           <span className={styles.plus} />

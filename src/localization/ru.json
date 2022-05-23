@@ -17,5 +17,10 @@
     "modal-create-column-cancel": "Отмена",
     "modal-create-column-create": "Создать",
     "modal-create-title-required": "Необходимо указать название колонки",
-    "modal-create-column-input-placeholder": "Введите название колонки"
+    "modal-create-column-input-placeholder": "Введите название колонки",
+
+    "modal-delete-column-title": "Вы уверены что хотите удалить данную коллекцию?",
+    "modal-delete-column-content": "Информация будет удалена немедленно. Восстановить ее не получится",
+    "modal-delete-column-cancel": "Отмена",
+    "modal-delete-column-delete": "Удалить"
 }

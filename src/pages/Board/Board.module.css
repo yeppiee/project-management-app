@@ -12,9 +12,9 @@
   justify-content: start;
   align-items: start;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 52.5px);
   margin: 0 10px;
-  overflow-x: scroll;
+  overflow-x: auto;
   column-gap: 10px;
 }
 .plus {

@@ -1,17 +1,17 @@
 import React from 'react';
+import { CreateColumnResponseType } from '../../../Types/BoardTypes';
 import styles from './BoardCard.module.css';
 import BoardCardTitle from './BoardCardTitle/BoardCardTitle';
 
 type BoardCardPropsType = {
-  columnName: string;
-  columnId: string;
+  column: CreateColumnResponseType;
 };
 
-function BoardCard({ columnName, columnId }: BoardCardPropsType) {
+function BoardCard({ column }: BoardCardPropsType) {
   return (
     <div className={styles.cardContainer}>
-      <BoardCardTitle columnName={columnName} columnId={columnId} />
-      <div className={styles.taskContainer}>{columnId}</div>
+      <BoardCardTitle column={column} />
+      <div className={styles.taskContainer}>columnId</div>
     </div>
   );
 }
