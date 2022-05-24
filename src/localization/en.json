@@ -14,7 +14,7 @@
     "board-back": "Back",
     "board-card-title": "Card title is required",
 
-    "modal-create-column-title": "Create cloumn",
+    "modal-create-column-title": "Create column",
     "modal-create-column-cancel": "Cancel",
     "modal-create-column-create": "Create",
     "modal-create-title-required": "Column name is required",
@@ -23,5 +23,15 @@
     "modal-delete-column-title": "Are you sure you want delete this column?",
     "modal-delete-column-content": "This item will be deleted immediately. This action cannot be undone",
     "modal-delete-column-cancel": "Cancel",
-    "modal-delete-column-delete": "Delete"
+    "modal-delete-column-delete": "Delete",
+
+    "modal-create-task-assignee": "Assignee",
+    "modal-create-task-title": "Create task",
+    "modal-create-task-title-placeholder": "Enter task title",
+    "modal-create-task-title-required": "Task title is required",
+    "modal-create-task-description-placeholder": "Task description",
+    "modal-create-task-description-required": "Task description is required",
+    "modal-create-task-userId-required": "Choose assignee",
+
+    "task-button-create-task": "Add task"
 }

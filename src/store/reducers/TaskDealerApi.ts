@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
   CreateColumnResponseType,
   CreateColumnType,
+  CreateTaskType,
   DeleteColumnResponseType,
   DeleteColumnType,
   UpdateColumnType,
@@ -20,7 +21,7 @@ export const taskDealerApi = createApi({
       if (tokenStatus) {
         headers.set(
           'authorization',
-          `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ZjNlODcwZC04MzljLTRjMmQtYmM3Yi0zZWUxNjI2N2U2ZjMiLCJsb2dpbiI6InVzZXIiLCJpYXQiOjE2NTMxNDI1OTd9.LK8BWTWf1X0j1ca7AY_aN-tSeMrEmWL08A7YNtxePFE'}`
+          `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTkyYmViNi1jZTZiLTQ5YTYtYjRhYy01NDQ5OTEzMGI4N2MiLCJsb2dpbiI6IkRlbmlzIiwiaWF0IjoxNjUzMzkxNDU2fQ.of2bYP_VTrbPSMUL1zcglzFXBe2fj_-aThYBgwnERug'}`
         );
       }
 
@@ -33,11 +34,27 @@ export const taskDealerApi = createApi({
         url: `boards/${id}`,
       }),
     }),
+    getAllUsers: build.query({
+      query: () => ({
+        url: '/users',
+      }),
+    }),
     createColumn: build.mutation<CreateColumnResponseType, CreateColumnType>({
       query: ({ boardId, title }) => ({
         url: `boards/${boardId}/columns`,
         method: 'POST',
         body: { title },
+      }),
+    }),
+    createTask: build.mutation<CreateColumnResponseType, CreateTaskType>({
+      query: ({ boardId, columnId, title, description, userId }) => ({
+        url: `boards/${boardId}/columns/${columnId}/tasks`,
+        method: 'POST',
+        body: {
+          title,
+          description,
+          userId,
+        },
       }),
     }),
     updateColumn: build.mutation<CreateColumnResponseType, UpdateColumnType>({
@@ -65,7 +82,9 @@ export const taskDealerApi = createApi({
 
 export const {
   useGetBoardQuery,
+  useGetAllUsersQuery,
   useCreateColumnMutation,
   useDeleteColumnMutation,
   useUpdateColumnMutation,
+  useCreateTaskMutation,
 } = taskDealerApi;

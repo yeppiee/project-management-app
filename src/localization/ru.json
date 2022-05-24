@@ -22,5 +22,15 @@
     "modal-delete-column-title": "Вы уверены что хотите удалить данную коллекцию?",
     "modal-delete-column-content": "Информация будет удалена немедленно. Восстановить ее не получится",
     "modal-delete-column-cancel": "Отмена",
-    "modal-delete-column-delete": "Удалить"
+    "modal-delete-column-delete": "Удалить",
+
+    "modal-create-task-assignee": "Ответственный",
+    "modal-create-task-title": "Создать задачу",
+    "modal-create-task-title-placeholder": "Введите заголовок задачи",
+    "modal-create-task-title-required": "Необходимо указать заголовок задачи",
+    "modal-create-task-description-placeholder": "Описание задачи",
+    "modal-create-task-description-required": "Описание задачи обязательно",
+    "modal-create-task-userId-required": "Необходимо выбрать исполнителя задачи",
+
+    "task-button-create-task": "Добавить задачу"
 }
