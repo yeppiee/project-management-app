@@ -33,5 +33,10 @@
     "modal-create-task-description-required": "Task description is required",
     "modal-create-task-userId-required": "Choose assignee",
 
-    "task-button-create-task": "Add task"
+    "task-button-create-task": "Add task",
+
+    "modal-delete-task-title": "Are you sure you want delete this task?",
+    "modal-delete-task-content": "This item will be deleted immediately. This action cannot be undone",
+    "modal-delete-task-cancel": "Cancel",
+    "modal-delete-task-delete": "Delete"
 }

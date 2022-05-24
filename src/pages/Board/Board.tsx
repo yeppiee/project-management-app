@@ -18,7 +18,6 @@ function Board() {
   const openModal = () => setOpenModal(true);
 
   useEffect(() => {
-    console.log(data);
     if (data) setDataCopy(data.columns.slice());
   }, [data]);
 

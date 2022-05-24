@@ -17,11 +17,17 @@
   background-size: 100% 100%;
 }
 .delete {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: transparent;
   background-image: url("https://res.cloudinary.com/rss-collection/image/upload/v1653000084/3669361_delete_ic_icon_yh0ixv.svg");
-  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 20px 20px;
+  border-radius: 4px;
+}
+.delete:hover {
+  background-color: #ffffff;
 }
 
 .titleContainer {

@@ -6,6 +6,9 @@ export type DeleteColumnType = {
   columnId: string;
   boardId: string;
 };
+export type DeleteTaskType = DeleteColumnType & {
+  taskId: string;
+};
 export type TaskResponse = {
   id: string;
   title: string;

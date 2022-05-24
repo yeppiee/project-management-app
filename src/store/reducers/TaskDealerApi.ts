@@ -5,6 +5,7 @@ import {
   CreateTaskType,
   DeleteColumnResponseType,
   DeleteColumnType,
+  DeleteTaskType,
   UpdateColumnType,
 } from '../../Types/BoardTypes';
 import { RootState } from '../store';
@@ -70,13 +71,12 @@ export const taskDealerApi = createApi({
         method: 'DELETE',
       }),
     }),
-    /*  createTask: build.mutation<CreateColumnResponseType, CreateColumnType>({
-      query: ({ boardId, title }) => ({
-        url: `boards/${boardId}/columns`,
-        method: 'POST',
-        body: { title },
+    deleteTask: build.mutation<DeleteColumnResponseType, DeleteTaskType>({
+      query: ({ boardId, columnId, taskId }) => ({
+        url: `boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
+        method: 'DELETE',
       }),
-    }), */
+    }),
   }),
 });
 
@@ -87,4 +87,5 @@ export const {
   useDeleteColumnMutation,
   useUpdateColumnMutation,
   useCreateTaskMutation,
+  useDeleteTaskMutation,
 } = taskDealerApi;
