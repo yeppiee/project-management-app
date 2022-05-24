@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import BurgerMenu from '../components/BurgerMenu';
-import CreateBoard from '../components/CreateBoard';
+import CreateBoard from '../components/BoardForms/CreateBoard';
 import Modal from '../components/Modal';
 import { useAppDispatch, useAppSelector } from '../customHooks/redux';
-import { userSlice } from '../store/reducers/UserSlice';
 import Footer from './Footer';
 import Header from './Header';
+import { boardFormSlice } from '../store/reducers/BoardFormSlice';
 
 function Layout() {
-  const { createBoardModalIsOpen } = useAppSelector((state) => state.userSlice);
-  const { changeCreateBoardModalIsOpen } = userSlice.actions;
+  const { createBoardModalIsOpen } = useAppSelector((state) => state.boardFormSlice);
+  const { changeCreateBoardModalIsOpen } = boardFormSlice.actions;
   const dispatch = useAppDispatch();
   const [isActive, setIsActive] = useState(false);
 
@@ -28,7 +28,7 @@ function Layout() {
       <BurgerMenu isActive={isActive} setInactive={setInactive} />
       {createBoardModalIsOpen && (
         <Modal closeModal={closeModal}>
-          <CreateBoard />
+          <CreateBoard closeModal={closeModal} />
         </Modal>
       )}
     </div>

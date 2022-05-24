@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import userSlice from './reducers/UserSlice';
+import boardFormSlice from './reducers/BoardFormSlice';
 import { taskDealerApi } from './reducers/TaskDealerApi';
 
 const persistConfig = {
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   userSlice,
+  boardFormSlice,
   [taskDealerApi.reducerPath]: taskDealerApi.reducer,
 });
 

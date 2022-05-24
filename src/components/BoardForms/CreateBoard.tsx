@@ -2,9 +2,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useCreateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { CreateBoardType } from '../../types/BoardsTypes';
 import ValidateError from './ValidateError';
-import styles from './CreateBoard.module.css';
+import styles from './BoardForms.module.css';
 
-function CreateBoard() {
+type Props = {
+  closeModal: () => void;
+};
+
+function CreateBoard({ closeModal }: Props) {
   const [createBoard] = useCreateBoardMutation();
 
   const {
@@ -19,15 +23,16 @@ function CreateBoard() {
   const onSubmit: SubmitHandler<CreateBoardType> = (data) => {
     createBoard(data);
     reset();
+    closeModal();
   };
 
   return (
     <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="title">
-        <p>
+        <b>
           Title:
           {errors.title && <ValidateError message={errors.title.message} />}
-        </p>
+        </b>
         <input
           {...register('title', {
             required: 'Title is required',
@@ -44,10 +49,10 @@ function CreateBoard() {
         />
       </label>
       <label htmlFor="description">
-        <p>
+        <b>
           Description:
           {errors.description && <ValidateError message={errors.description.message} />}
-        </p>
+        </b>
         <textarea
           {...register('description', {
             required: 'Description is required',

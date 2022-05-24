@@ -4,7 +4,6 @@ const initialState = {
   userLoginStatus: false,
   tokenStatus: false,
   localization: 'en',
-  createBoardModalIsOpen: false,
 };
 
 export const userSlice = createSlice({
@@ -19,9 +18,6 @@ export const userSlice = createSlice({
     },
     changeLocalization(state, action: PayloadAction<string>) {
       state.localization = action.payload;
-    },
-    changeCreateBoardModalIsOpen(state, action: PayloadAction<boolean>) {
-      state.createBoardModalIsOpen = action.payload;
     },
   },
 });

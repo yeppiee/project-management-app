@@ -13,7 +13,7 @@ export const taskDealerApi = createApi({
       if (tokenStatus) {
         headers.set(
           'authorization',
-          `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ZjNlODcwZC04MzljLTRjMmQtYmM3Yi0zZWUxNjI2N2U2ZjMiLCJsb2dpbiI6InVzZXIiLCJpYXQiOjE2NTMyMTU3OTd9.AHhNNFYT4AZ5EfoQ89cRWFQivAnSCum5qbGTkJs8Nq0'}`
+          `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ZjNlODcwZC04MzljLTRjMmQtYmM3Yi0zZWUxNjI2N2U2ZjMiLCJsb2dpbiI6InVzZXIiLCJpYXQiOjE2NTM0MDA2NjR9.xVKdwwlsRxjcZdcsYFt0vc0vx3sbc0WXg4GxYecyrfM'}`
         );
       }
       return headers;
@@ -33,7 +33,27 @@ export const taskDealerApi = createApi({
       }),
       invalidatesTags: ['Post'],
     }),
+    deleteBoard: builder.mutation<Board, string>({
+      query: (id) => ({
+        url: `boards/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Post'],
+    }),
+    updateBoard: builder.mutation<Board, Board>({
+      query: ({ id, title, description }) => ({
+        url: `boards/${id}`,
+        method: 'PUT',
+        body: { title, description },
+      }),
+      invalidatesTags: ['Post'],
+    }),
   }),
 });
 
-export const { useGetAllBoardsQuery, useCreateBoardMutation } = taskDealerApi;
+export const {
+  useGetAllBoardsQuery,
+  useCreateBoardMutation,
+  useDeleteBoardMutation,
+  useUpdateBoardMutation,
+} = taskDealerApi;
