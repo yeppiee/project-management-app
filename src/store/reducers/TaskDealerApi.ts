@@ -10,7 +10,6 @@ export const taskDealerApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const { tokenStatus } = (getState() as RootState).userSlice;
       const { token } = (getState() as RootState).userSlice;
-      console.log(token);
       if (tokenStatus) {
         headers.set('authorization', `Bearer ${`${token}`}`);
       }

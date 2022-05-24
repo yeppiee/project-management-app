@@ -4,6 +4,7 @@ const initialState = {
   userLoginStatus: false,
   tokenStatus: false,
   token: '',
+  userId: '',
   localization: 'en',
 };
 
@@ -22,6 +23,9 @@ export const userSlice = createSlice({
     },
     changeToken(state, action: PayloadAction<string>) {
       state.token = action.payload;
+    },
+    changeUserId(state, action: PayloadAction<string>) {
+      state.userId = action.payload;
     },
   },
 });

@@ -21,3 +21,8 @@ export type ResTokenData = {
   token: string;
 }
 export type ResTokenType = { token: string; }
+export type SignUpResType = {
+  id: string;
+  name: string;
+  login: string;
+}

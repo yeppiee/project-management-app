@@ -1,4 +1,5 @@
 import React from 'react';
+import { Buffer } from 'buffer';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useIntl } from 'react-intl';
@@ -15,7 +16,7 @@ import {
 import styles from './Authorization.module.css';
 
 function Authorization({ type }: AuthPropsType) {
-  const { changeUserLoginStatus, changeTokenStatus, changeToken } = userSlice.actions;
+  const { changeUserLoginStatus, changeTokenStatus, changeToken, changeUserId } = userSlice.actions;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [signUp] = useSignUpMutation();
@@ -26,6 +27,13 @@ function Authorization({ type }: AuthPropsType) {
     formState: { errors },
   } = useForm<HookFormType>();
   const intl = useIntl();
+
+  const getId = (res: ResTokenType) => {
+    const buf = Buffer.from(res.token.split('.')[1], 'base64');
+    const id = JSON.parse(buf.toString('utf8')).userId;
+    dispatch(changeUserId(id));
+  };
+
   const singInFunc = async (data: SignInDataType) => {
     const sendData = {
       login: data.login,
@@ -38,6 +46,7 @@ function Authorization({ type }: AuthPropsType) {
           dispatch(changeUserLoginStatus(true));
           dispatch(changeTokenStatus(true));
           dispatch(changeToken(res.token));
+          getId(res);
           navigate('/');
         }
       });
@@ -50,6 +59,7 @@ function Authorization({ type }: AuthPropsType) {
   const onSubmitIn = async (data: SignInDataType) => {
     singInFunc(data);
   };
+
   return (
     <div>
       {type === 'SingUp' ? (
