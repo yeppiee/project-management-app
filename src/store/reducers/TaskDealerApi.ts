@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CreateBoardType, Board } from '../../types/BoardsTypes';
 import { RootState } from '../store';
 
-const BASE_URL = 'https://react-final-back2.herokuapp.com/';
+const BASE_URL = 'https://react-final-back3.herokuapp.com/';
 
 export const taskDealerApi = createApi({
   reducerPath: 'taskDealerApi',

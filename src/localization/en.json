@@ -6,8 +6,11 @@
   "header-button-create-new-board": "Create new board",
   "header-button-signOut": "Sign out",
   "header-button-toMain": "Go to Main Page",
-
   "burger-links-home": "Main",
   "burger-links-aboutUs": "AboutUs",
-  "burger-links-profile": "Profile"
+  "burger-links-profile": "Profile",
+  "board-form-title": "Title:",
+  "board-form-description": "Description:",
+  "board-form-create": "Create Board",
+  "board-form-update": "Update Board"
 }

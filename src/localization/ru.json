@@ -6,8 +6,11 @@
   "header-button-create-new-board": "Создать новую доску",
   "header-button-signOut": "Выйти",
   "header-button-toMain": "На главную",
-  
   "burger-links-home": "Главная",
   "burger-links-aboutUs": "О нас",
-  "burger-links-profile": "Профиль"
+  "burger-links-profile": "Профиль",
+  "board-form-title": "Заголовок:",
+  "board-form-description": "Описание:",
+  "board-form-create": "Создать Доску",
+  "board-form-update": "Обновить Доску"
 }

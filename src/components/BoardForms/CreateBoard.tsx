@@ -1,4 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import { useCreateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { CreateBoardType } from '../../types/BoardsTypes';
 import ValidateError from './ValidateError';
@@ -10,6 +12,7 @@ type Props = {
 
 function CreateBoard({ closeModal }: Props) {
   const [createBoard] = useCreateBoardMutation();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -24,13 +27,14 @@ function CreateBoard({ closeModal }: Props) {
     createBoard(data);
     reset();
     closeModal();
+    navigate('/');
   };
 
   return (
     <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="title">
         <b>
-          Title:
+          <FormattedMessage id="board-form-title" />
           {errors.title && <ValidateError message={errors.title.message} />}
         </b>
         <input
@@ -50,7 +54,7 @@ function CreateBoard({ closeModal }: Props) {
       </label>
       <label htmlFor="description">
         <b>
-          Description:
+          <FormattedMessage id="board-form-description" />
           {errors.description && <ValidateError message={errors.description.message} />}
         </b>
         <textarea
@@ -70,7 +74,7 @@ function CreateBoard({ closeModal }: Props) {
         />
       </label>
       <button type="submit" className={styles.button}>
-        Create Board
+        <FormattedMessage id="board-form-create" />
       </button>
     </form>
   );
