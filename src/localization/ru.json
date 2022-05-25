@@ -19,5 +19,9 @@
   "board-form-title": "Заголовок:",
   "board-form-description": "Описание:",
   "board-form-create": "Создать Доску",
-  "board-form-update": "Обновить Доску"
+  "board-form-update": "Обновить Доску",
+  "board-form-title-required": "Введите Заголовок",
+  "board-form-description-required": "Введите Описание",
+  "board-form-title-message": "Введите от 3 до 20 символов",
+  "board-form-description-message": "Введите от 10 до 200 символов"
 }

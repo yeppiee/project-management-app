@@ -19,5 +19,9 @@
   "board-form-title": "Title:",
   "board-form-description": "Description:",
   "board-form-create": "Create Board",
-  "board-form-update": "Update Board"
+  "board-form-update": "Update Board",
+  "board-form-title-required": "Title is Required",
+  "board-form-description-required": "Description is Required",
+  "board-form-title-message": "Enter 3 to 20 characters",
+  "board-form-description-message": "Enter 10 to 200 characters"
 }
