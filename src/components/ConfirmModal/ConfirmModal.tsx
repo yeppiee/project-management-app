@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import styles from './ConfirmModal.module.css';
 
 type Props = {
@@ -14,10 +15,10 @@ function ConfirmModal({ children, closeConfirmModal, handleBoardDelete }: Props)
         <h1 className={styles.title}>{children}</h1>
         <div className={styles.buttons}>
           <button type="button" className={styles.cancel} onClick={closeConfirmModal}>
-            Cancle
+            <FormattedMessage id="confirm-modal-cancel" />
           </button>
           <button type="button" className={styles.ok} onClick={handleBoardDelete}>
-            Ok
+            <FormattedMessage id="confirm-modal-ok" />
           </button>
         </div>
       </div>

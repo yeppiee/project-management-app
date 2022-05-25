@@ -11,13 +11,13 @@
 }
 
 .buttons {
-  @apply flex justify-center;
+  @apply flex justify-center gap-x-2;
 }
 
 .cancel {
-  @apply bg-indigo-500 px-4 py-2 rounded-md text-white hover:text-main transition-colors;
+  @apply flex justify-center items-center w-20 bg-indigo-500 px-4 py-2 rounded-md text-white font-semibold hover:text-main transition-colors;
 }
 
 .ok {
-  @apply bg-red-500 px-7 py-2 ml-2 rounded-md text-white font-semibold hover:text-main transition-colors;
+  @apply flex justify-center items-center w-20 bg-red-500 px-7 py-2 rounded-md text-white font-semibold hover:text-main transition-colors;
 }
