@@ -1,6 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
+import headerLinks from '../../constants/headerLinks';
 import { useAppDispatch, useAppSelector } from '../../customHooks/redux';
 import { boardFormSlice } from '../../store/reducers/BoardFormSlice';
 import { userSlice } from '../../store/reducers/UserSlice';
@@ -34,12 +35,11 @@ function Header({ handleChange }: HeaderProps) {
               <i className="fa-solid fa-bars" />
             </button>
             <div>
-              <Link className={styles.link} to="/">
-                <FormattedMessage id="header-button-home" />
-              </Link>
-              <Link className={styles.link} to="/profile">
-                <FormattedMessage id="header-button-editProfile" />
-              </Link>
+              {headerLinks.map((link) => (
+                <Link className={styles.link} to={link.path} key={link.id}>
+                  <FormattedMessage id={link.localizationId} />
+                </Link>
+              ))}
               <button type="button" className={styles.link} onClick={handleOpenModal}>
                 <FormattedMessage id="header-button-create-new-board" />
               </button>
