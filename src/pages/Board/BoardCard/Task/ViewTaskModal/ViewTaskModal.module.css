@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  font-size: 14px;
+
+  row-gap: 15px;
+}
+.delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url("https://res.cloudinary.com/rss-collection/image/upload/v1652999912/211651_close_round_icon_etnwxd.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 15px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.delete:hover {
+  background-color: rgb(194, 194, 194);
+}

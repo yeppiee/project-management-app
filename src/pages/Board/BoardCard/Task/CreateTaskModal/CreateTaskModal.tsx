@@ -7,7 +7,7 @@ import {
   useGetBoardQuery,
 } from '../../../../../store/reducers/TaskDealerApi';
 import { CreateColumnResponseType, UsersDataType } from '../../../../../Types/BoardTypes';
-import styles from './TaskModal.module.css';
+import styles from './CreateTaskModal.module.css';
 
 type FormDataType = {
   title: string;
@@ -20,7 +20,7 @@ type TaskModalPropsType = {
   column: CreateColumnResponseType;
 };
 
-function TaskModal({ boardId, handleCancel, column: { id } }: TaskModalPropsType) {
+function CreateTaskModal({ boardId, handleCancel, column: { id } }: TaskModalPropsType) {
   const {
     register,
     handleSubmit,
@@ -66,11 +66,12 @@ function TaskModal({ boardId, handleCancel, column: { id } }: TaskModalPropsType
       <div>
         <select
           className={styles.select}
+          defaultValue=""
           {...register('userId', {
             required: intl.formatMessage({ id: 'modal-create-task-userId-required' }),
           })}
         >
-          <option disabled value="" selected hidden>
+          <option value="" disabled>
             <FormattedMessage id="modal-create-task-assignee" />
           </option>
           {users?.length > 0 &&
@@ -96,4 +97,4 @@ function TaskModal({ boardId, handleCancel, column: { id } }: TaskModalPropsType
   );
 }
 
-export default TaskModal;
+export default CreateTaskModal;

@@ -3,9 +3,11 @@ import { FormattedMessage } from 'react-intl';
 import Modal from '../../../../../components/Modal/Modal';
 import {
   useDeleteTaskMutation,
+  useGetAllUsersQuery,
   useGetBoardQuery,
 } from '../../../../../store/reducers/TaskDealerApi';
 import { TaskResponse } from '../../../../../Types/BoardTypes';
+import ViewTaskModal from '../ViewTaskModal/ViewTaskModal';
 import styles from './TaskContent.module.css';
 
 type TaskContentPropsType = {
@@ -16,19 +18,27 @@ type TaskContentPropsType = {
 function TaskContent({ task, columnId }: TaskContentPropsType) {
   const boardId = 'd805103c-e065-4b53-9312-2385b65f834a';
   const { refetch } = useGetBoardQuery(boardId);
+  const { data: users } = useGetAllUsersQuery(boardId);
   const [deleteTask] = useDeleteTaskMutation();
   const [viewConfirmModal, setViewConfirmModal] = useState(false);
+  const [viewTask, setViewTask] = useState(false);
   const viewDeleteModal = () => setViewConfirmModal(true);
-  const closeModal = () => setViewConfirmModal(false);
+  const closeModal = () => {
+    setViewConfirmModal(false);
+  };
   const handleDeletetask = async ({ id }: TaskResponse) => {
     await deleteTask({ boardId, columnId, taskId: id });
     refetch();
   };
+  const openTask = () => setViewTask(true);
+  const closeTask = () => setViewTask(false);
 
   return (
     <>
       <div className={styles.task} key={task.id}>
-        <p className={styles.taskTitle}>{task.title}</p>
+        <div onClick={openTask} role="button" tabIndex={0} className={styles.taskTitle}>
+          {task.title}
+        </div>
         <span
           role="button"
           aria-label="button-delete-task"
@@ -37,6 +47,11 @@ function TaskContent({ task, columnId }: TaskContentPropsType) {
           className={styles.delete}
         />
       </div>
+      {viewTask && (
+        <Modal closeModal={closeTask}>
+          <ViewTaskModal task={task} users={users} handleClose={closeTask} />
+        </Modal>
+      )}
       {viewConfirmModal && (
         <Modal closeModal={closeModal}>
           <div className={styles.container}>
