@@ -1,5 +1,5 @@
 {
-  "header-button-signin": "SignIn",
+  "header-button-signin": "Sign In",
   "header-button-signup": "SignUp",
   "header-button-home": "Main",
   "header-button-editProfile": "Edit profile",
@@ -15,8 +15,8 @@
   "board-form-update": "Update Board",
   "board-form-title-required": "Title is Required",
   "board-form-description-required": "Description is Required",
-  "board-form-title-message": "Enter 3 to 20 characters",
-  "board-form-description-message": "Enter 10 to 200 characters",
+  "board-form-title-message": "Enter from 3 to 20 characters",
+  "board-form-description-message": "Enter from 10 to 200 characters",
   "confirm-modal-ok": "Yes",
   "confirm-modal-cancel": "No"
 }
