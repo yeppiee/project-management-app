@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../customHooks/redux';
 import { boardFormSlice } from '../../store/reducers/BoardFormSlice';
-// import { useDeleteBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { Board } from '../../types/BoardsTypes';
 import styles from './BoardList.module.css';
 
@@ -15,7 +14,6 @@ function BoardList({ boards, openConfirmModal }: Props) {
   const { changeUpdateBoardModalIsOpen, changeUpdateData, changeDeleteData } =
     boardFormSlice.actions;
   const dispatch = useAppDispatch();
-  // const [deleteBoard] = useDeleteBoardMutation();
 
   const handleOpenModal = (e: React.MouseEvent<HTMLButtonElement>, board: Board) => {
     e.stopPropagation();
@@ -23,12 +21,6 @@ function BoardList({ boards, openConfirmModal }: Props) {
     dispatch(changeUpdateData(board));
     dispatch(changeUpdateBoardModalIsOpen(true));
   };
-
-  // const handleDeleteBoard = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   deleteBoard(id);
-  // };
 
   const handleOpenDeleteConfirm = (e: React.MouseEvent<HTMLButtonElement>, board: Board) => {
     e.stopPropagation();

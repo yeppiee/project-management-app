@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useUpdateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { Board } from '../../types/BoardsTypes';
 import ValidateError from './ValidateError';
@@ -13,6 +13,7 @@ type Props = {
 function UpdateBoard({ closeModal }: Props) {
   const { updateData } = useAppSelector((state) => state.boardFormSlice);
   const [updateBoard] = useUpdateBoardMutation();
+  const intl = useIntl();
 
   const {
     register,
@@ -44,14 +45,14 @@ function UpdateBoard({ closeModal }: Props) {
         </b>
         <input
           {...register('title', {
-            required: 'Title is required',
+            required: intl.formatMessage({ id: 'board-form-title-required' }),
             minLength: {
               value: 3,
-              message: 'Enter 3 to 20 characters',
+              message: intl.formatMessage({ id: 'board-form-title-message' }),
             },
             maxLength: {
               value: 20,
-              message: 'Enter 3 to 20 characters',
+              message: intl.formatMessage({ id: 'board-form-title-message' }),
             },
           })}
           className={styles.text}
@@ -64,14 +65,14 @@ function UpdateBoard({ closeModal }: Props) {
         </b>
         <textarea
           {...register('description', {
-            required: 'Description is required',
+            required: intl.formatMessage({ id: 'board-form-description-required' }),
             minLength: {
               value: 10,
-              message: 'Enter 10 to 200 characters',
+              message: intl.formatMessage({ id: 'board-form-description-message' }),
             },
             maxLength: {
               value: 200,
-              message: 'Enter 10 to 200 characters',
+              message: intl.formatMessage({ id: 'board-form-description-message' }),
             },
           })}
           className={styles.text}
