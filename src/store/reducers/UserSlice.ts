@@ -5,6 +5,7 @@ const initialState = {
   tokenStatus: false,
   token: '',
   userId: '',
+  timeToken: '',
   localization: 'en',
 };
 
@@ -26,6 +27,9 @@ export const userSlice = createSlice({
     },
     changeUserId(state, action: PayloadAction<string>) {
       state.userId = action.payload;
+    },
+    changeTimeToken(state, action: PayloadAction<string>) {
+      state.timeToken = action.payload;
     },
   },
 });
