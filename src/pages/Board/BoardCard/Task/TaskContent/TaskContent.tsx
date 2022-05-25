@@ -16,7 +16,7 @@ type TaskContentPropsType = {
 };
 
 function TaskContent({ task, columnId }: TaskContentPropsType) {
-  const boardId = 'd805103c-e065-4b53-9312-2385b65f834a';
+  const boardId = '794fb28f-6a9f-4c48-9def-ec9d7964151b';
   const { refetch } = useGetBoardQuery(boardId);
   const { data: users } = useGetAllUsersQuery(boardId);
   const [deleteTask] = useDeleteTaskMutation();
@@ -49,7 +49,7 @@ function TaskContent({ task, columnId }: TaskContentPropsType) {
       </div>
       {viewTask && (
         <Modal closeModal={closeTask}>
-          <ViewTaskModal task={task} users={users} handleClose={closeTask} />
+          <ViewTaskModal task={task} users={users} columnId={columnId} handleClose={closeTask} />
         </Modal>
       )}
       {viewConfirmModal && (

@@ -15,7 +15,7 @@ type CardPropsType = {
 };
 
 function BoardCardTitle({ column: { title, id, order } }: CardPropsType) {
-  const boardId = 'd805103c-e065-4b53-9312-2385b65f834a';
+  const boardId = '794fb28f-6a9f-4c48-9def-ec9d7964151b';
   const { refetch } = useGetBoardQuery(boardId);
   const [deleteColumn] = useDeleteColumnMutation();
   const [renameColumn] = useUpdateColumnMutation();

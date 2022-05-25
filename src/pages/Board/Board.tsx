@@ -10,7 +10,7 @@ import BoardHeader from './BoardHeader/BoardHeader';
 import ColumnModal from './ColumnModal/ColumnModal';
 
 function Board() {
-  const id = 'd805103c-e065-4b53-9312-2385b65f834a';
+  const id = '794fb28f-6a9f-4c48-9def-ec9d7964151b';
   const [dataCopy, setDataCopy] = useState([]);
   const { data } = useGetBoardQuery(id);
   const [isOpenModal, setOpenModal] = useState(false);
@@ -20,7 +20,9 @@ function Board() {
   useEffect(() => {
     if (data) setDataCopy(data.columns.slice());
   }, [data]);
-
+  if (!data) {
+    return <div>Board not found</div>;
+  }
   return (
     <div className={styles.board}>
       <BoardHeader boardName={data.title} />

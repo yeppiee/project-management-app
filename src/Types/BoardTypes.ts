@@ -4,10 +4,17 @@ export type CreateColumnType = {
 };
 export type DeleteColumnType = {
   columnId: string;
-  boardId: string;
+  boardId?: string;
 };
 export type DeleteTaskType = DeleteColumnType & {
   taskId: string;
+};
+export type UpdateTaskType = DeleteColumnType & {
+  id?: string;
+  title: string;
+  order: number;
+  description: string;
+  userId: string;
 };
 export type TaskResponse = {
   id: string;
