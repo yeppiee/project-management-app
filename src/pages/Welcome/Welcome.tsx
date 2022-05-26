@@ -1,38 +1,10 @@
-import { useAppDispatch } from '../../customHooks/redux';
-import { userSlice } from '../../store/reducers/UserSlice';
 import styles from './Welcome.module.css';
 import Task from '../../assets/welcome/task.webp';
 import TeamWork from '../../assets/welcome/team-work.webp';
 
 function Welcome() {
-  const { changeTokenStatus, changeUserLoginStatus } = userSlice.actions;
-  const dispatch = useAppDispatch();
-
-  const changeTokenTrue = () => dispatch(changeTokenStatus(true));
-  const changeTokenFalse = () => {
-    dispatch(changeTokenStatus(false));
-    dispatch(changeUserLoginStatus(false));
-  };
-
   return (
     <div className={styles.container}>
-      <div>
-        Token Interface Deleted in the future
-        <button
-          className="border-2 border-black mb-2 hover:text-blue-400 p-1"
-          type="button"
-          onClick={changeTokenFalse}
-        >
-          The token is gone
-        </button>
-        <button
-          className="border-2 border-black hover:text-blue-400 p-1"
-          type="button"
-          onClick={changeTokenTrue}
-        >
-          The token showed up
-        </button>
-      </div>
       <div className={styles.content}>
         <div className={styles.images}>
           <img src={Task} alt="task" />
