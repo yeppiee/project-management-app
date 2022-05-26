@@ -41,7 +41,7 @@ function Main() {
       {error && <h1>Error</h1>}
       {boards &&
         boards.map((board) => (
-          <div>
+          <div key={board.id}>
             <span>{board.title}</span>
             <span>{board.description}</span>
             <span />
