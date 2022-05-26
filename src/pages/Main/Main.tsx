@@ -23,6 +23,7 @@ function Main() {
     dispatch(changeTokenStatus(false));
     dispatch(changeUserLoginStatus(false));
   };
+
   const checkTokenTime = () => {
     const { timeToken } = store.getState().userSlice;
     const timeCurrent = Date.now() / 1000;
@@ -31,6 +32,7 @@ function Main() {
       changeTokenFalse();
     }
   };
+
   useEffect(() => {
     checkTokenTime();
   });
