@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useUpdateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { Board } from '../../types/BoardsTypes';
-import ValidateError from './ValidateError';
+import ValidateError from '../ValidateError';
 import styles from './BoardForms.module.css';
 import { useAppSelector } from '../../customHooks/redux';
 

@@ -3,7 +3,7 @@ import Authorization from '../../components/Authorization/index';
 
 function SignIn() {
   return (
-    <div className="flex flex-col p-3">
+    <div className="flex flex-col p-3 w-full h-full">
       <BackToWelcomePage />
       <Authorization type="SingIn" />
     </div>

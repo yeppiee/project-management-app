@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Buffer } from 'buffer';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useAppDispatch } from '../../customHooks/redux';
 import { useSignInMutation, useSignUpMutation } from '../../store/reducers/TaskDealerApi';
 import { userSlice } from '../../store/reducers/UserSlice';
 import { AuthDataType, AuthPropsType, ResTokenType, SignInDataType } from '../../types/AuthTypes';
 import styles from './Authorization.module.css';
+import ValidateError from '../ValidateError';
 
 function Authorization({ type }: AuthPropsType) {
   const { changeUserLoginStatus, changeTokenStatus, changeToken, changeUserId, changeTimeToken } =
@@ -21,7 +22,9 @@ function Authorization({ type }: AuthPropsType) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AuthDataType>();
+  } = useForm<AuthDataType>({
+    mode: 'onBlur',
+  });
   const intl = useIntl();
 
   const getId = (res: ResTokenType) => {
@@ -33,11 +36,7 @@ function Authorization({ type }: AuthPropsType) {
   };
 
   const singInFunc = async (data: SignInDataType) => {
-    const sendData = {
-      login: data.login,
-      password: data.password,
-    };
-    await signIn(sendData)
+    await signIn({ login: data.login, password: data.password })
       .unwrap()
       .then(
         (res: ResTokenType) => {
@@ -69,81 +68,90 @@ function Authorization({ type }: AuthPropsType) {
   };
 
   const signInJsx = (
-    <div className={styles.container}>
-      <input
-        {...register('login', {
-          required: `${intl.formatMessage({ id: 'auth-input-login' })}`,
-          minLength: {
-            value: 3,
-            message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
-          },
-          pattern: {
-            value: /^[A-Za-z]+$/i,
-            message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
-          },
-        })}
-        type="text"
-        className={styles.input}
-        placeholder={`${intl.formatMessage({ id: 'auth-input-login' })}`}
-      />
-      <p>{errors.login?.message}</p>
-      <input
-        {...register('password', {
-          required: `${intl.formatMessage({ id: 'auth-input-password' })}`,
-          minLength: {
-            value: 3,
-            message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
-          },
-          pattern: {
-            value: /^[A-Za-z]+$/i,
-            message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
-          },
-        })}
-        type="password"
-        className={styles.input}
-        placeholder={`${intl.formatMessage({ id: 'auth-input-password' })}`}
-      />
-      <p>{errors.password?.message}</p>
+    <>
+      <label htmlFor="login">
+        <b>
+          <FormattedMessage id="auth-login-title" />
+          {errors.login && <ValidateError message={errors.login.message} />}
+        </b>
+        <input
+          {...register('login', {
+            required: `${intl.formatMessage({ id: 'auth-input-login' })}`,
+            minLength: {
+              value: 3,
+              message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
+            },
+            pattern: {
+              value: /^[A-Za-z]+$/i,
+              message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
+            },
+          })}
+          type="text"
+          className={styles.text}
+          placeholder={`${intl.formatMessage({ id: 'auth-input-login' })}`}
+        />
+      </label>
+      <label htmlFor="password">
+        <b>
+          <FormattedMessage id="auth-password-title" />
+          {errors.password && <ValidateError message={errors.password.message} />}
+        </b>
+        <input
+          {...register('password', {
+            required: `${intl.formatMessage({ id: 'auth-input-password' })}`,
+            minLength: {
+              value: 3,
+              message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
+            },
+            pattern: {
+              value: /^[A-Za-z]+$/i,
+              message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
+            },
+          })}
+          type="password"
+          className={styles.text}
+          placeholder={`${intl.formatMessage({ id: 'auth-input-password' })}`}
+        />
+      </label>
       <input
         type="submit"
-        className={styles.btn__submit}
+        className={styles.button}
         value={`${intl.formatMessage({ id: 'auth-input-submit' })}`}
       />
-    </div>
+    </>
   );
-  return (
-    <div>
-      {type === 'SingUp' ? (
-        <form onSubmit={handleSubmit(onSubmitUp)} className={styles.form}>
-          <p>{errorMessage}</p>
-          <div className={styles.container}>
-            <input
-              {...register('name', {
-                required: `${intl.formatMessage({ id: 'auth-input-name' })}`,
-                minLength: {
-                  value: 3,
-                  message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
-                },
-                pattern: {
-                  value: /^[A-Za-z]+$/i,
-                  message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
-                },
-              })}
-              type="text"
-              className={styles.input}
-              placeholder={`${intl.formatMessage({ id: 'auth-input-name' })}`}
-            />
-            <p>{errors.name?.message}</p>
-            {signInJsx}
-          </div>
-        </form>
-      ) : (
-        <form onSubmit={handleSubmit(onSubmitIn)} className={styles.form}>
-          <p>{errorMessage}</p>
-          {signInJsx}
-        </form>
-      )}
-    </div>
+  return type === 'SignUp' ? (
+    <form onSubmit={handleSubmit(onSubmitUp)} className={styles.container}>
+      <p>{errorMessage}</p>
+      <label htmlFor="name">
+        <b>
+          <FormattedMessage id="auth-name-title" />
+          {errors.name && <ValidateError message={errors.name.message} />}
+        </b>
+        <input
+          {...register('name', {
+            required: `${intl.formatMessage({ id: 'auth-input-name' })}`,
+            minLength: {
+              value: 3,
+              message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
+            },
+            pattern: {
+              value: /^[A-Za-z]+$/i,
+              message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
+            },
+          })}
+          type="text"
+          className={styles.text}
+          placeholder={`${intl.formatMessage({ id: 'auth-input-name' })}`}
+        />
+      </label>
+      {signInJsx}
+    </form>
+  ) : (
+    <form onSubmit={handleSubmit(onSubmitIn)} className={styles.container}>
+      <p>{errorMessage}</p>
+      {signInJsx}
+    </form>
   );
 }
 

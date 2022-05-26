@@ -1,41 +1,11 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  @apply flex flex-col w-1/2 m-auto border-2 border-main rounded-md p-10;
 }
 
-.input {
-  width: 50%;
-  height: 75px;
-  border: 1px solid #000;
-  border-radius: 4px;
-  margin-bottom: 15px;
-  padding: 0 15px;
+.text {
+  @apply w-full border-2 border-main rounded-md mb-8 mt-2 resize-none p-1;
 }
 
-.btn__submit {
-  width: 175px;
-  height: 75px;
-  border: 1px solid #000;
-  border-radius: 4px;
-  background-color: #000;
-  color: #fff;
-  transition: 0.4s;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-.btn__submit:hover {
-  background-color: #00f625;
-  border: 1px solid #00f625;
+.button {
+  @apply m-auto border-2 border-main rounded-md py-1 px-4 cursor-pointer hover:bg-mainHover transition-colors;
 }
