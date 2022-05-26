@@ -33,6 +33,9 @@ export const taskDealerApi = createApi({
         body,
       }),
     }),
+    getUserById: builder.query({
+      query: (id) => `users/${id}`,
+    }),
     getAllBoards: builder.query<Board[], null>({
       query: () => 'boards',
       providesTags: () => ['Post'],
@@ -70,4 +73,5 @@ export const {
   useCreateBoardMutation,
   useDeleteBoardMutation,
   useUpdateBoardMutation,
+  useGetUserByIdQuery,
 } = taskDealerApi;
