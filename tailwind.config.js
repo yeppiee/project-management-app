@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       colors: {
         main: '#232F48',
+        sticky: '#34476E',
         mainHover: '#6A99FB',
       },
       transitionTimingFunction: {
