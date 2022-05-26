@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { CreateColumnResponseType } from '../../../Types/BoardTypes';
 import styles from './BoardCard.module.css';
 import BoardCardTitle from './BoardCardTitle/BoardCardTitle';

@@ -36,6 +36,11 @@ export const taskDealerApi = createApi({
         url: `boards/${id}`,
       }),
     }),
+    getTaskById: build.query({
+      query: ({ boardId, columnId, taskId }) => ({
+        url: `boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
+      }),
+    }),
     getAllUsers: build.query({
       query: () => ({
         url: '/users',
@@ -91,6 +96,7 @@ export const taskDealerApi = createApi({
 export const {
   useGetBoardQuery,
   useGetAllUsersQuery,
+  useGetTaskByIdQuery,
   useCreateColumnMutation,
   useDeleteColumnMutation,
   useUpdateColumnMutation,

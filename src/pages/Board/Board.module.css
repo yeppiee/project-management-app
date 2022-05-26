@@ -3,7 +3,8 @@
   flex-wrap: wrap;
   height: calc(100vh - 150px);
   padding: 0 10px;
-  overflow-x: auto;
+
+/*  overflow-x: auto; */
   font-size: 15px;
   background-color: rgb(43 60 96);
 }
@@ -14,7 +15,8 @@
   width: 100%;
   height: calc(100% - 52.5px);
   margin: 0 10px;
-  overflow-x: auto;
+
+/*  overflow-x: auto; */
   column-gap: 10px;
 }
 .plus {

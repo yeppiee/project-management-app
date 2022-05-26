@@ -41,6 +41,7 @@ export type DeleteColumnResponseType = {
   message: string;
 };
 export type CreateTaskType = {
+  id?: string;
   columnId: string;
   boardId: string;
   title: string;

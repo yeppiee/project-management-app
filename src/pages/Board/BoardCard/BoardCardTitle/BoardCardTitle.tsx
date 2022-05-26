@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { useParams } from 'react-router-dom';
 import Modal from '../../../../components/Modal/Modal';
 /* import { useParams } from 'react-router-dom'; */
 import {
@@ -14,8 +15,9 @@ type CardPropsType = {
   column: CreateColumnResponseType;
 };
 
-function BoardCardTitle({ column: { title, id, order } }: CardPropsType) {
-  const boardId = '794fb28f-6a9f-4c48-9def-ec9d7964151b';
+function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsType) {
+  const { id } = useParams();
+  const boardId = id as string;
   const { refetch } = useGetBoardQuery(boardId);
   const [deleteColumn] = useDeleteColumnMutation();
   const [renameColumn] = useUpdateColumnMutation();
@@ -31,7 +33,7 @@ function BoardCardTitle({ column: { title, id, order } }: CardPropsType) {
     if (titleInputValue.length === 0) {
       return null;
     }
-    await renameColumn({ columnId: id, boardId, order, title: titleInputValue });
+    await renameColumn({ columnId, boardId, order, title: titleInputValue });
     refetch();
     return setTitleView(true);
   };
@@ -39,7 +41,7 @@ function BoardCardTitle({ column: { title, id, order } }: CardPropsType) {
     setViewConfirmModal(true);
   };
   const callDeleteColumn = async () => {
-    if (boardId) await deleteColumn({ columnId: id, boardId });
+    if (boardId) await deleteColumn({ columnId, boardId });
     refetch();
   };
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>

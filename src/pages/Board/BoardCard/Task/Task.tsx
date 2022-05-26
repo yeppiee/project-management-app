@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Droppable } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
 import Modal from '../../../../components/Modal/Modal';
-import { CreateColumnResponseType } from '../../../../Types/BoardTypes';
+import { CreateColumnResponseType, TaskResponse } from '../../../../Types/BoardTypes';
 import styles from './Task.module.css';
 import TaskContent from './TaskContent/TaskContent';
 import CreateTaskModal from './CreateTaskModal/CreateTaskModal';
@@ -11,29 +13,46 @@ type TaskPropsType = {
 };
 
 function Task({ column }: TaskPropsType) {
-  const boardId = '794fb28f-6a9f-4c48-9def-ec9d7964151b';
+  const { id: boardId } = useParams();
   const [isOpenModal, setOpenModal] = useState(false);
-
+  const columnArray = [...column.tasks];
   const handleCancelModal = () => setOpenModal(false);
   const handleCreateTask = () => setOpenModal(true);
 
   return (
     <>
-      <div className={styles.taskContainer}>
-        {column.tasks.length > 0 &&
-          column.tasks.map((task) => {
-            return <TaskContent task={task} key={task.id} columnId={column.id} />;
-          })}
-        <button type="button" onClick={handleCreateTask} className={styles.buttonAddTask}>
-          <span className={styles.plus} />
-          <p>
-            <FormattedMessage id="task-button-create-task" />
-          </p>
-        </button>
-      </div>
+      <Droppable droppableId={column.id}>
+        {(provided) => (
+          <div
+            className={styles.taskContainer}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {columnArray.length > 0 &&
+              columnArray
+                .sort((a: TaskResponse, b: TaskResponse) => a.order - b.order)
+                .map((task, index) => {
+                  return (
+                    <TaskContent task={task} key={task.id} index={index + 1} columnId={column.id} />
+                  );
+                })}
+            {provided.placeholder}
+            <button type="button" onClick={handleCreateTask} className={styles.buttonAddTask}>
+              <span className={styles.plus} />
+              <p>
+                <FormattedMessage id="task-button-create-task" />
+              </p>
+            </button>
+          </div>
+        )}
+      </Droppable>
       {isOpenModal && (
         <Modal closeModal={() => setOpenModal(false)}>
-          <CreateTaskModal boardId={boardId} column={column} handleCancel={handleCancelModal} />
+          <CreateTaskModal
+            boardId={boardId as string}
+            column={column}
+            handleCancel={handleCancelModal}
+          />
         </Modal>
       )}
     </>

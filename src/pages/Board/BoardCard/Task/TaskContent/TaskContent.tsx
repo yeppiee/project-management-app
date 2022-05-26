@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Draggable } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
 import Modal from '../../../../../components/Modal/Modal';
 import {
   useDeleteTaskMutation,
@@ -13,12 +15,13 @@ import styles from './TaskContent.module.css';
 type TaskContentPropsType = {
   task: TaskResponse;
   columnId: string;
+  index: number;
 };
 
-function TaskContent({ task, columnId }: TaskContentPropsType) {
-  const boardId = '794fb28f-6a9f-4c48-9def-ec9d7964151b';
+function TaskContent({ task, columnId, index }: TaskContentPropsType) {
+  const { id: boardId } = useParams();
   const { refetch } = useGetBoardQuery(boardId);
-  const { data: users } = useGetAllUsersQuery(boardId);
+  const { data } = useGetAllUsersQuery(boardId);
   const [deleteTask] = useDeleteTaskMutation();
   const [viewConfirmModal, setViewConfirmModal] = useState(false);
   const [viewTask, setViewTask] = useState(false);
@@ -35,21 +38,31 @@ function TaskContent({ task, columnId }: TaskContentPropsType) {
 
   return (
     <>
-      <div className={styles.task} key={task.id}>
-        <div onClick={openTask} role="button" tabIndex={0} className={styles.taskTitle}>
-          {task.title}
-        </div>
-        <span
-          role="button"
-          aria-label="button-delete-task"
-          tabIndex={0}
-          onClick={viewDeleteModal}
-          className={styles.delete}
-        />
-      </div>
+      <Draggable draggableId={task.id} index={index}>
+        {(provided) => (
+          <div
+            className={styles.task}
+            key={task.id}
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <div onClick={openTask} role="button" tabIndex={0} className={styles.taskTitle}>
+              {task.title}
+            </div>
+            <span
+              role="button"
+              aria-label="button-delete-task"
+              tabIndex={0}
+              onClick={viewDeleteModal}
+              className={styles.delete}
+            />
+          </div>
+        )}
+      </Draggable>
       {viewTask && (
         <Modal closeModal={closeTask}>
-          <ViewTaskModal task={task} users={users} columnId={columnId} handleClose={closeTask} />
+          <ViewTaskModal task={task} users={data} columnId={columnId} handleClose={closeTask} />
         </Modal>
       )}
       {viewConfirmModal && (
