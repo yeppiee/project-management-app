@@ -7,6 +7,7 @@ const initialState = {
   userId: '',
   timeToken: '',
   localization: 'en',
+  createBoardModalIsOpen: false,
 };
 
 export const userSlice = createSlice({
@@ -30,6 +31,9 @@ export const userSlice = createSlice({
     },
     changeTimeToken(state, action: PayloadAction<string>) {
       state.timeToken = action.payload;
+    },
+    changeCreateBoardModalIsOpen(state, action: PayloadAction<boolean>) {
+      state.createBoardModalIsOpen = action.payload;
     },
   },
 });

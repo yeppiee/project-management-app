@@ -2,6 +2,8 @@
   "header-button-signin": "Войти",
   "header-button-signup": "Зарегистрироваться",
   "header-button-home": "Главная",
+  "header-button-editProfile": "Редактировать профиль",
+  "header-button-create-new-board": "Создать новую доску",
   "header-button-signOut": "Выйти",
   "header-button-toMain": "На главную",
   "burger-links-home": "Главная",
