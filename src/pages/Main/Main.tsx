@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-import { useEffect } from 'react';
-import { useAppDispatch } from '../../customHooks/redux';
-<<<<<<< HEAD
+import { useEffect, useState } from 'react';
 import { store } from '../../store';
-=======
-import { useGetAllBoardsQuery } from '../../store/reducers/TaskDealerApi';
->>>>>>> 2c5732d (feat: add api requests)
-=======
-import { useState } from 'react';
 import BoardList from '../../components/BoardList';
 import Modal from '../../components/Modal';
 import UpdateBoard from '../../components/BoardForms/UpdateBoard';
 import { useAppDispatch, useAppSelector } from '../../customHooks/redux';
 import { useDeleteBoardMutation, useGetAllBoardsQuery } from '../../store/reducers/TaskDealerApi';
->>>>>>> 5d29371 (feat: add confirmModal, create board, delete board, change board)
 import { userSlice } from '../../store/reducers/UserSlice';
 import { boardFormSlice } from '../../store/reducers/BoardFormSlice';
 import styles from './Main.module.css';
@@ -26,16 +17,12 @@ function Main() {
   const { changeUpdateBoardModalIsOpen } = boardFormSlice.actions;
   const { data: boards, isLoading, error } = useGetAllBoardsQuery(null);
   const dispatch = useAppDispatch();
-<<<<<<< HEAD
-=======
   const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
 
->>>>>>> 5d29371 (feat: add confirmModal, create board, delete board, change board)
   const changeTokenFalse = () => {
     dispatch(changeTokenStatus(false));
     dispatch(changeUserLoginStatus(false));
   };
-<<<<<<< HEAD
   const checkTokenTime = () => {
     const { timeToken } = store.getState().userSlice;
     const timeCurrent = Date.now() / 1000;
@@ -47,7 +34,6 @@ function Main() {
   useEffect(() => {
     checkTokenTime();
   });
-=======
 
   const closeModal = () => dispatch(changeUpdateBoardModalIsOpen(false));
   const closeConfirmModal = () => setConfirmModalIsOpen(false);
@@ -58,7 +44,6 @@ function Main() {
     deleteBoard(deleteData.id);
   };
 
->>>>>>> 5d29371 (feat: add confirmModal, create board, delete board, change board)
   return (
     <div className={styles.container}>
       Main

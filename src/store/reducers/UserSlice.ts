@@ -22,7 +22,6 @@ export const userSlice = createSlice({
     changeLocalization(state, action: PayloadAction<string>) {
       state.localization = action.payload;
     },
-<<<<<<< HEAD
     changeToken(state, action: PayloadAction<string>) {
       state.token = action.payload;
     },
@@ -32,11 +31,6 @@ export const userSlice = createSlice({
     changeTimeToken(state, action: PayloadAction<string>) {
       state.timeToken = action.payload;
     },
-    changeCreateBoardModalIsOpen(state, action: PayloadAction<boolean>) {
-      state.createBoardModalIsOpen = action.payload;
-    },
-=======
->>>>>>> 5d29371 (feat: add confirmModal, create board, delete board, change board)
   },
 });
 
