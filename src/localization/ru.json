@@ -15,5 +15,9 @@
   "auth-input-submit": "Отправить",
   "auth-input-back": "Назад",
   "auth-input-length": "Минимальная длина 3 символа",
-  "auth-input-letters": "Используйте латинские буквы"
+  "auth-input-letters": "Используйте латинские буквы",
+  "board-form-title": "Заголовок:",
+  "board-form-description": "Описание:",
+  "board-form-create": "Создать Доску",
+  "board-form-update": "Обновить Доску"
 }

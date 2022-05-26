@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 import { useUpdateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { Board } from '../../types/BoardsTypes';
 import ValidateError from './ValidateError';
@@ -38,7 +39,7 @@ function UpdateBoard({ closeModal }: Props) {
     <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="title">
         <b>
-          Title:
+          <FormattedMessage id="board-form-title" />
           {errors.title && <ValidateError message={errors.title.message} />}
         </b>
         <input
@@ -58,7 +59,7 @@ function UpdateBoard({ closeModal }: Props) {
       </label>
       <label htmlFor="description">
         <b>
-          Description:
+          <FormattedMessage id="board-form-description" />
           {errors.description && <ValidateError message={errors.description.message} />}
         </b>
         <textarea
@@ -78,7 +79,7 @@ function UpdateBoard({ closeModal }: Props) {
         />
       </label>
       <button type="submit" className={styles.button}>
-        Update Board
+        <FormattedMessage id="board-form-update" />
       </button>
     </form>
   );

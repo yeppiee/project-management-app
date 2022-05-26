@@ -15,5 +15,9 @@
   "auth-input-submit": "Submit",
   "auth-input-back": "Back",
   "auth-input-length": "Min length 3",
-  "auth-input-letters": "Use latin letters"
+  "auth-input-letters": "Use latin letters",
+  "board-form-title": "Title:",
+  "board-form-description": "Description:",
+  "board-form-create": "Create Board",
+  "board-form-update": "Update Board"
 }
