@@ -7,6 +7,7 @@ import {
   DeleteColumnType,
   DeleteTaskType,
   UpdateColumnType,
+  UpdateTaskAndColumn,
   UpdateTaskType,
 } from '../../Types/BoardTypes';
 import { RootState } from '../store';
@@ -30,16 +31,13 @@ export const taskDealerApi = createApi({
       return headers;
     },
   }),
+  tagTypes: ['Board'],
   endpoints: (build) => ({
     getBoard: build.query({
       query: (id) => ({
         url: `boards/${id}`,
       }),
-    }),
-    getTaskById: build.query({
-      query: ({ boardId, columnId, taskId }) => ({
-        url: `boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
-      }),
+      providesTags: ['Board'],
     }),
     getAllUsers: build.query({
       query: () => ({
@@ -52,6 +50,7 @@ export const taskDealerApi = createApi({
         method: 'POST',
         body: { title },
       }),
+      invalidatesTags: ['Board'],
     }),
     createTask: build.mutation<CreateColumnResponseType, CreateTaskType>({
       query: ({ boardId, columnId, title, description, userId }) => ({
@@ -63,6 +62,7 @@ export const taskDealerApi = createApi({
           userId,
         },
       }),
+      invalidatesTags: ['Board'],
     }),
     updateColumn: build.mutation<CreateColumnResponseType, UpdateColumnType>({
       query: ({ boardId, columnId, order, title }) => ({
@@ -70,18 +70,21 @@ export const taskDealerApi = createApi({
         method: 'PUT',
         body: { title, order },
       }),
+      invalidatesTags: ['Board'],
     }),
     deleteColumn: build.mutation<DeleteColumnResponseType, DeleteColumnType>({
       query: ({ boardId, columnId }) => ({
         url: `boards/${boardId}/columns/${columnId}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['Board'],
     }),
     deleteTask: build.mutation<DeleteColumnResponseType, DeleteTaskType>({
       query: ({ boardId, columnId, taskId }) => ({
         url: `boards/${boardId}/columns/${columnId}/tasks/${taskId}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['Board'],
     }),
     updateTask: build.mutation<DeleteColumnResponseType, UpdateTaskType>({
       query: ({ boardId, columnId, id, title, order, description, userId }) => ({
@@ -89,6 +92,15 @@ export const taskDealerApi = createApi({
         method: 'PUT',
         body: { boardId, columnId, title, order, description, userId },
       }),
+      invalidatesTags: ['Board'],
+    }),
+    updateTaskAndColumn: build.mutation<DeleteColumnResponseType, UpdateTaskAndColumn>({
+      query: ({ boardId, column, columnId, id, title, order, description, userId }) => ({
+        url: `boards/${boardId}/columns/${column}/tasks/${id}`,
+        method: 'PUT',
+        body: { boardId, columnId, title, order, description, userId },
+      }),
+      invalidatesTags: ['Board'],
     }),
   }),
 });
@@ -96,11 +108,11 @@ export const taskDealerApi = createApi({
 export const {
   useGetBoardQuery,
   useGetAllUsersQuery,
-  useGetTaskByIdQuery,
   useCreateColumnMutation,
   useDeleteColumnMutation,
   useUpdateColumnMutation,
   useCreateTaskMutation,
   useDeleteTaskMutation,
   useUpdateTaskMutation,
+  useUpdateTaskAndColumnMutation,
 } = taskDealerApi;

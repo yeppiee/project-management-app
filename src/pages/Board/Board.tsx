@@ -3,7 +3,11 @@ import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { FormattedMessage } from 'react-intl';
 /* import { useParams } from 'react-router-dom'; */
 import Modal from '../../components/Modal/Modal';
-import { useGetBoardQuery, useUpdateTaskMutation } from '../../store/reducers/TaskDealerApi';
+import {
+  useGetBoardQuery,
+  useUpdateTaskAndColumnMutation,
+  useUpdateTaskMutation,
+} from '../../store/reducers/TaskDealerApi';
 import { CreateColumnResponseType, CreateTaskType } from '../../Types/BoardTypes';
 import styles from './Board.module.css';
 import BoardCard from './BoardCard/BoardCard';
@@ -13,8 +17,9 @@ import ColumnModal from './ColumnModal/ColumnModal';
 function Board() {
   const id = '8ccf95fc-8e38-4aef-855c-f5986f093b08';
   const [updateTask] = useUpdateTaskMutation();
+  const [updateTaskAndColumn] = useUpdateTaskAndColumnMutation();
   const [dataCopy, setDataCopy] = useState([]);
-  const { data, refetch } = useGetBoardQuery(id);
+  const { data } = useGetBoardQuery(id);
   const [isOpenModal, setOpenModal] = useState(false);
   const handleCancelModal = () => setOpenModal(false);
   const openModal = () => setOpenModal(true);
@@ -26,16 +31,30 @@ function Board() {
     if (destination.droppableId === source.droppableId && destination.index === source.index) {
       return;
     }
-    const draggableTask = data.columns
-      .find((column: CreateColumnResponseType) => column.id === source.droppableId)
-      .tasks.find((task: CreateTaskType) => task.id === draggableId);
-    await updateTask({
-      ...draggableTask,
-      boardId: id,
-      columnId: destination.droppableId,
-      order: destination.index,
-    });
-    refetch();
+    if (destination.droppableId === source.droppableId) {
+      const draggableTask = data.columns
+        .find((column: CreateColumnResponseType) => column.id === source.droppableId)
+        .tasks.find((task: CreateTaskType) => task.id === draggableId);
+      await updateTask({
+        ...draggableTask,
+        boardId: id,
+        columnId: destination.droppableId,
+        order: destination.index,
+      });
+    }
+    if (destination.droppableId !== source.droppableId) {
+      const draggableTask = data.columns
+        .find((column: CreateColumnResponseType) => column.id === source.droppableId)
+        .tasks.find((task: CreateTaskType) => task.id === draggableId);
+      await updateTaskAndColumn({
+        ...draggableTask,
+        boardId: id,
+        column: source.droppableId,
+        columnId: destination.droppableId,
+        order: destination.index === 0 ? 1 : destination.index,
+        id: draggableTask.id,
+      });
+    }
   };
 
   useEffect(() => {

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  useGetBoardQuery,
-  useUpdateTaskMutation,
-} from '../../../../../store/reducers/TaskDealerApi';
+import { useUpdateTaskMutation } from '../../../../../store/reducers/TaskDealerApi';
 import { TaskResponse, UsersDataType } from '../../../../../Types/BoardTypes';
 import styles from './ViewTaskModal.module.css';
 
@@ -17,7 +14,6 @@ type ViewTaskModalPropsType = {
 function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalPropsType) {
   const { id: boardId } = useParams();
   const [updateTask] = useUpdateTaskMutation();
-  const { refetch } = useGetBoardQuery(boardId);
   const [isEditTitle, setIseEditTitle] = useState(false);
   const [isEditDescription, setIseEditDescription] = useState(false);
   const [isEditAssignee, setIseEditAssignee] = useState(false);
@@ -38,17 +34,14 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
   const cancelEditAssignee = () => setIseEditAssignee(false);
   const updateTitle = async () => {
     await updateTask({ ...task, columnId, boardId, title: titleValue });
-    refetch();
     setIseEditTitle(false);
   };
   const updateDescription = async () => {
     await updateTask({ ...task, columnId, boardId, description: descriptionValue });
-    refetch();
     setIseEditDescription(false);
   };
   const updateAssignee = async () => {
     await updateTask({ ...task, columnId, boardId, userId: assigneeValue });
-    refetch();
     setIseEditAssignee(false);
   };
   return (

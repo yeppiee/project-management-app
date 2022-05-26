@@ -6,7 +6,6 @@ import Modal from '../../../../../components/Modal/Modal';
 import {
   useDeleteTaskMutation,
   useGetAllUsersQuery,
-  useGetBoardQuery,
 } from '../../../../../store/reducers/TaskDealerApi';
 import { TaskResponse } from '../../../../../Types/BoardTypes';
 import ViewTaskModal from '../ViewTaskModal/ViewTaskModal';
@@ -20,7 +19,6 @@ type TaskContentPropsType = {
 
 function TaskContent({ task, columnId, index }: TaskContentPropsType) {
   const { id: boardId } = useParams();
-  const { refetch } = useGetBoardQuery(boardId);
   const { data } = useGetAllUsersQuery(boardId);
   const [deleteTask] = useDeleteTaskMutation();
   const [viewConfirmModal, setViewConfirmModal] = useState(false);
@@ -31,7 +29,6 @@ function TaskContent({ task, columnId, index }: TaskContentPropsType) {
   };
   const handleDeletetask = async ({ id }: TaskResponse) => {
     await deleteTask({ boardId, columnId, taskId: id });
-    refetch();
   };
   const openTask = () => setViewTask(true);
   const closeTask = () => setViewTask(false);
@@ -39,13 +36,13 @@ function TaskContent({ task, columnId, index }: TaskContentPropsType) {
   return (
     <>
       <Draggable draggableId={task.id} index={index}>
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
-            className={styles.task}
+            className={snapshot.isDragging ? `${styles.dragged} ${styles.task}` : `${styles.task}`}
             key={task.id}
-            ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            ref={provided.innerRef}
           >
             <div onClick={openTask} role="button" tabIndex={0} className={styles.taskTitle}>
               {task.title}

@@ -4,7 +4,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import {
   useCreateTaskMutation,
   useGetAllUsersQuery,
-  useGetBoardQuery,
 } from '../../../../../store/reducers/TaskDealerApi';
 import { CreateColumnResponseType, UsersDataType } from '../../../../../Types/BoardTypes';
 import styles from './CreateTaskModal.module.css';
@@ -29,10 +28,8 @@ function CreateTaskModal({ boardId, handleCancel, column: { id } }: TaskModalPro
   const { data: users } = useGetAllUsersQuery(id);
   const intl = useIntl();
   const [createTask] = useCreateTaskMutation();
-  const { refetch } = useGetBoardQuery(boardId);
   const onSubmit = async ({ title, description, userId }: FormDataType) => {
     await createTask({ boardId, title, userId, description, columnId: id });
-    refetch();
     handleCancel();
   };
 

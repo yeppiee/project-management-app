@@ -16,6 +16,9 @@ export type UpdateTaskType = DeleteColumnType & {
   description: string;
   userId: string;
 };
+export type UpdateTaskAndColumn = UpdateTaskType & {
+  column: string;
+};
 export type TaskResponse = {
   id: string;
   title: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useCreateColumnMutation, useGetBoardQuery } from '../../../store/reducers/TaskDealerApi';
+import { useCreateColumnMutation } from '../../../store/reducers/TaskDealerApi';
 import styles from './ColumnModal.module.css';
 
 type FormDataType = {
@@ -21,10 +21,8 @@ function ColumnModal({ boardId, handleCancel }: ColumnModalPropsType) {
   } = useForm<FormDataType>();
   const intl = useIntl();
   const [createColumn] = useCreateColumnMutation();
-  const { refetch } = useGetBoardQuery(boardId);
   const onSubmit = async ({ title }: FormDataType) => {
     await createColumn({ boardId, title });
-    refetch();
     reset();
   };
 

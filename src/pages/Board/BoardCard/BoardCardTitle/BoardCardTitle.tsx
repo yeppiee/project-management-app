@@ -5,7 +5,6 @@ import Modal from '../../../../components/Modal/Modal';
 /* import { useParams } from 'react-router-dom'; */
 import {
   useDeleteColumnMutation,
-  useGetBoardQuery,
   useUpdateColumnMutation,
 } from '../../../../store/reducers/TaskDealerApi';
 import { CreateColumnResponseType } from '../../../../Types/BoardTypes';
@@ -18,7 +17,6 @@ type CardPropsType = {
 function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsType) {
   const { id } = useParams();
   const boardId = id as string;
-  const { refetch } = useGetBoardQuery(boardId);
   const [deleteColumn] = useDeleteColumnMutation();
   const [renameColumn] = useUpdateColumnMutation();
   const [isTitleView, setTitleView] = useState(true);
@@ -34,7 +32,6 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
       return null;
     }
     await renameColumn({ columnId, boardId, order, title: titleInputValue });
-    refetch();
     return setTitleView(true);
   };
   const onClickDeleteColumn = async () => {
@@ -42,7 +39,6 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
   };
   const callDeleteColumn = async () => {
     if (boardId) await deleteColumn({ columnId, boardId });
-    refetch();
   };
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
     setTitleInputValue(e.target.value);
