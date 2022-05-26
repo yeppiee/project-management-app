@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useCreateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { CreateBoardType } from '../../types/BoardsTypes';
-import ValidateError from './ValidateError';
+import ValidateError from '../ValidateError';
 import styles from './BoardForms.module.css';
 
 type Props = {
