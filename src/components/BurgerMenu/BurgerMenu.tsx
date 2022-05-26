@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useBurgerMenuLinks from '../../customHooks/useBurgerMenuLinks';
 import styles from './BurgerMenu.module.css';
@@ -10,18 +10,14 @@ type BurgerMenuProps = {
 
 function BurgerMenu({ isActive, setInactive }: BurgerMenuProps) {
   const links = useBurgerMenuLinks();
-  const eventKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') setInactive();
-  };
 
   useEffect(() => {
-    document.addEventListener('keydown', (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setInactive();
-    });
+    };
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.removeEventListener('keydown', (e) => {
-        if (e.key === 'Escape') setInactive();
-      });
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [setInactive]);
 
@@ -29,17 +25,10 @@ function BurgerMenu({ isActive, setInactive }: BurgerMenuProps) {
     <div
       className={isActive ? `${styles.container} ${styles.active}` : `${styles.container}`}
       onClick={setInactive}
-      onKeyDown={() => eventKeyDown}
       role="menu"
       tabIndex={0}
     >
-      <div
-        className={styles.content}
-        onClick={(e) => e.stopPropagation()}
-        onKeyDown={() => eventKeyDown}
-        role="menu"
-        tabIndex={0}
-      >
+      <div className={styles.content} onClick={(e) => e.stopPropagation()} role="menu" tabIndex={0}>
         <div className="mt-3 mb-3 pl-32">
           <button className={styles.button} onClick={setInactive} type="button">
             <i className="fa-solid fa-angle-left" />
