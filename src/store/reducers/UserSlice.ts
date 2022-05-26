@@ -3,6 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState = {
   userLoginStatus: false,
   tokenStatus: false,
+  token: '',
+  userId: '',
+  timeToken: '',
   localization: 'en',
 };
 
@@ -18,6 +21,15 @@ export const userSlice = createSlice({
     },
     changeLocalization(state, action: PayloadAction<string>) {
       state.localization = action.payload;
+    },
+    changeToken(state, action: PayloadAction<string>) {
+      state.token = action.payload;
+    },
+    changeUserId(state, action: PayloadAction<string>) {
+      state.userId = action.payload;
+    },
+    changeTimeToken(state, action: PayloadAction<string>) {
+      state.timeToken = action.payload;
     },
   },
 });

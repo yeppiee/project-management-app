@@ -4,9 +4,15 @@
     "header-button-home": "Home",
     "header-button-signOut": "Sign out",
     "header-button-toMain": "Go to Main Page",
-
     "burger-links-home": "Home",
     "burger-links-aboutUs": "AboutUs",
     "burger-links-boards": "Boards",
-    "burger-links-profile": "Profile"
+    "burger-links-profile": "Profile",
+    "auth-input-name": "Write name",
+    "auth-input-login": "Write login",
+    "auth-input-password": "Write password",
+    "auth-input-submit": "submit",
+    "auth-input-back": "Back",
+    "auth-input-length": "Min length 3",
+    "auth-input-letters": "Use latin letters"
 }
