@@ -1,9 +1,8 @@
 import { lazy } from 'react';
 
 const Welcome = lazy(() => import('../pages/Welcome'));
-const Home = lazy(() => import('../pages/Home'));
+const Main = lazy(() => import('../pages/Main'));
 const AboutUs = lazy(() => import('../pages/AboutUs'));
-const Boards = lazy(() => import('../pages/Boards'));
 const Board = lazy(() => import('../pages/Board'));
 const SignUp = lazy(() => import('../pages/SignUp'));
 const SignIn = lazy(() => import('../pages/SignIn'));
@@ -14,7 +13,7 @@ export const routes = [
   {
     id: 1,
     path: '/',
-    component: <Home />,
+    component: <Main />,
   },
   {
     id: 2,
@@ -23,21 +22,16 @@ export const routes = [
   },
   {
     id: 3,
-    path: '/boards',
-    component: <Boards />,
-  },
-  {
-    id: 4,
     path: '/boards/:id',
     component: <Board />,
   },
   {
-    id: 5,
+    id: 4,
     path: '/profile',
     component: <UserProfile />,
   },
   {
-    id: 6,
+    id: 5,
     path: '/404',
     component: <NotFound />,
   },

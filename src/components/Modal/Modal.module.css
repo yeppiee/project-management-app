@@ -18,16 +18,15 @@
   transform: translate(-50%, -50%);
   animation-name: slidein;
   animation-duration: 0.5s;
+  border-radius: 6px;
 }
 
 @keyframes slidein {
   from {
-    transform: scale(0);
     opacity: 0;
   }
 
   to {
-    transform: scale(1);
     opacity: 1;
   }
 }

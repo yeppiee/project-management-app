@@ -10,14 +10,13 @@ type ModalPropsType = {
 };
 
 function Modal({ children, closeModal }: ModalPropsType) {
-  const keyDownHandler = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') closeModal();
-  };
-
   useEffect(() => {
+    const keyDownHandler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+    };
     document.addEventListener('keydown', keyDownHandler);
     return () => document.removeEventListener('keydown', keyDownHandler);
-  }, []);
+  }, [closeModal]);
 
   return ReactDOM.createPortal(
     <>

@@ -1,7 +1,9 @@
 import { FormattedMessage } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
+import headerLinks from '../../constants/headerLinks';
 import { useAppDispatch, useAppSelector } from '../../customHooks/redux';
+import { boardFormSlice } from '../../store/reducers/BoardFormSlice';
 import { userSlice } from '../../store/reducers/UserSlice';
 import styles from './Header.module.css';
 
@@ -12,6 +14,7 @@ type HeaderProps = {
 function Header({ handleChange }: HeaderProps) {
   const { userLoginStatus, tokenStatus } = useAppSelector((state) => state.userSlice);
   const { changeUserLoginStatus } = userSlice.actions;
+  const { changeCreateBoardModalIsOpen } = boardFormSlice.actions;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -21,6 +24,8 @@ function Header({ handleChange }: HeaderProps) {
     navigate('/');
   };
 
+  const handleOpenModal = () => dispatch(changeCreateBoardModalIsOpen(true));
+
   return (
     <header className={styles.container}>
       {userLoginStatus && tokenStatus ? (
@@ -29,9 +34,16 @@ function Header({ handleChange }: HeaderProps) {
             <button className={styles.burger} type="button" onClick={handleChange}>
               <i className="fa-solid fa-bars" />
             </button>
-            <Link className={styles.link} to="/">
-              <FormattedMessage id="header-button-home" />
-            </Link>
+            <div>
+              {headerLinks.map((link) => (
+                <Link className={styles.link} to={link.path} key={link.id}>
+                  <FormattedMessage id={link.localizationId} />
+                </Link>
+              ))}
+              <button type="button" className={styles.link} onClick={handleOpenModal}>
+                <FormattedMessage id="header-button-create-new-board" />
+              </button>
+            </div>
           </div>
           <div className="flex items-center">
             <LanguageSwitcher />

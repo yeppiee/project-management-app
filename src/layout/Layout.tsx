@@ -1,14 +1,22 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import BurgerMenu from '../components/BurgerMenu';
+import CreateBoard from '../components/BoardForms/CreateBoard';
+import Modal from '../components/Modal';
+import { useAppDispatch, useAppSelector } from '../customHooks/redux';
 import Footer from './Footer';
 import Header from './Header';
+import { boardFormSlice } from '../store/reducers/BoardFormSlice';
 
 function Layout() {
+  const { createBoardModalIsOpen } = useAppSelector((state) => state.boardFormSlice);
+  const { changeCreateBoardModalIsOpen } = boardFormSlice.actions;
+  const dispatch = useAppDispatch();
   const [isActive, setIsActive] = useState(false);
 
   const handleChange = () => setIsActive(!isActive);
   const setInactive = () => setIsActive(false);
+  const closeModal = () => dispatch(changeCreateBoardModalIsOpen(false));
 
   return (
     <div className="h-screen flex flex-col">
@@ -18,6 +26,11 @@ function Layout() {
       </main>
       <Footer />
       <BurgerMenu isActive={isActive} setInactive={setInactive} />
+      {createBoardModalIsOpen && (
+        <Modal closeModal={closeModal}>
+          <CreateBoard closeModal={closeModal} />
+        </Modal>
+      )}
     </div>
   );
 }
