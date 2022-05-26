@@ -2,6 +2,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
 import { useAppDispatch, useAppSelector } from '../../customHooks/redux';
+import { boardFormSlice } from '../../store/reducers/BoardFormSlice';
 import { userSlice } from '../../store/reducers/UserSlice';
 import styles from './Header.module.css';
 
@@ -11,7 +12,8 @@ type HeaderProps = {
 
 function Header({ handleChange }: HeaderProps) {
   const { userLoginStatus, tokenStatus } = useAppSelector((state) => state.userSlice);
-  const { changeUserLoginStatus, changeCreateBoardModalIsOpen } = userSlice.actions;
+  const { changeUserLoginStatus } = userSlice.actions;
+  const { changeCreateBoardModalIsOpen } = boardFormSlice.actions;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

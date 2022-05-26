@@ -7,7 +7,6 @@ const initialState = {
   userId: '',
   timeToken: '',
   localization: 'en',
-  createBoardModalIsOpen: false,
 };
 
 export const userSlice = createSlice({
@@ -23,6 +22,7 @@ export const userSlice = createSlice({
     changeLocalization(state, action: PayloadAction<string>) {
       state.localization = action.payload;
     },
+<<<<<<< HEAD
     changeToken(state, action: PayloadAction<string>) {
       state.token = action.payload;
     },
@@ -35,6 +35,8 @@ export const userSlice = createSlice({
     changeCreateBoardModalIsOpen(state, action: PayloadAction<boolean>) {
       state.createBoardModalIsOpen = action.payload;
     },
+=======
+>>>>>>> 5d29371 (feat: add confirmModal, create board, delete board, change board)
   },
 });
 

@@ -45,7 +45,29 @@ export const taskDealerApi = createApi({
       }),
       invalidatesTags: ['Post'],
     }),
+    deleteBoard: builder.mutation<Board, string>({
+      query: (id) => ({
+        url: `boards/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Post'],
+    }),
+    updateBoard: builder.mutation<Board, Board>({
+      query: ({ id, title, description }) => ({
+        url: `boards/${id}`,
+        method: 'PUT',
+        body: { title, description },
+      }),
+      invalidatesTags: ['Post'],
+    }),
   }),
 });
 
-export const { useSignUpMutation, useSignInMutation, useGetAllBoardsQuery, useCreateBoardMutation } = taskDealerApi;
+export const {
+  useSignUpMutation,
+  useSignInMutation,
+  useGetAllBoardsQuery,
+  useCreateBoardMutation,
+  useDeleteBoardMutation,
+  useUpdateBoardMutation,
+} = taskDealerApi;
