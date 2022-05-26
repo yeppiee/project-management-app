@@ -104,7 +104,7 @@ function Authorization({ type }: AuthPropsType) {
               message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
             },
             pattern: {
-              value: /^[A-Za-z]+$/i,
+              value: /^[A-Za-z0-9]+$/i,
               message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
             },
           })}
