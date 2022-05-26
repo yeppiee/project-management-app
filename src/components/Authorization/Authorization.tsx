@@ -6,7 +6,7 @@ import { useIntl } from 'react-intl';
 import { useAppDispatch } from '../../customHooks/redux';
 import { useSignInMutation, useSignUpMutation } from '../../store/reducers/TaskDealerApi';
 import { userSlice } from '../../store/reducers/UserSlice';
-import { AuthDataType, AuthPropsType, ResTokenType, SignInDataType } from '../../Types/AuthTypes';
+import { AuthDataType, AuthPropsType, ResTokenType, SignInDataType } from '../../types/AuthTypes';
 import styles from './Authorization.module.css';
 
 function Authorization({ type }: AuthPropsType) {

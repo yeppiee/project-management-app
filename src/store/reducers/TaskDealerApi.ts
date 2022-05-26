@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
+import { Board } from '../../types/BoardsTypes';
 
 const BASE_URL = 'https://react-final-back3.herokuapp.com/';
 
@@ -11,7 +12,7 @@ export const taskDealerApi = createApi({
       const { tokenStatus } = (getState() as RootState).userSlice;
       const { token } = (getState() as RootState).userSlice;
       if (tokenStatus) {
-        headers.set('authorization', `Bearer ${`${token}`}`);
+        headers.set('authorization', `Bearer ${token}`);
       }
 
       return headers;
@@ -32,7 +33,10 @@ export const taskDealerApi = createApi({
         body,
       }),
     }),
+    getAllBoards: builder.query<Board[], null>({
+      query: () => `boards`,
+    }),
   }),
 });
 
-export const { useSignUpMutation, useSignInMutation } = taskDealerApi;
+export const { useSignUpMutation, useSignInMutation, useGetAllBoardsQuery } = taskDealerApi;

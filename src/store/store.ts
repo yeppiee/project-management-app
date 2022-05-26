@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import userSlice from './reducers/UserSlice';
+import { taskDealerApi } from './reducers/TaskDealerApi';
 
 const persistConfig = {
   key: 'root',
@@ -19,6 +20,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   userSlice,
+  [taskDealerApi.reducerPath]: taskDealerApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -30,7 +32,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(taskDealerApi.middleware),
 });
 
 export const persistor = persistStore(store);
