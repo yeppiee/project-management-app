@@ -21,7 +21,7 @@ function Task({ column }: TaskPropsType) {
 
   return (
     <>
-      <Droppable droppableId={column.id}>
+      <Droppable droppableId={column.id} type="task">
         {(provided) => (
           <div
             className={styles.taskContainer}
