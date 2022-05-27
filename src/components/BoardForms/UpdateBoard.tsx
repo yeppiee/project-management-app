@@ -15,6 +15,11 @@ function UpdateBoard({ closeModal }: Props) {
   const [updateBoard] = useUpdateBoardMutation();
   const intl = useIntl();
 
+  const title = intl.formatMessage({ id: 'board-form-title-required' });
+  const description = intl.formatMessage({ id: 'board-form-description-required' });
+  const titleMessage = intl.formatMessage({ id: 'board-form-title-message' });
+  const descriptionMessage = intl.formatMessage({ id: 'board-form-description-message' });
+
   const {
     register,
     handleSubmit,
@@ -45,14 +50,14 @@ function UpdateBoard({ closeModal }: Props) {
         </b>
         <input
           {...register('title', {
-            required: intl.formatMessage({ id: 'board-form-title-required' }),
+            required: title,
             minLength: {
               value: 3,
-              message: intl.formatMessage({ id: 'board-form-title-message' }),
+              message: titleMessage,
             },
             maxLength: {
               value: 20,
-              message: intl.formatMessage({ id: 'board-form-title-message' }),
+              message: titleMessage,
             },
           })}
           className={styles.text}
@@ -65,14 +70,14 @@ function UpdateBoard({ closeModal }: Props) {
         </b>
         <textarea
           {...register('description', {
-            required: intl.formatMessage({ id: 'board-form-description-required' }),
+            required: description,
             minLength: {
               value: 10,
-              message: intl.formatMessage({ id: 'board-form-description-message' }),
+              message: descriptionMessage,
             },
             maxLength: {
               value: 200,
-              message: intl.formatMessage({ id: 'board-form-description-message' }),
+              message: descriptionMessage,
             },
           })}
           className={styles.text}

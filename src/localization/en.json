@@ -28,5 +28,7 @@
   "board-form-title-message": "Enter from 3 to 20 characters",
   "board-form-description-message": "Enter from 10 to 200 characters",
   "confirm-modal-ok": "Yes",
-  "confirm-modal-cancel": "No"
+  "confirm-modal-cancel": "No",
+  "toast-signin-success": "Login successful!",
+  "toast-signup-success": "Registration successful"
 }
