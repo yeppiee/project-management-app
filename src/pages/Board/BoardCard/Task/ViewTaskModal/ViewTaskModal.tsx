@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router-dom';
 import { useUpdateTaskMutation } from '../../../../../store/reducers/TaskDealerApi';
 import { TaskResponse, UsersDataType } from '../../../../../Types/BoardTypes';
@@ -48,7 +49,9 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
     <div className={styles.container}>
       <div>
         <div className={styles.controls}>
-          <p className={styles.titles}>Task title</p>
+          <p className={styles.titles}>
+            <FormattedMessage id="view-task-title" />
+          </p>
           <span
             role="button"
             aria-label="edit-title"
@@ -85,7 +88,9 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
       </div>
       <div>
         <div className={styles.controls}>
-          <p className={styles.titles}>Descriptoin</p>
+          <p className={styles.titles}>
+            <FormattedMessage id="view-task-description" />
+          </p>
           <span
             role="button"
             aria-label="edit-description"
@@ -122,7 +127,10 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
       </div>
       <div>
         <div className={styles.controls}>
-          <p className={styles.titles}>Assignee</p>
+          <p className={styles.titles}>
+            {' '}
+            <FormattedMessage id="view-task-assignee" />
+          </p>
           <span
             role="button"
             aria-label="edit-assignee"

@@ -37,5 +37,9 @@
     "modal-delete-task-title": "Вы уверены что хотите удалить данную задачу?",
     "modal-delete-task-content": "Информация будет удалена немедленно. Восстановить ее не получится",
     "modal-delete-task-cancel": "Отмена",
-    "modal-delete-task-delete": "Удалить"
+    "modal-delete-task-delete": "Удалить",
+
+    "view-task-title": "Заголовок задачи",
+    "view-task-description": "Описание",
+    "view-task-assignee": "Ответственный"
 }

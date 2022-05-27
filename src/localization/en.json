@@ -38,5 +38,9 @@
     "modal-delete-task-title": "Are you sure you want delete this task?",
     "modal-delete-task-content": "This item will be deleted immediately. This action cannot be undone",
     "modal-delete-task-cancel": "Cancel",
-    "modal-delete-task-delete": "Delete"
+    "modal-delete-task-delete": "Delete",
+
+    "view-task-title": "Task title",
+    "view-task-description": "Description",
+    "view-task-assignee": "Assignee"
 }
