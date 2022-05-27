@@ -58,5 +58,7 @@
   "modal-delete-task-delete": "Удалить",
   "view-task-title": "Заголовок задачи",
   "view-task-description": "Описание",
-  "view-task-assignee": "Ответственный"
+  "view-task-assignee": "Ответственный",
+  "toast-signin-success": "Вход выполнен успешно!",
+  "toast-signup-success": "Регистрация выполнена успешно!"
 }
