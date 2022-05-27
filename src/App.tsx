@@ -1,4 +1,6 @@
 import { Suspense } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { IntlProvider } from 'react-intl';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -44,6 +46,17 @@ function App() {
           <Route path="*" element={<Navigate replace to="404" />} />
         </Route>
       </Routes>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </IntlProvider>
   );
 }
