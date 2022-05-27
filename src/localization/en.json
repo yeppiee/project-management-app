@@ -70,5 +70,7 @@
   "about-position-developer": "Developer",
   "about-work-ivan": "Project initialization, header, footer, welcome page, list with boards (create, delete, change), error handling from the backend, search for a board on the title.",
   "about-work-gena": "Backend setup and deployment, user profile (editing and deleting), authorization and account creation, 'About us' page",
-  "about-work-denis": "Setting up and connecting localization."
+  "about-work-denis": "Setting up and connecting localization.",
+  "toast-signin-success": "Login successful!",
+  "toast-signup-success": "Registration successful"
 }

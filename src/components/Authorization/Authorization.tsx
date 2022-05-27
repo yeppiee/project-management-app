@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { Buffer } from 'buffer';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../customHooks/redux';
 import { useSignInMutation, useSignUpMutation } from '../../store/reducers/TaskDealerApi';
 import { userSlice } from '../../store/reducers/UserSlice';
@@ -16,8 +16,18 @@ function Authorization({ type }: AuthPropsType) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [signUp] = useSignUpMutation();
-  const [signIn, { isError }] = useSignInMutation();
-  const [errorMessage, setErrorMessage] = useState();
+  const [signIn] = useSignInMutation();
+  const intl = useIntl();
+
+  const authLogin = intl.formatMessage({ id: 'auth-input-login' });
+  const authLoginMessageLength = intl.formatMessage({ id: 'auth-input-length' });
+  const authLoginMessageLetters = intl.formatMessage({ id: 'auth-input-letters' });
+  const authPassword = intl.formatMessage({ id: 'auth-input-password' });
+  const authName = intl.formatMessage({ id: 'auth-input-name' });
+  const authSubmit = intl.formatMessage({ id: 'auth-input-submit' });
+  const authToastSignIn = intl.formatMessage({ id: 'toast-signin-success' });
+  const authToastSignUp = intl.formatMessage({ id: 'toast-signup-success' });
+
   const {
     register,
     handleSubmit,
@@ -25,7 +35,6 @@ function Authorization({ type }: AuthPropsType) {
   } = useForm<AuthDataType>({
     mode: 'onBlur',
   });
-  const intl = useIntl();
 
   const getId = (res: ResTokenType) => {
     const buf = Buffer.from(res.token.split('.')[1], 'base64');
@@ -35,35 +44,30 @@ function Authorization({ type }: AuthPropsType) {
     dispatch(changeTimeToken(time));
   };
 
-  const singInFunc = async (data: SignInDataType) => {
-    await signIn({ login: data.login, password: data.password })
+  const singInFunc = (data: SignInDataType) => {
+    signIn({ login: data.login, password: data.password })
       .unwrap()
-      .then(
-        (res: ResTokenType) => {
-          if (!isError) {
-            dispatch(changeUserLoginStatus(true));
-            dispatch(changeTokenStatus(true));
-            dispatch(changeToken(res.token));
-            getId(res);
-            navigate('/');
-          }
-        },
-        (error) => {
-          setErrorMessage(error.data.message);
-        }
-      );
+      .then((res: ResTokenType) => {
+        dispatch(changeUserLoginStatus(true));
+        dispatch(changeTokenStatus(true));
+        dispatch(changeToken(res.token));
+        getId(res);
+        navigate('/');
+        toast.success(authToastSignIn);
+      })
+      .catch((error) => toast.error(`${error.data.message}`));
   };
-  const onSubmitUp = async (data: AuthDataType) => {
-    await signUp(data).then(
-      () => {
+
+  const onSubmitUp = (data: AuthDataType) => {
+    signUp(data)
+      .unwrap()
+      .then(() => {
+        toast.success(authToastSignUp);
         singInFunc(data);
-      },
-      (error) => {
-        setErrorMessage(error.data.message);
-      }
-    );
+      })
+      .catch((error) => toast.error(`${error.data.message}`));
   };
-  const onSubmitIn = async (data: SignInDataType) => {
+  const onSubmitIn = (data: SignInDataType) => {
     singInFunc(data);
   };
 
@@ -76,19 +80,19 @@ function Authorization({ type }: AuthPropsType) {
         </b>
         <input
           {...register('login', {
-            required: `${intl.formatMessage({ id: 'auth-input-login' })}`,
+            required: authLogin,
             minLength: {
               value: 3,
-              message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
+              message: authLoginMessageLength,
             },
             pattern: {
               value: /^[A-Za-z]+$/i,
-              message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
+              message: authLoginMessageLetters,
             },
           })}
           type="text"
           className={styles.text}
-          placeholder={`${intl.formatMessage({ id: 'auth-input-login' })}`}
+          placeholder={authLogin}
         />
       </label>
       <label htmlFor="password">
@@ -98,31 +102,27 @@ function Authorization({ type }: AuthPropsType) {
         </b>
         <input
           {...register('password', {
-            required: `${intl.formatMessage({ id: 'auth-input-password' })}`,
+            required: authPassword,
             minLength: {
               value: 3,
-              message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
+              message: authLoginMessageLength,
             },
             pattern: {
               value: /^[A-Za-z0-9]+$/i,
-              message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
+              message: authLoginMessageLetters,
             },
           })}
           type="password"
           className={styles.text}
-          placeholder={`${intl.formatMessage({ id: 'auth-input-password' })}`}
+          placeholder={authPassword}
         />
       </label>
-      <input
-        type="submit"
-        className={styles.button}
-        value={`${intl.formatMessage({ id: 'auth-input-submit' })}`}
-      />
+      <input type="submit" className={styles.button} value={authSubmit} />
     </>
   );
+
   return type === 'SignUp' ? (
     <form onSubmit={handleSubmit(onSubmitUp)} className={styles.container}>
-      <p>{errorMessage}</p>
       <label htmlFor="name">
         <b>
           <FormattedMessage id="auth-name-title" />
@@ -130,26 +130,25 @@ function Authorization({ type }: AuthPropsType) {
         </b>
         <input
           {...register('name', {
-            required: `${intl.formatMessage({ id: 'auth-input-name' })}`,
+            required: authName,
             minLength: {
               value: 3,
-              message: `${intl.formatMessage({ id: 'auth-input-length' })}`,
+              message: authLoginMessageLength,
             },
             pattern: {
               value: /^[A-Za-z]+$/i,
-              message: `${intl.formatMessage({ id: 'auth-input-letters' })}`,
+              message: authLoginMessageLetters,
             },
           })}
           type="text"
           className={styles.text}
-          placeholder={`${intl.formatMessage({ id: 'auth-input-name' })}`}
+          placeholder={authName}
         />
       </label>
       {signInJsx}
     </form>
   ) : (
     <form onSubmit={handleSubmit(onSubmitIn)} className={styles.container}>
-      <p>{errorMessage}</p>
       {signInJsx}
     </form>
   );

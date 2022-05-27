@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { UpdateUserType } from '../../types/UsersTypes';
-import { SignUpResType } from '../../types/AuthTypes';
+import { AuthDataType, SignUpResType, SignInDataType, ResTokenData } from '../../types/AuthTypes';
 import { CreateBoardType, Board } from '../../types/BoardsTypes';
 import {
   CreateColumnResponseType,
@@ -32,14 +32,14 @@ export const taskDealerApi = createApi({
   }),
   tagTypes: ['Post', 'Board'],
   endpoints: (builder) => ({
-    signUp: builder.mutation({
+    signUp: builder.mutation<SignUpResType, AuthDataType>({
       query: (body) => ({
         url: 'signup',
         method: 'POST',
         body,
       }),
     }),
-    signIn: builder.mutation({
+    signIn: builder.mutation<ResTokenData, SignInDataType>({
       query: (body) => ({
         url: 'signin',
         method: 'POST',
