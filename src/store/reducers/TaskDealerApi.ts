@@ -35,7 +35,6 @@ export const taskDealerApi = createApi({
         body,
       }),
     }),
-<<<<<<< HEAD
     getUserById: builder.query<SignUpResType, string>({
       query: (id) => ({ url: `users/${id}` }),
     }),
