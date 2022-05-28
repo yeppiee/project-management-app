@@ -7,7 +7,7 @@
   @apply flex items-center w-full bg-gray-200 hover:bg-gray-300 p-4 rounded-md transition-colors;
 }
 
-.item:hover > .title {
+.item:hover>.title {
   @apply text-mainHover;
 }
 
@@ -27,6 +27,6 @@
   @apply flex items-center justify-center;
 }
 
-.button > i {
+.button>i {
   @apply cursor-pointer text-main hover:text-mainHover transition-colors;
 }

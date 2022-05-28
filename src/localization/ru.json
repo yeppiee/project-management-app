@@ -28,5 +28,8 @@
   "board-form-title-message": "Введите от 3 до 20 символов",
   "board-form-description-message": "Введите от 10 до 200 символов",
   "confirm-modal-ok": "Да",
-  "confirm-modal-cancel": "Нет"
+  "confirm-modal-cancel": "Нет",
+  "profile-form-title": "Изменить данные пользователя:",
+  "profile-delete-btn": "Удалить аккаунт",
+  "profile-delete-question": "Вы действительно хотите удалить аккаунт?"
 }
