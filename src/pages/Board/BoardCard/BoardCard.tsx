@@ -5,7 +5,7 @@ import { CreateColumnResponseType } from '../../../types/BoardTypes';
 import styles from './BoardCard.module.css';
 import BoardCardTitle from './BoardCardTitle/BoardCardTitle';
 import Task from './Task/Task';
-
+// sdfsdfsdfsdf
 type BoardCardPropsType = {
   column: CreateColumnResponseType;
   index: number;
