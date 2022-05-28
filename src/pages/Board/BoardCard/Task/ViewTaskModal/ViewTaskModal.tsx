@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router-dom';
 import { useUpdateTaskMutation } from '../../../../../store/reducers/TaskDealerApi';
-import { TaskResponse, UsersDataType } from '../../../../../Types/BoardTypes';
+import { TaskResponse, UsersDataType } from '../../../../../types/BoardTypes';
 import styles from './ViewTaskModal.module.css';
 
 type ViewTaskModalPropsType = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
-import { CreateColumnResponseType } from '../../../Types/BoardTypes';
+import { CreateColumnResponseType } from '../../../types/BoardTypes';
 import styles from './BoardCard.module.css';
 import BoardCardTitle from './BoardCardTitle/BoardCardTitle';
 import Task from './Task/Task';

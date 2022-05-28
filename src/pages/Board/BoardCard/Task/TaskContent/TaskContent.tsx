@@ -7,7 +7,7 @@ import {
   useDeleteTaskMutation,
   useGetAllUsersQuery,
 } from '../../../../../store/reducers/TaskDealerApi';
-import { TaskResponse } from '../../../../../Types/BoardTypes';
+import { TaskResponse } from '../../../../../types/BoardTypes';
 import ViewTaskModal from '../ViewTaskModal/ViewTaskModal';
 import styles from './TaskContent.module.css';
 

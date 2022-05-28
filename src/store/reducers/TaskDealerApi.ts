@@ -9,7 +9,7 @@ import {
   UpdateColumnType,
   UpdateTaskAndColumn,
   UpdateTaskType,
-} from '../../Types/BoardTypes';
+} from '../../types/BoardTypes';
 import { RootState } from '../store';
 
 const BASE_URL = 'https://react-final-back3.herokuapp.com/';

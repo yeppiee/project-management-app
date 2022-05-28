@@ -9,7 +9,7 @@ import {
   useUpdateTaskAndColumnMutation,
   useUpdateTaskMutation,
 } from '../../store/reducers/TaskDealerApi';
-import { CreateColumnResponseType, CreateTaskType } from '../../Types/BoardTypes';
+import { CreateColumnResponseType, CreateTaskType } from '../../types/BoardTypes';
 import styles from './Board.module.css';
 import BoardCard from './BoardCard/BoardCard';
 import BoardHeader from './BoardHeader/BoardHeader';

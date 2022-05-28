@@ -7,7 +7,7 @@ import {
   useDeleteColumnMutation,
   useUpdateColumnMutation,
 } from '../../../../store/reducers/TaskDealerApi';
-import { CreateColumnResponseType } from '../../../../Types/BoardTypes';
+import { CreateColumnResponseType } from '../../../../types/BoardTypes';
 import styles from './BoardCardTitle.module.css';
 
 type CardPropsType = {

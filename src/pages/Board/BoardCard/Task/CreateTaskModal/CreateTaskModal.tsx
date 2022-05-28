@@ -5,7 +5,7 @@ import {
   useCreateTaskMutation,
   useGetAllUsersQuery,
 } from '../../../../../store/reducers/TaskDealerApi';
-import { CreateColumnResponseType, UsersDataType } from '../../../../../Types/BoardTypes';
+import { CreateColumnResponseType, UsersDataType } from '../../../../../types/BoardTypes';
 import styles from './CreateTaskModal.module.css';
 
 type FormDataType = {

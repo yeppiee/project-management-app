@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { Droppable } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
 import Modal from '../../../../components/Modal/Modal';
-import { CreateColumnResponseType, TaskResponse } from '../../../../Types/BoardTypes';
+import { CreateColumnResponseType, TaskResponse } from '../../../../types/BoardTypes';
 import styles from './Task.module.css';
 import TaskContent from './TaskContent/TaskContent';
 import CreateTaskModal from './CreateTaskModal/CreateTaskModal';
