@@ -73,5 +73,15 @@
   "about-work-gena": "Backend setup and deployment, user profile (editing and deleting), authorization and account creation, 'About us' page",
   "about-work-denis": "Setting up and connecting localization.",
   "toast-signin-success": "Login successful!",
-  "toast-signup-success": "Registration successful"
+  "toast-signup-success": "Registration successful",
+  "toast-token-broken": "Automatically Sign out has been activated, please Sign In again.",
+  "toast-createBoard-form-pending": "Board creation in progress...",
+  "toast-createBoard-form-success": "The board has been successfully created",
+  "toast-createBoard-form-error": "Error in creating the board.",
+  "toast-updateBoard-form-pending": "Board update in progress...",
+  "toast-updateBoard-form-success": "The board has been successfully updated",
+  "toast-updateBoard-form-error": "Error in updating the board.",
+  "toast-deleteBoard-form-pending": "Board delete in progress...",
+  "toast-deleteBoard-form-success": "The board has been successfully deleted",
+  "toast-deleteBoard-form-error": "Error in deleting the board."
 }
