@@ -61,5 +61,15 @@
   "view-task-description": "Описание",
   "view-task-assignee": "Ответственный",
   "toast-signin-success": "Вход выполнен успешно!",
-  "toast-signup-success": "Регистрация выполнена успешно!"
+  "toast-signup-success": "Регистрация выполнена успешно!",
+  "toast-token-broken": "Выполнен автоматический выход, пожалуйста выполните повторный вход.",
+  "toast-createBoard-form-pending": "Идёт создание доски...",
+  "toast-createBoard-form-success": "Доска успешно создана.",
+  "toast-createBoard-form-error": "Ошибка при создании доски.",
+  "toast-updateBoard-form-pending": "Идёт обновление доски...",
+  "toast-updateBoard-form-success": "Доска успешно обновлена.",
+  "toast-updateBoard-form-error": "Ошибка при обновление доски.",
+  "toast-deleteBoard-form-pending": "Идёт удаление доски...",
+  "toast-deleteBoard-form-success": "Доска успешно удалена.",
+  "toast-deleteBoard-form-error": "Ошибка при удалении доски."
 }
