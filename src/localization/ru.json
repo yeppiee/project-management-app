@@ -27,6 +27,7 @@
   "board-form-description-required": "Введите Описание",
   "board-form-title-message": "Введите от 3 до 20 символов",
   "board-form-description-message": "Введите от 10 до 200 символов",
+  "board-emptyBoards-message": "Нет ни одной доски. Создайте доску.",
   "confirm-modal-ok": "Да",
   "confirm-modal-cancel": "Нет",
   "toast-signin-success": "Вход выполнен успешно!",
