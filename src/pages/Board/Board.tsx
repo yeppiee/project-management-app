@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router-dom';
 import Modal from '../../components/Modal/Modal';
+import Loader from '../../Loader';
 import {
   useGetBoardQuery,
   useUpdateColumnMutation,
@@ -125,10 +126,10 @@ function Board() {
   useEffect(() => {
     if (data) setDataCopy(data.columns.slice());
   }, [data]);
-  if (!data) {
-    return <div>Board not found</div>;
-  }
-  return (
+
+  return !data ? (
+    <Loader />
+  ) : (
     <div className={styles.board}>
       <BoardHeader boardName={data.title} />
       <DragDropContext onDragEnd={onDragEnd}>
