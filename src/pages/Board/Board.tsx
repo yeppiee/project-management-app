@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { FormattedMessage } from 'react-intl';
@@ -20,7 +21,7 @@ function Board() {
   const [updateTask] = useUpdateTaskMutation();
   const [updateTaskAndColumn] = useUpdateTaskAndColumnMutation();
   const [updateColumn] = useUpdateColumnMutation();
-  const [dataCopy, setDataCopy] = useState([]);
+  const [dataCopy, setDataCopy] = useState<CreateColumnResponseType[]>([]);
   const { data } = useGetBoardQuery(id);
   const [isOpenModal, setOpenModal] = useState(false);
   const handleCancelModal = () => setOpenModal(false);
@@ -37,6 +38,13 @@ function Board() {
       const draggableColumn = data.columns.find(
         (column: CreateColumnResponseType) => column.id === draggableId
       );
+      const copy = JSON.parse(JSON.stringify(dataCopy)) as CreateColumnResponseType[];
+      const sortedColumns = copy.sort((a, b) => a.order - b.order);
+      sortedColumns.splice(source.index - 1, 1);
+      sortedColumns.splice(destination.index - 1, 0, draggableColumn);
+      const resultColumns = sortedColumns.map((column, index) => ({ ...column, order: index + 1 }));
+      setDataCopy(resultColumns);
+
       updateColumn({
         boardId: id,
         columnId: draggableId,
@@ -48,6 +56,19 @@ function Board() {
       const draggableTask = data.columns
         .find((column: CreateColumnResponseType) => column.id === source.droppableId)
         .tasks.find((task: CreateTaskType) => task.id === draggableId);
+
+      const copy = JSON.parse(JSON.stringify(dataCopy));
+      const targetColumn = copy.find(
+        (column: CreateColumnResponseType) => column.id === source.droppableId
+      ) as unknown as CreateColumnResponseType;
+      const sortedTasks = targetColumn.tasks.sort((a, b) => a.order - b.order);
+      sortedTasks.splice(source.index - 1, 1);
+      sortedTasks.splice(destination.index - 1, 0, draggableTask);
+      const resultTasks = sortedTasks.map((task, index) => ({ ...task, order: index + 1 }));
+      const resultColumn = { ...targetColumn, tasks: resultTasks };
+      copy.splice(targetColumn.order - 1, 1, resultColumn);
+      setDataCopy(copy);
+
       await updateTask({
         ...draggableTask,
         boardId: id,
@@ -59,6 +80,38 @@ function Board() {
       const draggableTask = data.columns
         .find((column: CreateColumnResponseType) => column.id === source.droppableId)
         .tasks.find((task: CreateTaskType) => task.id === draggableId);
+
+      const copy = JSON.parse(JSON.stringify(dataCopy));
+      const currentColumn = copy.find(
+        (column: CreateColumnResponseType) => column.id === source.droppableId
+      ) as CreateColumnResponseType;
+      const dropColumn = copy.find(
+        (column: CreateColumnResponseType) => column.id === destination.droppableId
+      ) as CreateColumnResponseType;
+      const currentColumnTasks = currentColumn.tasks.sort((a, b) => a.order - b.order);
+      const dropColumnTasks = dropColumn.tasks.sort((a, b) => a.order - b.order);
+      if (dropColumnTasks.length === 0) {
+        dropColumnTasks.push(draggableTask);
+      } else {
+        dropColumnTasks.splice(destination.index - 1, 0, draggableTask);
+      }
+
+      currentColumnTasks.splice(source.index - 1, 1);
+
+      const resultCurrentColumnTasks = currentColumnTasks.map((task, index) => ({
+        ...task,
+        order: index + 1,
+      }));
+      const resultCurrentColumn = { ...currentColumn, tasks: resultCurrentColumnTasks };
+      const resultDropColumnTasks = dropColumnTasks.map((task, index) => ({
+        ...task,
+        order: index + 1,
+      }));
+      const resultDropColumn = { ...dropColumn, tasks: resultDropColumnTasks };
+      copy.splice(resultCurrentColumn.order - 1, 1, resultCurrentColumn);
+      copy.splice(resultDropColumn.order - 1, 1, resultDropColumn);
+      setDataCopy(copy);
+
       await updateTaskAndColumn({
         ...draggableTask,
         boardId: id,
