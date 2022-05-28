@@ -27,6 +27,7 @@
   "board-form-description-required": "Description is Required",
   "board-form-title-message": "Enter from 3 to 20 characters",
   "board-form-description-message": "Enter from 10 to 200 characters",
+  "board-emptyBoards-message": "There are no boards. Create a board.",
   "confirm-modal-ok": "Yes",
   "confirm-modal-cancel": "No",
   "profile-form-title": "Change user data:",
