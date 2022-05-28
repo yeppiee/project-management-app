@@ -1,7 +1,7 @@
 .board {
   display: flex;
   flex-wrap: wrap;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 174px);
   padding: 0 10px;
 
 /*  overflow-x: auto; */
