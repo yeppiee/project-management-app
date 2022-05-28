@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { useCreateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { CreateBoardType } from '../../types/BoardsTypes';
 import ValidateError from '../ValidateError';
@@ -30,7 +31,11 @@ function CreateBoard({ closeModal }: Props) {
   });
 
   const onSubmit: SubmitHandler<CreateBoardType> = (data) => {
-    createBoard(data);
+    toast.promise(createBoard(data), {
+      pending: `${intl.formatMessage({ id: 'toast-createBoard-form-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-createBoard-form-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-createBoard-form-error' })}`,
+    });
     reset();
     closeModal();
     navigate('/');

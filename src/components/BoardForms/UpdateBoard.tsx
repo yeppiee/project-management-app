@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { useUpdateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { Board } from '../../types/BoardsTypes';
 import ValidateError from '../ValidateError';
@@ -36,7 +37,11 @@ function UpdateBoard({ closeModal }: Props) {
   const onSubmit: SubmitHandler<Board> = (data) => {
     const { id } = updateData;
     const newData = { ...data, id };
-    updateBoard(newData);
+    toast.promise(updateBoard(newData), {
+      pending: `${intl.formatMessage({ id: 'toast-updateBoard-form-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-updateBoard-form-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-updateBoard-form-error' })}`,
+    });
     reset();
     closeModal();
   };
