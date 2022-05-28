@@ -1,8 +1,7 @@
-/* eslint-disable no-param-reassign */
 import { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { FormattedMessage } from 'react-intl';
-/* import { useParams } from 'react-router-dom'; */
+import { useParams } from 'react-router-dom';
 import Modal from '../../components/Modal/Modal';
 import {
   useGetBoardQuery,
@@ -17,7 +16,7 @@ import BoardHeader from './BoardHeader/BoardHeader';
 import ColumnModal from './ColumnModal/ColumnModal';
 
 function Board() {
-  const id = '8ccf95fc-8e38-4aef-855c-f5986f093b08';
+  const { id } = useParams();
   const [updateTask] = useUpdateTaskMutation();
   const [updateTaskAndColumn] = useUpdateTaskAndColumnMutation();
   const [updateColumn] = useUpdateColumnMutation();
@@ -46,7 +45,7 @@ function Board() {
       setDataCopy(resultColumns);
 
       updateColumn({
-        boardId: id,
+        boardId: id as string,
         columnId: draggableId,
         order: destination.index,
         title: draggableColumn.title,
@@ -133,7 +132,7 @@ function Board() {
     <div className={styles.board}>
       <BoardHeader boardName={data.title} />
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId={id} direction="horizontal" type="column">
+        <Droppable droppableId={id as string} direction="horizontal" type="column">
           {(provided) => (
             <div
               {...provided.droppableProps}

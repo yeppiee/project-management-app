@@ -34,12 +34,18 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
   const handleEditAssignee = () => setIseEditAssignee(true);
   const cancelEditAssignee = () => setIseEditAssignee(false);
   const updateTitle = async () => {
+    if (!titleValue) {
+      return null;
+    }
     await updateTask({ ...task, columnId, boardId, title: titleValue });
-    setIseEditTitle(false);
+    return setIseEditTitle(false);
   };
   const updateDescription = async () => {
+    if (!titleValue) {
+      return null;
+    }
     await updateTask({ ...task, columnId, boardId, description: descriptionValue });
-    setIseEditDescription(false);
+    return setIseEditDescription(false);
   };
   const updateAssignee = async () => {
     await updateTask({ ...task, columnId, boardId, userId: assigneeValue });
