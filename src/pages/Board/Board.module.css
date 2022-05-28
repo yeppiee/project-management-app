@@ -15,9 +15,7 @@
   width: 100%;
   height: calc(100% - 52.5px);
   margin: 0 10px;
-
-/*  overflow-x: auto; */
-  column-gap: 10px;
+  overflow-x: auto;
 }
 .plus {
   display: inline-block;
