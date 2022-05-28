@@ -13,7 +13,6 @@ import storage from 'redux-persist/lib/storage';
 import { taskDealerApi } from './reducers/TaskDealerApi';
 import userSlice from './reducers/UserSlice';
 import boardFormSlice from './reducers/BoardFormSlice';
-import { taskDealerApi } from './reducers/TaskDealerApi';
 
 const persistConfig = {
   key: 'root',
