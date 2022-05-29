@@ -14,7 +14,7 @@ type HeaderProps = {
 
 function Header({ handleChange }: HeaderProps) {
   const { userLoginStatus, tokenStatus } = useAppSelector((state) => state.userSlice);
-  const { changeUserLoginStatus } = userSlice.actions;
+  const { changeUserLoginStatus, changeTokenStatus } = userSlice.actions;
   const { changeCreateBoardModalIsOpen } = boardFormSlice.actions;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -24,7 +24,10 @@ function Header({ handleChange }: HeaderProps) {
     setScroll(window.scrollY);
   };
 
-  const handleSignOut = () => dispatch(changeUserLoginStatus(false));
+  const handleSignOut = () => {
+    dispatch(changeUserLoginStatus(false));
+    dispatch(changeTokenStatus(false));
+  };
   const handleLogIn = () => {
     dispatch(changeUserLoginStatus(true));
     navigate('/');
