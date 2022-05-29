@@ -23,7 +23,6 @@ const rootReducer = combineReducers({
   [taskDealerApi.reducerPath]: taskDealerApi.reducer,
   userSlice,
   boardFormSlice,
-  [taskDealerApi.reducerPath]: taskDealerApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

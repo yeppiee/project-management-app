@@ -47,7 +47,7 @@ function Task({ column }: TaskPropsType) {
         )}
       </Droppable>
       {isOpenModal && (
-        <Modal closeModal={() => setOpenModal(false)}>
+        <Modal closeModal={handleCancelModal}>
           <CreateTaskModal
             boardId={boardId as string}
             column={column}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router-dom';
 import Modal from '../../../../components/Modal/Modal';
-/* import { useParams } from 'react-router-dom'; */
 import {
   useDeleteColumnMutation,
   useUpdateColumnMutation,

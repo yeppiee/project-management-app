@@ -3,8 +3,6 @@
   flex-wrap: wrap;
   height: calc(100vh - 174px);
   padding: 0 10px;
-
-/*  overflow-x: auto; */
   font-size: 15px;
   background-color: rgb(43 60 96);
 }

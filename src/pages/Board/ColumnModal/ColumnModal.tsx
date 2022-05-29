@@ -2,15 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useCreateColumnMutation } from '../../../store/reducers/TaskDealerApi';
+import { ColumnModalPropsType, FormColumnDataType } from '../../../types/BoardTypes';
 import styles from './ColumnModal.module.css';
-
-type FormDataType = {
-  title: string;
-};
-type ColumnModalPropsType = {
-  boardId: string;
-  handleCancel: () => void;
-};
 
 function ColumnModal({ boardId, handleCancel }: ColumnModalPropsType) {
   const {
@@ -18,10 +11,10 @@ function ColumnModal({ boardId, handleCancel }: ColumnModalPropsType) {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormDataType>();
+  } = useForm<FormColumnDataType>();
   const intl = useIntl();
   const [createColumn] = useCreateColumnMutation();
-  const onSubmit = async ({ title }: FormDataType) => {
+  const onSubmit = async ({ title }: FormColumnDataType) => {
     await createColumn({ boardId, title });
     reset();
   };

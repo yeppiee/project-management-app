@@ -21,6 +21,7 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
   const [titleValue, setTitleValue] = useState(task.title);
   const [descriptionValue, setDescriptionValue] = useState(task.description);
   const [assigneeValue, setAssigneeValue] = useState(task.userId);
+
   const changeTitleValue = (e: React.ChangeEvent<HTMLInputElement>) =>
     setTitleValue(e.target.value);
   const changeDescriptionValue = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -51,6 +52,7 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
     await updateTask({ ...task, columnId, boardId, userId: assigneeValue });
     setIseEditAssignee(false);
   };
+
   return (
     <div className={styles.container}>
       <div>
@@ -134,7 +136,6 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
       <div>
         <div className={styles.controls}>
           <p className={styles.titles}>
-            {' '}
             <FormattedMessage id="view-task-assignee" />
           </p>
           <span
@@ -162,12 +163,7 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
               className={styles.cancel}
               onClick={cancelEditAssignee}
             />
-            <select
-              className={styles.input}
-              value={assigneeValue}
-              onChange={changeAssigneeValue}
-              /*  defaultValue={task.userId} */
-            >
+            <select className={styles.input} value={assigneeValue} onChange={changeAssigneeValue}>
               {users?.length > 0 &&
                 users.map((user: UsersDataType) => {
                   return (
@@ -180,7 +176,6 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
           </div>
         )}
       </div>
-
       <span
         role="button"
         tabIndex={0}
