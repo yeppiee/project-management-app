@@ -1,6 +1,5 @@
 .container {
   @apply flex justify-between items-center px-3 py-6 bg-main text-white duration-1000;
-  z-index: 3;
 }
 
 .sticky {

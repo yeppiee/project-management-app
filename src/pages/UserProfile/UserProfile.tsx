@@ -34,6 +34,7 @@ function UserProfile() {
       name: data && data.name,
     },
   });
+
   const edit = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     const input = document.getElementById(id) as HTMLInputElement;
     const button = e.target as HTMLButtonElement;
@@ -192,7 +193,7 @@ function UserProfile() {
         type="button"
         className={styles.delete__btn_main}
         value={`${intl.formatMessage({ id: 'profile-delete-btn' })}`}
-        onClick={() => openModal()}
+        onClick={openModal}
       />
     </div>
   );
