@@ -18,7 +18,7 @@ function UserProfile() {
   const { userId } = useAppSelector((state) => state.userSlice);
   const dispatch = useAppDispatch();
   const { changeUserLoginStatus, changeTokenStatus, changeToken } = userSlice.actions;
-  const { data } = useGetUserByIdQuery(userId);
+  const { data, refetch } = useGetUserByIdQuery(userId);
   const [popupIsOpen, setPopupIsOpen] = useState<boolean>(false);
   const [updateUser] = useUpdateUserMutation();
   const [deleteUser] = useDeleteUserMutation();
@@ -26,7 +26,6 @@ function UserProfile() {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm<UpdateUserType>({
     mode: 'onBlur',
     defaultValues: {
@@ -49,10 +48,15 @@ function UserProfile() {
       button.classList.add('hidden');
     }
   };
-  const onSubmit = async () => {
-    const newData = getValues();
-    newData.id = userId;
-    await updateUser(newData);
+  const onSubmit = (dataForm: UpdateUserType) => {
+    const sendData = dataForm;
+    sendData.id = userId;
+    updateUser(sendData)
+      .unwrap()
+      .then(() => {
+        refetch();
+      })
+      .catch((error) => `${error.data.message}`);
   };
   const openModal = () => {
     setPopupIsOpen(true);
