@@ -67,7 +67,7 @@
 .titleContainer {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   margin-top: 5px;
