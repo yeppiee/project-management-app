@@ -59,5 +59,11 @@
   "modal-delete-task-delete": "Delete",
   "view-task-title": "Task title",
   "view-task-description": "Description",
-  "view-task-assignee": "Assignee"
+  "view-task-assignee": "Assignee",
+  "about-name-ivan": "Ivan",
+  "about-name-gena": "Gennady",
+  "about-name-denis": "Denis",
+  "about-last-name-ivan": "Pakhotnykh",
+  "about-last-name-gena": "Vinokurov",
+  "about-last-name-denis": "Gusar"
 }

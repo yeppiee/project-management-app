@@ -29,6 +29,7 @@
   "board-form-description-message": "Введите от 10 до 200 символов",
   "confirm-modal-ok": "Да",
   "confirm-modal-cancel": "Нет",
+<<<<<<< HEAD
   "profile-form-title": "Изменить данные пользователя:",
   "profile-delete-btn": "Удалить аккаунт",
   "profile-delete-question": "Вы действительно хотите удалить аккаунт?",
@@ -58,5 +59,11 @@
   "modal-delete-task-delete": "Удалить",
   "view-task-title": "Заголовок задачи",
   "view-task-description": "Описание",
-  "view-task-assignee": "Ответственный"
+  "view-task-assignee": "Ответственный",
+  "about-name-ivan": "Иван",
+  "about-name-gena": "Геннадий",
+  "about-name-denis": "Денис",
+  "about-last-name-ivan": "Пахотных",
+  "about-last-name-gena": "Винокуров",
+  "about-last-name-denis": "Гусар"
 }
