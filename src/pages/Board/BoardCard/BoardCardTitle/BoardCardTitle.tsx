@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router-dom';
-import Modal from '../../../../components/Modal/Modal';
+import ConfirmModal from '../../../../components/ConfirmModal';
 import {
   useDeleteColumnMutation,
   useUpdateColumnMutation,
@@ -82,24 +82,9 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
         </div>
       )}
       {viewConfirmModal && (
-        <Modal closeModal={closeModal}>
-          <div className={styles.container}>
-            <p className={styles.modalTitle}>
-              <FormattedMessage id="modal-delete-column-title" />
-            </p>
-            <p>
-              <FormattedMessage id="modal-delete-column-content" />
-            </p>
-            <div className={styles.controls}>
-              <button className={styles.button} type="button" onClick={closeModal}>
-                <FormattedMessage id="modal-delete-column-cancel" />
-              </button>
-              <button type="button" className={styles.button} onClick={callDeleteColumn}>
-                <FormattedMessage id="modal-delete-column-delete" />
-              </button>
-            </div>
-          </div>
-        </Modal>
+        <ConfirmModal closeConfirmModal={closeModal} handleBoardDelete={callDeleteColumn}>
+          <FormattedMessage id="modal-delete-column-title" />
+        </ConfirmModal>
       )}
     </>
   );

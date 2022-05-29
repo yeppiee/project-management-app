@@ -10,6 +10,7 @@ import {
 import { TaskResponse } from '../../../../../types/BoardTypes';
 import ViewTaskModal from '../ViewTaskModal/ViewTaskModal';
 import styles from './TaskContent.module.css';
+import ConfirmModal from '../../../../../components/ConfirmModal';
 
 type TaskContentPropsType = {
   task: TaskResponse;
@@ -63,28 +64,12 @@ function TaskContent({ task, columnId, index }: TaskContentPropsType) {
         </Modal>
       )}
       {viewConfirmModal && (
-        <Modal closeModal={closeModal}>
-          <div className={styles.container}>
-            <p className={styles.modalTitle}>
-              <FormattedMessage id="modal-delete-task-title" />
-            </p>
-            <p>
-              <FormattedMessage id="modal-delete-task-content" />
-            </p>
-            <div className={styles.controls}>
-              <button className={styles.button} type="button" onClick={closeModal}>
-                <FormattedMessage id="modal-delete-task-cancel" />
-              </button>
-              <button
-                type="button"
-                className={styles.button}
-                onClick={() => handleDeletetask(task)}
-              >
-                <FormattedMessage id="modal-delete-task-delete" />
-              </button>
-            </div>
-          </div>
-        </Modal>
+        <ConfirmModal
+          closeConfirmModal={closeModal}
+          handleBoardDelete={() => handleDeletetask(task)}
+        >
+          <FormattedMessage id="modal-delete-task-title" />
+        </ConfirmModal>
       )}
     </>
   );
