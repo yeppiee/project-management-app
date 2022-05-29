@@ -51,7 +51,7 @@
 }
 .controls {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   column-gap: 10px;
 }
@@ -64,4 +64,3 @@
   background-color: rgb(72, 65, 161);
   border-radius: 4px;
 }
-
