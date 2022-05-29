@@ -28,5 +28,11 @@
   "board-form-title-message": "Enter from 3 to 20 characters",
   "board-form-description-message": "Enter from 10 to 200 characters",
   "confirm-modal-ok": "Yes",
-  "confirm-modal-cancel": "No"
+  "confirm-modal-cancel": "No",
+  "about-name-ivan": "Ivan",
+  "about-name-gena": "Gennady",
+  "about-name-denis": "Denis",
+  "about-last-name-ivan": "Pakhotnykh",
+  "about-last-name-gena": "Vinokurov",
+  "about-last-name-denis": "Gusar"
 }
