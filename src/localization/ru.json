@@ -29,7 +29,6 @@
   "board-form-description-message": "Введите от 10 до 200 символов",
   "confirm-modal-ok": "Да",
   "confirm-modal-cancel": "Нет",
-<<<<<<< HEAD
   "profile-form-title": "Изменить данные пользователя:",
   "profile-delete-btn": "Удалить аккаунт",
   "profile-delete-question": "Вы действительно хотите удалить аккаунт?",
@@ -65,7 +64,7 @@
   "about-name-denis": "Денис",
   "about-last-name-ivan": "Пахотных",
   "about-last-name-gena": "Винокуров",
-  "about-last-name-denis": "Гусар",
+  "about-last-name-denis": "Гусарь",
   "about-position-lead": "Тим-лидер",
   "about-position-developer": "Разработчик",
   "about-work-ivan": "Инициализация проекта, header, footer, приветственная страница, список с бордами(создание, удаление, изменение), обработка ошибок со стороны backend, поиск борды на названию.",
