@@ -65,5 +65,10 @@
   "about-name-denis": "Денис",
   "about-last-name-ivan": "Пахотных",
   "about-last-name-gena": "Винокуров",
-  "about-last-name-denis": "Гусар"
+  "about-last-name-denis": "Гусар",
+  "about-position-lead": "Тим-лидер",
+  "about-position-developer": "Разработчик",
+  "about-work-ivan": "Инициализация проекта, header, footer, приветственная страница, список с бордами(создание, удаление, изменение), обработка ошибок со стороны backend, поиск борды на названию.",
+  "about-work-gena": "Настройка и деплой backend, профиль пользователя(редактирование и удаление), авторизация и создание аккаунта, страница 'О нас'.",
+  "about-work-denis": "Настройка и подключение локализации."
 }

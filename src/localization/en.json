@@ -65,5 +65,10 @@
   "about-name-denis": "Denis",
   "about-last-name-ivan": "Pakhotnykh",
   "about-last-name-gena": "Vinokurov",
-  "about-last-name-denis": "Gusar"
+  "about-last-name-denis": "Gusar",
+  "about-position-lead": "Team-lead",
+  "about-position-developer": "Developer",
+  "about-work-ivan": "Project initialization, header, footer, welcome page, list with boards (create, delete, change), error handling from the backend, search for a board on the title.",
+  "about-work-gena": "Backend setup and deployment, user profile (editing and deleting), authorization and account creation, 'About us' page",
+  "about-work-denis": "Setting up and connecting localization."
 }
