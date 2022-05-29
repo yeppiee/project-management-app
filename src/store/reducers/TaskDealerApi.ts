@@ -19,6 +19,7 @@ const BASE_URL = 'https://react-final-back3.herokuapp.com/';
 
 export const taskDealerApi = createApi({
   reducerPath: 'taskDealerApi',
+  refetchOnMountOrArgChange: true,
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: (headers, { getState }) => {

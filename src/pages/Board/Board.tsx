@@ -22,7 +22,7 @@ function Board() {
   const [updateTaskAndColumn] = useUpdateTaskAndColumnMutation();
   const [updateColumn] = useUpdateColumnMutation();
   const [dataCopy, setDataCopy] = useState<CreateColumnResponseType[]>([]);
-  const { data } = useGetBoardQuery(id);
+  const { data } = useGetBoardQuery(id, { refetchOnMountOrArgChange: true });
   const [isOpenModal, setOpenModal] = useState(false);
   const handleCancelModal = () => setOpenModal(false);
   const openModal = () => setOpenModal(true);
