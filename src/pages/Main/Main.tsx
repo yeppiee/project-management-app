@@ -17,7 +17,11 @@ function Main() {
   const { updateBoardModalIsOpen, deleteData } = useAppSelector((state) => state.boardFormSlice);
   const { changeTokenStatus, changeUserLoginStatus } = userSlice.actions;
   const { changeUpdateBoardModalIsOpen } = boardFormSlice.actions;
-  const { data: boards, isLoading, error } = useGetAllBoardsQuery(null, { pollingInterval: 3000 });
+  const {
+    data: boards,
+    isLoading,
+    error,
+  } = useGetAllBoardsQuery(null, { refetchOnMountOrArgChange: true });
   const dispatch = useAppDispatch();
   const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
   const intl = useIntl();
