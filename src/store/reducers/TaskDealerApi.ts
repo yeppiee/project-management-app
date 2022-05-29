@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { UpdateUserType } from '../../types/UsersTypes';
+import { SignUpResType } from '../../types/AuthTypes';
 import { CreateBoardType, Board } from '../../types/BoardsTypes';
 import { RootState } from '../store';
 
@@ -32,6 +34,27 @@ export const taskDealerApi = createApi({
         method: 'POST',
         body,
       }),
+    }),
+    getUserById: builder.query<SignUpResType, string>({
+      query: (id) => ({ url: `users/${id}` }),
+    }),
+    updateUser: builder.mutation<UpdateUserType, Partial<UpdateUserType>>({
+      query: (data) => {
+        const { id, ...body } = data;
+        return {
+          url: `users/${id}`,
+          method: 'PUT',
+          body,
+        };
+      },
+    }),
+    deleteUser: builder.mutation<{ id: string }, string>({
+      query(id) {
+        return {
+          url: `users/${id}`,
+          method: 'DELETE',
+        };
+      },
     }),
     getAllBoards: builder.query<Board[], null>({
       query: () => 'boards',
@@ -70,4 +93,7 @@ export const {
   useCreateBoardMutation,
   useDeleteBoardMutation,
   useUpdateBoardMutation,
+  useGetUserByIdQuery,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
 } = taskDealerApi;
