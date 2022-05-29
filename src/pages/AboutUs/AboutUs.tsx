@@ -1,8 +1,8 @@
 import { useIntl } from 'react-intl';
 import styles from './AboutUs.module.css';
-import Gena from '../../assets/Gena.jpg';
-import Ivan from '../../assets/Ivan.jpg';
-import Denis from '../../assets/Denis.jpg';
+import Gena from '../../assets/Gena.webp';
+import Ivan from '../../assets/Ivan.webp';
+import Denis from '../../assets/Denis.webp';
 
 function AboutUs() {
   const intl = useIntl();
