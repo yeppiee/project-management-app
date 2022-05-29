@@ -5,19 +5,8 @@ import {
   useCreateTaskMutation,
   useGetAllUsersQuery,
 } from '../../../../../store/reducers/TaskDealerApi';
-import { CreateColumnResponseType, UsersDataType } from '../../../../../types/BoardTypes';
+import { FormDataType, TaskModalPropsType, UsersDataType } from '../../../../../types/BoardTypes';
 import styles from './CreateTaskModal.module.css';
-
-type FormDataType = {
-  title: string;
-  description: string;
-  userId: string;
-};
-type TaskModalPropsType = {
-  boardId: string;
-  handleCancel: () => void;
-  column: CreateColumnResponseType;
-};
 
 function CreateTaskModal({ boardId, handleCancel, column: { id } }: TaskModalPropsType) {
   const {

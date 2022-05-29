@@ -57,3 +57,20 @@ export type UsersDataType = {
   name: string;
   login: string;
 };
+export type FormDataType = {
+  title: string;
+  description: string;
+  userId: string;
+};
+export type TaskModalPropsType = {
+  boardId: string;
+  handleCancel: () => void;
+  column: CreateColumnResponseType;
+};
+export type FormColumnDataType = {
+  title: string;
+};
+export type ColumnModalPropsType = {
+  boardId: string;
+  handleCancel: () => void;
+};
