@@ -8,8 +8,8 @@
 }
 .boardsContainer {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   height: calc(100% - 52.5px);
   margin: 0 10px;

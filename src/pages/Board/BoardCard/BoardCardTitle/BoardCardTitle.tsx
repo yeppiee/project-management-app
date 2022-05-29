@@ -46,7 +46,7 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
   return (
     <>
       {isTitleView ? (
-        <div className={styles.titleContainer}>
+        <div className={styles.container}>
           <div className={styles.titleContainer} role="button" tabIndex={0} onClick={onClickTitle}>
             <p className={styles.titleContent}>{title}</p>
           </div>
