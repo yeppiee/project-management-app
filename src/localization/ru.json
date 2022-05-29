@@ -53,7 +53,7 @@
   "modal-create-task-userId-required": "Необходимо выбрать исполнителя задачи",
   "task-button-create-task": "Добавить задачу",
   "modal-delete-task-title": "Вы уверены что хотите удалить данную задачу?",
-  "modal-delete-task-content": "Информация будет удалена немедленно. Восстановить ее не получится",
+  "modal-delete-task-content": "Информация будет удалена немедленно. Восстановить ее не получится.",
   "modal-delete-task-cancel": "Отмена",
   "modal-delete-task-delete": "Удалить",
   "view-task-title": "Заголовок задачи",
