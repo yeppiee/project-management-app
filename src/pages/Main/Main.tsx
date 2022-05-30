@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { store } from '../../store';
@@ -11,20 +11,29 @@ import { userSlice } from '../../store/reducers/UserSlice';
 import { boardFormSlice } from '../../store/reducers/BoardFormSlice';
 import styles from './Main.module.css';
 import ConfirmModal from '../../components/ConfirmModal';
+import Search from '../../components/Search/Search';
 
 function Main() {
   const [deleteBoard] = useDeleteBoardMutation();
+  const { searchInput } = useAppSelector((state) => state.userSlice);
   const { updateBoardModalIsOpen, deleteData } = useAppSelector((state) => state.boardFormSlice);
   const { changeTokenStatus, changeUserLoginStatus } = userSlice.actions;
   const { changeUpdateBoardModalIsOpen } = boardFormSlice.actions;
   const {
-    data: boards,
+    data: notSortedBoards,
     isLoading,
     error,
   } = useGetAllBoardsQuery(null, { refetchOnMountOrArgChange: true });
   const dispatch = useAppDispatch();
   const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
   const intl = useIntl();
+
+  const boards = useMemo(() => {
+    if (notSortedBoards && searchInput) {
+      return notSortedBoards.filter((board) => board.title.includes(searchInput));
+    }
+    return notSortedBoards;
+  }, [notSortedBoards, searchInput]);
 
   const checkTokenTime = () => {
     const { timeToken } = store.getState().userSlice;
@@ -58,6 +67,7 @@ function Main() {
     <div className={styles.container}>
       {isLoading && <h1>Loading...</h1>}
       {error && <h1>Error</h1>}
+      <Search />
       {boards && <BoardList boards={boards} openConfirmModal={openConfirmModal} />}
       {updateBoardModalIsOpen && (
         <Modal closeModal={closeModal}>

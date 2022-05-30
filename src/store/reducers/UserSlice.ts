@@ -7,6 +7,7 @@ const initialState = {
   userId: '',
   timeToken: '',
   localization: 'en',
+  searchInput: '',
 };
 
 export const userSlice = createSlice({
@@ -30,6 +31,9 @@ export const userSlice = createSlice({
     },
     changeTimeToken(state, action: PayloadAction<string>) {
       state.timeToken = action.payload;
+    },
+    changeSearchInput(state, action: PayloadAction<string>) {
+      state.searchInput = action.payload;
     },
   },
 });
