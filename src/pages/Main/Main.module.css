@@ -6,6 +6,7 @@
 @media (max-width:1024px) {
   .container {
     font-size: 20px;
+    @apply py-8;
   }
 }
 
