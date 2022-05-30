@@ -111,5 +111,7 @@
   "toast-updateUser-profile-error": "This login is already taken.",
   "toast-deleteUser-profile-pending": "User delete in progress...",
   "toast-deleteUser-profile-success": "User has been successfully deleted",
-  "toast-deleteUser-profile-error": "Error in deleting the user."
+  "toast-deleteUser-profile-error": "Error in deleting the user.",
+  "welcome-page-app-description": "A project management system is an application that helps an individual or a group of developers achieve their goals. The project was part of The Rolling Scopes School React course.",
+  "welcome-page-app-about-team": "This project was created by a team of three people, you can find the authors GitHubs in the footer of the application."
 }

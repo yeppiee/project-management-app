@@ -109,5 +109,7 @@
   "toast-updateUser-profile-error": "Этот логин уже занят.",
   "toast-deleteUser-profile-pending": "Идёт удаление пользователя...",
   "toast-deleteUser-profile-success": "Пользователь успешно удалён.",
-  "toast-deleteUser-profile-error": "Ошибка при удалении пользователя."
+  "toast-deleteUser-profile-error": "Ошибка при удалении пользователя.",
+  "welcome-page-app-description": "Project Management App - приложение для управления проектами как для индивидуальных проектов, так и для командных. Проект является частью программы курса по React в Rolling Scopes School.",
+  "welcome-page-app-about-team": "Проект был создан тремя разработчиками, вы можете найти ссылки на GitHub-профили авторов приложения в низу страницы."
 }

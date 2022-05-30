@@ -31,13 +31,22 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
   const changeAssigneeValue = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setAssigneeValue(e.target.value);
   const handleEditTitle = () => setIseEditTitle(true);
-  const cancelEditTitle = () => setIseEditTitle(false);
+  const cancelEditTitle = () => {
+    setIseEditTitle(false);
+    setTitleValue(task.title);
+  };
   const handleEditDescriptoin = () => setIseEditDescription(true);
-  const cancelEditDescriptoin = () => setIseEditDescription(false);
+  const cancelEditDescriptoin = () => {
+    setIseEditDescription(false);
+    setDescriptionValue(task.description);
+  };
   const handleEditAssignee = () => setIseEditAssignee(true);
-  const cancelEditAssignee = () => setIseEditAssignee(false);
-  const updateTitle = () => {
-    if (!titleValue) {
+  const cancelEditAssignee = () => {
+    setIseEditAssignee(false);
+    setAssigneeValue(task.userId);
+  };
+  const updateTitle = async () => {
+    if (titleValue.length === 0) {
       return null;
     }
     toast.promise(updateTask({ ...task, columnId, boardId, title: titleValue }), {
@@ -47,8 +56,8 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
     });
     return setIseEditTitle(false);
   };
-  const updateDescription = () => {
-    if (!titleValue) {
+  const updateDescription = async () => {
+    if (descriptionValue.length === 0) {
       return null;
     }
     toast.promise(updateTask({ ...task, columnId, boardId, description: descriptionValue }), {
