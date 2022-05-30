@@ -40,6 +40,8 @@
   .container {
     grid-gap: 50px;
     grid-template-columns: 1fr;
+    padding: 15px;
+    grid-gap: 20px;
   }
   .developer {
     padding: 20px 20px;

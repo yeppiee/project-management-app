@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
@@ -19,7 +19,7 @@ function UserProfile() {
   const { userId } = useAppSelector((state) => state.userSlice);
   const dispatch = useAppDispatch();
   const { changeUserLoginStatus, changeTokenStatus, changeToken } = userSlice.actions;
-  const { data, refetch } = useGetUserByIdQuery(userId);
+  const { data } = useGetUserByIdQuery(userId);
   const [popupIsOpen, setPopupIsOpen] = useState<boolean>(false);
   const [updateUser] = useUpdateUserMutation();
   const [deleteUser] = useDeleteUserMutation();
@@ -27,12 +27,9 @@ function UserProfile() {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<UpdateUserType>({
     mode: 'onBlur',
-    defaultValues: {
-      login: data && data.login,
-      name: data && data.name,
-    },
   });
 
   const edit = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
@@ -49,6 +46,7 @@ function UserProfile() {
       button.classList.add('hidden');
     }
   };
+
   const onSubmit = (dataForm: UpdateUserType) => {
     const sendData = dataForm;
     sendData.id = userId;
@@ -56,14 +54,16 @@ function UserProfile() {
       .unwrap()
       .then(() => toast.success(intl.formatMessage({ id: 'toast-updateUser-profile-success' })))
       .catch(() => toast.error(intl.formatMessage({ id: 'toast-updateUser-profile-error' })));
-    refetch();
   };
+
   const openModal = () => {
     setPopupIsOpen(true);
   };
+
   const closeModal = () => {
     setPopupIsOpen(false);
   };
+
   const handleDeleteUser = () => {
     toast.promise(deleteUser(userId), {
       pending: `${intl.formatMessage({ id: 'toast-deleteUser-profile-pending' })}`,
@@ -75,6 +75,13 @@ function UserProfile() {
     dispatch(changeToken(''));
     setPopupIsOpen(false);
   };
+
+  useEffect(() => {
+    if (data) {
+      setValue('login', data.login);
+      setValue('name', data.name);
+    }
+  }, [data]);
   return (
     <div className={styles.main__container}>
       {popupIsOpen && (
