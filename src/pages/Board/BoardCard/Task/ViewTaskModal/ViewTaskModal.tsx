@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useUpdateTaskMutation } from '../../../../../store/reducers/TaskDealerApi';
 import { TaskResponse, UsersDataType } from '../../../../../types/BoardTypes';
 import styles from './ViewTaskModal.module.css';
@@ -21,6 +22,7 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
   const [titleValue, setTitleValue] = useState(task.title);
   const [descriptionValue, setDescriptionValue] = useState(task.description);
   const [assigneeValue, setAssigneeValue] = useState(task.userId);
+  const intl = useIntl();
 
   const changeTitleValue = (e: React.ChangeEvent<HTMLInputElement>) =>
     setTitleValue(e.target.value);
@@ -34,22 +36,34 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
   const cancelEditDescriptoin = () => setIseEditDescription(false);
   const handleEditAssignee = () => setIseEditAssignee(true);
   const cancelEditAssignee = () => setIseEditAssignee(false);
-  const updateTitle = async () => {
+  const updateTitle = () => {
     if (!titleValue) {
       return null;
     }
-    await updateTask({ ...task, columnId, boardId, title: titleValue });
+    toast.promise(updateTask({ ...task, columnId, boardId, title: titleValue }), {
+      pending: `${intl.formatMessage({ id: 'toast-renameTitle-board-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-renameTitle-board-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-renameTitle-board-error' })}`,
+    });
     return setIseEditTitle(false);
   };
-  const updateDescription = async () => {
+  const updateDescription = () => {
     if (!titleValue) {
       return null;
     }
-    await updateTask({ ...task, columnId, boardId, description: descriptionValue });
+    toast.promise(updateTask({ ...task, columnId, boardId, description: descriptionValue }), {
+      pending: `${intl.formatMessage({ id: 'toast-renameDescription-board-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-renameDescription-board-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-renameDescription-board-error' })}`,
+    });
     return setIseEditDescription(false);
   };
-  const updateAssignee = async () => {
-    await updateTask({ ...task, columnId, boardId, userId: assigneeValue });
+  const updateAssignee = () => {
+    toast.promise(updateTask({ ...task, columnId, boardId, userId: assigneeValue }), {
+      pending: `${intl.formatMessage({ id: 'toast-renameAssignee-board-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-renameAssignee-board-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-renameAssignee-board-error' })}`,
+    });
     setIseEditAssignee(false);
   };
 

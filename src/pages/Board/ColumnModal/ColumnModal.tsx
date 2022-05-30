@@ -1,6 +1,6 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { useCreateColumnMutation } from '../../../store/reducers/TaskDealerApi';
 import { ColumnModalPropsType, FormColumnDataType } from '../../../types/BoardTypes';
 import styles from './ColumnModal.module.css';
@@ -14,8 +14,12 @@ function ColumnModal({ boardId, handleCancel }: ColumnModalPropsType) {
   } = useForm<FormColumnDataType>();
   const intl = useIntl();
   const [createColumn] = useCreateColumnMutation();
-  const onSubmit = async ({ title }: FormColumnDataType) => {
-    await createColumn({ boardId, title });
+  const onSubmit = ({ title }: FormColumnDataType) => {
+    toast.promise(createColumn({ boardId, title }), {
+      pending: `${intl.formatMessage({ id: 'toast-createColumn-board-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-createColumn-board-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-createColumn-board-error' })}`,
+    });
     reset();
   };
 

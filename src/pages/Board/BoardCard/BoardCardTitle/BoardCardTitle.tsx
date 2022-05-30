@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import ConfirmModal from '../../../../components/ConfirmModal';
 import {
   useDeleteColumnMutation,
@@ -21,23 +22,32 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
   const [isTitleView, setTitleView] = useState(true);
   const [titleInputValue, setTitleInputValue] = useState(title);
   const [viewConfirmModal, setViewConfirmModal] = useState(false);
+  const intl = useIntl();
   const onClickTitle = () => setTitleView(false);
   const onClickCancel = () => {
     setTitleView(true);
     setTitleInputValue(title);
   };
-  const onClickSubmitRename = async () => {
+  const onClickSubmitRename = () => {
     if (titleInputValue.length === 0) {
       return null;
     }
-    await renameColumn({ columnId, boardId, order, title: titleInputValue });
+    toast.promise(renameColumn({ columnId, boardId, order, title: titleInputValue }), {
+      pending: `${intl.formatMessage({ id: 'toast-renameTitle-board-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-renameTitle-board-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-renameTitle-board-error' })}`,
+    });
     return setTitleView(true);
   };
-  const onClickDeleteColumn = async () => {
+  const onClickDeleteColumn = () => {
     setViewConfirmModal(true);
   };
-  const callDeleteColumn = async () => {
-    if (boardId) await deleteColumn({ columnId, boardId });
+  const callDeleteColumn = () => {
+    toast.promise(deleteColumn({ columnId, boardId }), {
+      pending: `${intl.formatMessage({ id: 'toast-deleteColumn-board-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-deleteColumn-board-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-deleteColumn-board-error' })}`,
+    });
   };
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
     setTitleInputValue(e.target.value);

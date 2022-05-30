@@ -160,7 +160,7 @@ function Board() {
         </Droppable>
       </DragDropContext>
       {isOpenModal && (
-        <Modal closeModal={() => setOpenModal(false)}>
+        <Modal closeModal={handleCancelModal}>
           <ColumnModal handleCancel={handleCancelModal} boardId={id as string} />
         </Modal>
       )}
