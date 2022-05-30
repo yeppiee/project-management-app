@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../customHooks/redux';
 import { userSlice } from '../../store/reducers/UserSlice';
+import styles from './Search.module.css';
 
 function Search() {
   const { searchInput } = useAppSelector((state) => state.userSlice);
@@ -23,14 +24,14 @@ function Search() {
   const handleClick = () => inputRef.current?.focus();
 
   return (
-    <div className="flex items-center mb-10 gap-x-3 w-1/2">
+    <div className={styles.container}>
       <button type="button" onClick={handleClick}>
         <i className="fa-solid fa-magnifying-glass cursor-pointer" />
       </button>
       <form className="w-full" onSubmit={handleSubmit}>
         <input
           ref={inputRef}
-          className="w-full p-1 rounded-md pl-2 bg-gray-200"
+          className={styles.input}
           type="search"
           value={searchInput}
           onChange={handleChange}
