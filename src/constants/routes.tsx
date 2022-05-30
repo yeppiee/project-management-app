@@ -35,6 +35,11 @@ export const routes = [
     path: '/404',
     component: <NotFound />,
   },
+  {
+    id: 6,
+    path: '/welcome',
+    component: <Welcome />,
+  },
 ];
 
 export const welcomeRoutes = [

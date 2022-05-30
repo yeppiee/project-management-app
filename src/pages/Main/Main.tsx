@@ -56,11 +56,10 @@ function Main() {
 
   const handleBoardDelete = () => {
     closeConfirmModal();
-    toast.promise(deleteBoard(deleteData.id), {
-      pending: `${intl.formatMessage({ id: 'toast-deleteBoard-form-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-deleteBoard-form-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-deleteBoard-form-error' })}`,
-    });
+    deleteBoard(deleteData.id)
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-deleteBoard-form-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-deleteBoard-form-error' })));
   };
 
   return (

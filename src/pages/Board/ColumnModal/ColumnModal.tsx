@@ -15,11 +15,10 @@ function ColumnModal({ boardId, handleCancel }: ColumnModalPropsType) {
   const intl = useIntl();
   const [createColumn] = useCreateColumnMutation();
   const onSubmit = ({ title }: FormColumnDataType) => {
-    toast.promise(createColumn({ boardId, title }), {
-      pending: `${intl.formatMessage({ id: 'toast-createColumn-board-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-createColumn-board-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-createColumn-board-error' })}`,
-    });
+    createColumn({ boardId, title })
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-createColumn-board-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-createColumn-board-error' })));
     reset();
   };
 

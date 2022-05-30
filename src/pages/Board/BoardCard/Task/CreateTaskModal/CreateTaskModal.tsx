@@ -18,11 +18,10 @@ function CreateTaskModal({ boardId, handleCancel, column: { id } }: TaskModalPro
   const intl = useIntl();
   const [createTask] = useCreateTaskMutation();
   const onSubmit = ({ title, description, userId }: FormDataType) => {
-    toast.promise(createTask({ boardId, title, userId, description, columnId: id }), {
-      pending: `${intl.formatMessage({ id: 'toast-createTask-board-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-createTask-board-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-createTask-board-error' })}`,
-    });
+    createTask({ boardId, title, userId, description, columnId: id })
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-createTask-board-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-createTask-board-error' })));
     handleCancel();
   };
 

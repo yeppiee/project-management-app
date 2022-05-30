@@ -31,11 +31,10 @@ function TaskContent({ task, columnId, index }: TaskContentPropsType) {
     setViewConfirmModal(false);
   };
   const handleDeletetask = ({ id }: TaskResponse) => {
-    toast.promise(deleteTask({ boardId, columnId, taskId: id }), {
-      pending: `${intl.formatMessage({ id: 'toast-deleteTask-board-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-deleteTask-board-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-deleteTask-board-error' })}`,
-    });
+    deleteTask({ boardId, columnId, taskId: id })
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-deleteTask-board-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-deleteTask-board-error' })));
   };
   const openTask = () => setViewTask(true);
   const closeTask = () => setViewTask(false);

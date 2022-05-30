@@ -49,30 +49,29 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
     if (titleValue.length === 0) {
       return null;
     }
-    toast.promise(updateTask({ ...task, columnId, boardId, title: titleValue }), {
-      pending: `${intl.formatMessage({ id: 'toast-renameTitle-board-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-renameTitle-board-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-renameTitle-board-error' })}`,
-    });
+    updateTask({ ...task, columnId, boardId, title: titleValue })
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-renameTitle-board-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-renameTitle-board-error' })));
     return setIseEditTitle(false);
   };
   const updateDescription = () => {
     if (descriptionValue.length === 0) {
       return null;
     }
-    toast.promise(updateTask({ ...task, columnId, boardId, description: descriptionValue }), {
-      pending: `${intl.formatMessage({ id: 'toast-renameDescription-board-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-renameDescription-board-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-renameDescription-board-error' })}`,
-    });
+    updateTask({ ...task, columnId, boardId, description: descriptionValue })
+      .unwrap()
+      .then(() =>
+        toast.success(intl.formatMessage({ id: 'toast-renameDescription-board-success' }))
+      )
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-renameDescription-board-error' })));
     return setIseEditDescription(false);
   };
   const updateAssignee = () => {
-    toast.promise(updateTask({ ...task, columnId, boardId, userId: assigneeValue }), {
-      pending: `${intl.formatMessage({ id: 'toast-renameAssignee-board-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-renameAssignee-board-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-renameAssignee-board-error' })}`,
-    });
+    updateTask({ ...task, columnId, boardId, userId: assigneeValue })
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-renameAssignee-board-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-renameAssignee-board-error' })));
     setIseEditAssignee(false);
   };
 

@@ -32,22 +32,20 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
     if (titleInputValue.length === 0) {
       return null;
     }
-    toast.promise(renameColumn({ columnId, boardId, order, title: titleInputValue }), {
-      pending: `${intl.formatMessage({ id: 'toast-renameTitle-board-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-renameTitle-board-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-renameTitle-board-error' })}`,
-    });
+    renameColumn({ columnId, boardId, order, title: titleInputValue })
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-renameTitle-board-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-renameTitle-board-error' })));
     return setTitleView(true);
   };
   const onClickDeleteColumn = () => {
     setViewConfirmModal(true);
   };
   const callDeleteColumn = () => {
-    toast.promise(deleteColumn({ columnId, boardId }), {
-      pending: `${intl.formatMessage({ id: 'toast-deleteColumn-board-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-deleteColumn-board-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-deleteColumn-board-error' })}`,
-    });
+    deleteColumn({ columnId, boardId })
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-deleteColumn-board-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-deleteColumn-board-error' })));
   };
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
     setTitleInputValue(e.target.value);

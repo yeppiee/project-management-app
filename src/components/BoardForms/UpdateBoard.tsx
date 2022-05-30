@@ -37,11 +37,10 @@ function UpdateBoard({ closeModal }: Props) {
   const onSubmit: SubmitHandler<Board> = (data) => {
     const { id } = updateData;
     const newData = { ...data, id };
-    toast.promise(updateBoard(newData), {
-      pending: `${intl.formatMessage({ id: 'toast-updateBoard-form-pending' })}`,
-      success: `${intl.formatMessage({ id: 'toast-updateBoard-form-success' })} 👌`,
-      error: `${intl.formatMessage({ id: 'toast-updateBoard-form-error' })}`,
-    });
+    updateBoard(newData)
+      .unwrap()
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-updateBoard-form-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-updateBoard-form-error' })));
     reset();
     closeModal();
   };

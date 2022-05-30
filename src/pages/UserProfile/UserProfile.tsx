@@ -81,7 +81,7 @@ function UserProfile() {
       setValue('login', data.login);
       setValue('name', data.name);
     }
-  }, [data]);
+  }, [data, setValue]);
   return (
     <div className={styles.main__container}>
       {popupIsOpen && (
