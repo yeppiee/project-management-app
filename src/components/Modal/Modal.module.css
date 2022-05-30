@@ -13,12 +13,15 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   background-color: white;
+  border-radius: 6px;
   transform: translate(-50%, -50%);
   animation-name: slidein;
   animation-duration: 0.5s;
-  border-radius: 6px;
 }
 
 @keyframes slidein {
@@ -28,5 +31,11 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width:500px) {
+  .container {
+    padding: 10px;
   }
 }

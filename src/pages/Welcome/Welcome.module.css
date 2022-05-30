@@ -3,12 +3,17 @@
 }
 
 .content {
-  @apply flex flex-col p-5;
   max-width: 1152px;
+  @apply flex flex-col p-5;
 }
 
 .images {
+  height: auto;
   @apply flex justify-center;
+}
+.images img {
+  width: 50%;
+  height: auto;
 }
 
 .text {
@@ -21,4 +26,28 @@
 
 .text > p {
   @apply pb-3 text-center;
+}
+
+@media (max-width:1024px) {
+  .container {
+    font-size: 20px;
+  }
+}
+
+@media (max-width:768px) {
+  .container {
+    font-size: 16px;
+  }
+  .text > h3 {
+    text-align: center;
+  }
+}
+@media (max-width:500px) {
+  .container {
+    font-size: 16px;
+  }
+  .text > h3 {
+    text-align: center;
+    @apply pb-1;
+  }
 }

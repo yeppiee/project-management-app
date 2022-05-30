@@ -40,3 +40,21 @@
   background-color: rgba(255, 251, 251, 1);
 }
 
+@media (max-width:1024px) {
+  .board {
+    height: calc(100vh - 134px);
+  }
+}
+@media (max-width:768px) {
+  .board {
+    height: calc(100vh - 128px);
+  }
+}
+@media (max-width:500px) {
+  .board {
+    height: calc(100vh - 136px);
+  }
+  .buttonCreateColumn {
+    width: 200px;
+  }
+}

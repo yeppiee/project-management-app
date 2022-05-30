@@ -38,3 +38,9 @@
   color: red;
   border-color: red;
 }
+
+@media (max-width:500px) {
+  .input {
+    width: 250px;
+  }
+}

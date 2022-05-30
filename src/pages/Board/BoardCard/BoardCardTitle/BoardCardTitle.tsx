@@ -58,7 +58,7 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
           />
         </div>
       ) : (
-        <div className={styles.titleContainer}>
+        <div className={styles.titleInputContainer}>
           <button
             type="button"
             aria-label="submit-rename-button"

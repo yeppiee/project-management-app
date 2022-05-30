@@ -48,7 +48,7 @@ function Header({ handleChange }: HeaderProps) {
         </button>
         <div>
           {headerLinks.map((link) => (
-            <Link className={styles.link} to={link.path} key={link.id}>
+            <Link className={`${styles.link} ${styles.extraButtons}`} to={link.path} key={link.id}>
               <FormattedMessage id={link.localizationId} />
             </Link>
           ))}
