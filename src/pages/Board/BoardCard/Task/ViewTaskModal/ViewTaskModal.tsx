@@ -45,7 +45,7 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
     setIseEditAssignee(false);
     setAssigneeValue(task.userId);
   };
-  const updateTitle = async () => {
+  const updateTitle = () => {
     if (titleValue.length === 0) {
       return null;
     }
@@ -56,7 +56,7 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
     });
     return setIseEditTitle(false);
   };
-  const updateDescription = async () => {
+  const updateDescription = () => {
     if (descriptionValue.length === 0) {
       return null;
     }
