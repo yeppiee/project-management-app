@@ -71,5 +71,7 @@
   "about-work-ivan": "Project initialization, header, footer, welcome page, list with boards (create, delete, change), error handling from the backend, search for a board on the title.",
   "about-work-gena": "Backend setup and deployment, user profile (editing and deleting), authorization and account creation, 'About us' page",
   "about-work-denis": "Setting up and connecting localization.",
-  "main-confirm-modal-text": "Do you Want Delete Board?"
+  "main-confirm-modal-text": "Do you Want Delete Board?",
+  "welcome-page-app-description": "A project management system is an application that helps an individual or a group of developers achieve their goals. The project was part of The Rolling Scopes School React course.",
+  "welcome-page-app-about-team": "This project was created by a team of three people, you can find the authors GitHubs in the footer of the application."
 }

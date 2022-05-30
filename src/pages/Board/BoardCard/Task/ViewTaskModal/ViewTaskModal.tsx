@@ -29,20 +29,29 @@ function ViewTaskModal({ task, handleClose, users, columnId }: ViewTaskModalProp
   const changeAssigneeValue = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setAssigneeValue(e.target.value);
   const handleEditTitle = () => setIseEditTitle(true);
-  const cancelEditTitle = () => setIseEditTitle(false);
+  const cancelEditTitle = () => {
+    setIseEditTitle(false);
+    setTitleValue(task.title);
+  };
   const handleEditDescriptoin = () => setIseEditDescription(true);
-  const cancelEditDescriptoin = () => setIseEditDescription(false);
+  const cancelEditDescriptoin = () => {
+    setIseEditDescription(false);
+    setDescriptionValue(task.description);
+  };
   const handleEditAssignee = () => setIseEditAssignee(true);
-  const cancelEditAssignee = () => setIseEditAssignee(false);
+  const cancelEditAssignee = () => {
+    setIseEditAssignee(false);
+    setAssigneeValue(task.userId);
+  };
   const updateTitle = async () => {
-    if (!titleValue) {
+    if (titleValue.length === 0) {
       return null;
     }
     await updateTask({ ...task, columnId, boardId, title: titleValue });
     return setIseEditTitle(false);
   };
   const updateDescription = async () => {
-    if (!titleValue) {
+    if (descriptionValue.length === 0) {
       return null;
     }
     await updateTask({ ...task, columnId, boardId, description: descriptionValue });
