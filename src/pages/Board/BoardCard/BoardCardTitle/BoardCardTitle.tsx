@@ -69,6 +69,13 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
         </div>
       ) : (
         <div className={styles.titleInputContainer}>
+          <input
+            value={titleInputValue}
+            tabIndex={0}
+            onChange={onChangeTitle}
+            className={styles.titleInput}
+            type="text"
+          />
           <button
             type="button"
             aria-label="submit-rename-button"
@@ -81,13 +88,6 @@ function BoardCardTitle({ column: { title, id: columnId, order } }: CardPropsTyp
             aria-label="cancel-button"
             className={styles.cancel}
             onClick={onClickCancel}
-          />
-          <input
-            value={titleInputValue}
-            tabIndex={0}
-            onChange={onChangeTitle}
-            className={styles.titleInput}
-            type="text"
           />
         </div>
       )}
