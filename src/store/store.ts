@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { setupListeners } from '@reduxjs/toolkit/dist/query/react';
 import { taskDealerApi } from './reducers/TaskDealerApi';
 import userSlice from './reducers/UserSlice';
 import boardFormSlice from './reducers/BoardFormSlice';
@@ -36,6 +37,7 @@ export const store = configureStore({
       },
     }).concat(taskDealerApi.middleware),
 });
+setupListeners(store.dispatch);
 
 export const persistor = persistStore(store);
 

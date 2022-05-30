@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import {
   useDeleteUserMutation,
   useGetUserByIdQuery,
@@ -53,10 +54,9 @@ function UserProfile() {
     sendData.id = userId;
     updateUser(sendData)
       .unwrap()
-      .then(() => {
-        refetch();
-      })
-      .catch((error) => `${error.data.message}`);
+      .then(() => toast.success(intl.formatMessage({ id: 'toast-updateUser-profile-success' })))
+      .catch(() => toast.error(intl.formatMessage({ id: 'toast-updateUser-profile-error' })));
+    refetch();
   };
   const openModal = () => {
     setPopupIsOpen(true);
@@ -64,8 +64,12 @@ function UserProfile() {
   const closeModal = () => {
     setPopupIsOpen(false);
   };
-  const handleDeleteUser = async () => {
-    await deleteUser(userId);
+  const handleDeleteUser = () => {
+    toast.promise(deleteUser(userId), {
+      pending: `${intl.formatMessage({ id: 'toast-deleteUser-profile-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-deleteUser-profile-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-deleteUser-profile-error' })}`,
+    });
     dispatch(changeUserLoginStatus(false));
     dispatch(changeTokenStatus(false));
     dispatch(changeToken(''));

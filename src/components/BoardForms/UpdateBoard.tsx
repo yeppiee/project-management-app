@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { useUpdateBoardMutation } from '../../store/reducers/TaskDealerApi';
 import { Board } from '../../types/BoardsTypes';
 import ValidateError from '../ValidateError';
@@ -14,6 +15,11 @@ function UpdateBoard({ closeModal }: Props) {
   const { updateData } = useAppSelector((state) => state.boardFormSlice);
   const [updateBoard] = useUpdateBoardMutation();
   const intl = useIntl();
+
+  const title = intl.formatMessage({ id: 'board-form-title-required' });
+  const description = intl.formatMessage({ id: 'board-form-description-required' });
+  const titleMessage = intl.formatMessage({ id: 'board-form-title-message' });
+  const descriptionMessage = intl.formatMessage({ id: 'board-form-description-message' });
 
   const {
     register,
@@ -31,7 +37,11 @@ function UpdateBoard({ closeModal }: Props) {
   const onSubmit: SubmitHandler<Board> = (data) => {
     const { id } = updateData;
     const newData = { ...data, id };
-    updateBoard(newData);
+    toast.promise(updateBoard(newData), {
+      pending: `${intl.formatMessage({ id: 'toast-updateBoard-form-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-updateBoard-form-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-updateBoard-form-error' })}`,
+    });
     reset();
     closeModal();
   };
@@ -45,14 +55,14 @@ function UpdateBoard({ closeModal }: Props) {
         </b>
         <input
           {...register('title', {
-            required: intl.formatMessage({ id: 'board-form-title-required' }),
+            required: title,
             minLength: {
               value: 3,
-              message: intl.formatMessage({ id: 'board-form-title-message' }),
+              message: titleMessage,
             },
             maxLength: {
               value: 20,
-              message: intl.formatMessage({ id: 'board-form-title-message' }),
+              message: titleMessage,
             },
           })}
           className={styles.text}
@@ -65,14 +75,14 @@ function UpdateBoard({ closeModal }: Props) {
         </b>
         <textarea
           {...register('description', {
-            required: intl.formatMessage({ id: 'board-form-description-required' }),
+            required: description,
             minLength: {
               value: 10,
-              message: intl.formatMessage({ id: 'board-form-description-message' }),
+              message: descriptionMessage,
             },
             maxLength: {
               value: 200,
-              message: intl.formatMessage({ id: 'board-form-description-message' }),
+              message: descriptionMessage,
             },
           })}
           className={styles.text}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { store } from '../../store';
 import BoardList from '../../components/BoardList';
 import Modal from '../../components/Modal';
@@ -16,9 +17,14 @@ function Main() {
   const { updateBoardModalIsOpen, deleteData } = useAppSelector((state) => state.boardFormSlice);
   const { changeTokenStatus, changeUserLoginStatus } = userSlice.actions;
   const { changeUpdateBoardModalIsOpen } = boardFormSlice.actions;
-  const { data: boards, isLoading, error } = useGetAllBoardsQuery(null);
+  const {
+    data: boards,
+    isLoading,
+    error,
+  } = useGetAllBoardsQuery(null, { refetchOnMountOrArgChange: true });
   const dispatch = useAppDispatch();
   const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
+  const intl = useIntl();
 
   const checkTokenTime = () => {
     const { timeToken } = store.getState().userSlice;
@@ -27,6 +33,7 @@ function Main() {
     if (timeCurrent > Number(timeToken) + DAY) {
       dispatch(changeTokenStatus(false));
       dispatch(changeUserLoginStatus(false));
+      toast.warn(intl.formatMessage({ id: 'toast-token-broken' }));
     }
   };
 
@@ -40,7 +47,11 @@ function Main() {
 
   const handleBoardDelete = () => {
     closeConfirmModal();
-    deleteBoard(deleteData.id);
+    toast.promise(deleteBoard(deleteData.id), {
+      pending: `${intl.formatMessage({ id: 'toast-deleteBoard-form-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-deleteBoard-form-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-deleteBoard-form-error' })}`,
+    });
   };
 
   return (

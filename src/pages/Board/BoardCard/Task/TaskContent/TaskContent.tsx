@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { useState } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Draggable } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Modal from '../../../../../components/Modal/Modal';
 import {
   useDeleteTaskMutation,
@@ -24,12 +25,17 @@ function TaskContent({ task, columnId, index }: TaskContentPropsType) {
   const [deleteTask] = useDeleteTaskMutation();
   const [viewConfirmModal, setViewConfirmModal] = useState(false);
   const [viewTask, setViewTask] = useState(false);
+  const intl = useIntl();
   const viewDeleteModal = () => setViewConfirmModal(true);
   const closeModal = () => {
     setViewConfirmModal(false);
   };
-  const handleDeletetask = async ({ id }: TaskResponse) => {
-    await deleteTask({ boardId, columnId, taskId: id });
+  const handleDeletetask = ({ id }: TaskResponse) => {
+    toast.promise(deleteTask({ boardId, columnId, taskId: id }), {
+      pending: `${intl.formatMessage({ id: 'toast-deleteTask-board-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-deleteTask-board-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-deleteTask-board-error' })}`,
+    });
   };
   const openTask = () => setViewTask(true);
   const closeTask = () => setViewTask(false);

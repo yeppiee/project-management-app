@@ -3,4 +3,4 @@ export type UpdateUserType = {
   login: string;
   password: string;
   id?: string;
-}
+};

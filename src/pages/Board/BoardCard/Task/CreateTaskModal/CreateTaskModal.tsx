@@ -1,6 +1,6 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import {
   useCreateTaskMutation,
   useGetAllUsersQuery,
@@ -17,8 +17,12 @@ function CreateTaskModal({ boardId, handleCancel, column: { id } }: TaskModalPro
   const { data: users } = useGetAllUsersQuery(id);
   const intl = useIntl();
   const [createTask] = useCreateTaskMutation();
-  const onSubmit = async ({ title, description, userId }: FormDataType) => {
-    await createTask({ boardId, title, userId, description, columnId: id });
+  const onSubmit = ({ title, description, userId }: FormDataType) => {
+    toast.promise(createTask({ boardId, title, userId, description, columnId: id }), {
+      pending: `${intl.formatMessage({ id: 'toast-createTask-board-pending' })}`,
+      success: `${intl.formatMessage({ id: 'toast-createTask-board-success' })} 👌`,
+      error: `${intl.formatMessage({ id: 'toast-createTask-board-error' })}`,
+    });
     handleCancel();
   };
 
