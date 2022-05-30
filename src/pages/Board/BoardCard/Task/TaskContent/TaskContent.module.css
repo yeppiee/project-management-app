@@ -15,6 +15,7 @@
 }
 .taskTitle {
   width: 100%;
+  word-wrap: break-word;
 }
 .task {
   display: flex;
@@ -51,7 +52,7 @@
 }
 .controls {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   column-gap: 10px;
 }
@@ -65,3 +66,8 @@
   border-radius: 4px;
 }
 
+@media (max-width:1024px) {
+  .delete {
+    opacity: 1;
+  }
+}

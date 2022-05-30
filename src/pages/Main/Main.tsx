@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { store } from '../../store';
 import BoardList from '../../components/BoardList';
 import Modal from '../../components/Modal';
@@ -54,7 +55,7 @@ function Main() {
       )}
       {confirmModalIsOpen && (
         <ConfirmModal closeConfirmModal={closeConfirmModal} handleBoardDelete={handleBoardDelete}>
-          Do you Want Delete Board?
+          <FormattedMessage id="main-confirm-modal-text" />
         </ConfirmModal>
       )}
     </div>

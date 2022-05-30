@@ -21,7 +21,7 @@
 }
 .controls {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   column-gap: 10px;
 }
@@ -41,4 +41,10 @@
 }
 .select {
   width: 100%;
+}
+
+@media (max-width:500px) {
+  .input {
+    width: 250px;
+  }
 }

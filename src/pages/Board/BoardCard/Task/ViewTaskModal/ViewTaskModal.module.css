@@ -67,7 +67,7 @@
 .titleContainer {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   margin-top: 5px;
@@ -83,4 +83,12 @@
   border: 2px solid rgb(23, 43, 77);
   border-radius: 4px;
   outline: none;
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 280px;
+
+    row-gap: 10px;
+  }
 }
