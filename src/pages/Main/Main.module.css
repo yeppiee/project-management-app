@@ -1,0 +1,17 @@
+.container {
+  min-height: calc(100vh - 174px);
+  @apply flex flex-col w-full items-center px-3 py-16;
+}
+
+@media (max-width:1024px) {
+  .container {
+    font-size: 20px;
+    @apply py-8;
+  }
+}
+
+@media (max-width:768px) {
+  .container {
+    font-size: 16px;
+  }
+}

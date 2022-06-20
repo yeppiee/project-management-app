@@ -1,0 +1,57 @@
+.list {
+  min-width: 600px;
+  font-size: 0.9em;
+  column-gap: 10px;
+  @apply flex flex-col w-1/2 gap-y-4 ;
+}
+
+.item {
+  @apply flex items-center w-full bg-gray-200 hover:bg-gray-300 p-4 rounded-md transition-colors;
+}
+
+.item:hover > .title {
+  @apply text-mainHover;
+}
+
+.title {
+  @apply flex w-64 transition-colors;
+}
+
+.description {
+  @apply flex text-gray-600 w-full px-8;
+}
+
+.icons {
+  flex-shrink: 0;
+  @apply flex flex-col gap-y-4;
+}
+
+.button {
+  @apply flex items-center justify-center;
+}
+
+.button > i {
+  @apply cursor-pointer text-main hover:text-mainHover transition-colors;
+}
+
+
+@media (max-width:768px) {
+  .list {
+    width: 80%;
+    min-width: 300px;
+  }
+  .title {
+    width: 20%;
+    word-break: break-all;
+  }
+  .description {
+    flex-grow: 1;
+    word-break: break-all;
+  }
+}
+@media (max-width:500px) {
+  .list {
+    width: 100%;
+    min-width: 300px;
+  }
+}

@@ -1,0 +1,71 @@
+.container {
+  @apply flex justify-center p-3 bg-main text-white;
+}
+.container a {
+  @apply hover:text-mainHover transition-colors;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1152px;
+}
+
+.developers {
+  @apply flex items-center justify-center;
+}
+.developers li {
+  @apply ml-12 mr-12;
+}
+
+.img {
+  width: 100px;
+  height: 50px;
+  background-image: url(../../assets/logoRS.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+@media (max-width:1024px) {
+  .container {
+    width: 100%;
+    font-size: 20px;
+  }
+  .img {
+    width: 80px;
+    height: 40px;
+  }
+  .wrapper {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .developers li {
+    @apply ml-6 mr-6;
+  }
+}
+
+@media (max-width:768px) {
+  .container {
+    font-size: 16px;
+  }
+  .developers li {
+    @apply ml-4 mr-4;
+  }
+  .wrapper {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width:500px) {
+  .developers {
+    flex-direction: column;
+    line-height: 16px;
+  }
+  .img {
+    width: 60px;
+    height: 30px;
+  }
+}

@@ -1,0 +1,60 @@
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - 174px);
+  padding: 0 10px;
+  font-size: 15px;
+  background-color: rgb(43 60 96);
+}
+.boardsContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: calc(100% - 52.5px);
+  margin: 0 10px;
+  overflow-x: auto;
+}
+.plus {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url("https://res.cloudinary.com/rss-collection/image/upload/v1652982883/172525_plus_icon_lwegye.svg");
+  background-size: 100% 100%;
+  filter: invert(14%) sepia(10%) saturate(3178%) hue-rotate(183deg) brightness(95%) contrast(88%);
+}
+.buttonCreateColumn {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 300px;
+  padding: 10px 15px;
+  text-align: start;
+  color: rgb(23, 43, 77);
+  column-gap: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+}
+.buttonCreateColumn:hover {
+  background-color: rgba(255, 251, 251, 1);
+}
+
+@media (max-width:1024px) {
+  .board {
+    height: calc(100vh - 134px);
+  }
+}
+@media (max-width:768px) {
+  .board {
+    height: calc(100vh - 128px);
+  }
+}
+@media (max-width:500px) {
+  .board {
+    height: calc(100vh - 136px);
+  }
+  .buttonCreateColumn {
+    width: 200px;
+  }
+}

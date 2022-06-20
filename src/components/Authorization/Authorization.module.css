@@ -1,0 +1,21 @@
+.container {
+  @apply flex flex-col w-1/2  border-2 border-main rounded-md p-10 mb-8;
+  margin: 20px auto;
+}
+
+.text {
+  @apply w-full border-2 border-main rounded-md mb-8 mt-2 resize-none p-1;
+}
+
+.button {
+  @apply m-auto border-2 border-main rounded-md py-1 px-4 cursor-pointer hover:bg-mainHover transition-colors;
+}
+@media (max-width: 740px) {
+  .container {
+    width: auto;
+    padding: 1rem;
+  }
+  .text {
+    margin: 1rem 0;
+  }
+}

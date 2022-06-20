@@ -1,0 +1,21 @@
+.container {
+  min-width: 600px;
+  @apply flex items-center mb-10 gap-x-3 w-1/2;
+}
+.input {
+  @apply w-full p-1 rounded-md pl-2 bg-gray-200;
+}
+
+@media (max-width:768px) {
+  .container {
+    width: 80%;
+    min-width: 300px;
+    @apply mb-5;
+  }
+}
+@media (max-width:500px) {
+  .container {
+    width: 100%;
+    min-width: 300px;
+  }
+}

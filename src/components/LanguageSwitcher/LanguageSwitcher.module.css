@@ -1,0 +1,31 @@
+.container {
+  @apply flex justify-center items-center mr-2;
+}
+
+.label {
+  @apply flex items-center;
+}
+
+.input {
+  @apply cursor-pointer h-9 w-9 rounded-full appearance-none bg-white relative text-main;
+}
+.input::after {
+  content: "EN";
+  @apply h-9 w-9 rounded-full bg-mainHover absolute left-0 top-0 flex items-center justify-center text-xl;
+}
+.input:checked::after {
+  content: "RU";
+}
+
+@media (max-width:768px) {
+  .container {
+    font-size: 16px;
+  }
+  .input {
+    @apply h-7 w-7;
+  }
+  .input::after {
+    font-size: 16px;
+    @apply h-7 w-7;
+  }
+}

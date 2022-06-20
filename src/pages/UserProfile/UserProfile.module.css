@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 20px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 15px;
+  width: 75%;
+}
+.main__container {
+  @apply flex items-start justify-center w-full;
+  padding: 20px 20px;
+}
+.form__title {
+  font-weight: 700;
+  font-size: 35px;
+}
+.list {
+  @apply flex flex-col w-4/5 gap-y-4;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+.item {
+  @apply flex justify-between items-center w-full bg-gray-200 hover:bg-gray-300 p-4 rounded-md transition-colors;
+}
+
+.item:hover > .title {
+  @apply text-mainHover;
+}
+
+.title {
+  @apply flex transition-colors;
+  background-color: transparent;
+  width: 100%;
+  margin-right: 10px;
+}
+
+.description {
+  @apply flex text-gray-600 w-full px-8;
+}
+
+.icons {
+  @apply flex flex-col gap-y-4;
+}
+
+.button {
+  @apply flex items-center justify-center;
+}
+
+.button > i {
+  @apply cursor-pointer text-main hover:text-mainHover transition-colors;
+}
+.button__submit {
+  @apply border-2 border-main rounded-md p-1 hover:bg-mainHover transition-colors;
+  cursor: pointer;
+  width: 175px;
+}
+.delete__btn_main {
+  @apply border-2 border-main rounded-md p-1 text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors;
+  width: 225px;
+  cursor: pointer;
+  margin-bottom: 35px;
+}
+@media (max-width: 768px) {
+  .form__title{
+    font-size: 25px;
+  }
+  .main__container {
+    @apply flex flex-col items-center
+  }
+  .container {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    margin-right: 0;
+    width: 100%;
+  }
+  .item {
+    padding: 0.5rem;
+  }
+  b {
+    font-size: 20px;
+  }
+  .list {
+    width: 100%;
+  }
+}

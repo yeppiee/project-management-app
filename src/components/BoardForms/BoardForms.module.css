@@ -1,0 +1,28 @@
+.container {
+  @apply flex flex-col w-96;
+}
+
+.text {
+  @apply w-full border-2 border-main rounded-md mb-3 mt-1 resize-none;
+}
+
+.button {
+  @apply m-auto border-2 border-main rounded-md p-1 hover:bg-mainHover transition-colors;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    min-width: 260px;
+  }
+}
